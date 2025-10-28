@@ -54,3 +54,15 @@
 [2025-10-28 09:21:12] [INFO]   Total events after deduplication: 84377
 [2025-10-28 09:21:14] [INFO] Writing 84377 valid events to XML
 [2025-10-28 09:21:14] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-28 17:07:58] [INFO] Starting EPG fetch for 1 lineup(s)
+[2025-10-28 17:07:58] [INFO]   Timespan: 24 hours
+[2025-10-28 17:07:58] [INFO]   Parallel: True (workers: 5)
+[2025-10-28 17:07:58] [INFO] Fetching lineup 1/1: USA-CA63552-X
+[2025-10-28 17:08:02] [INFO]   [USA-CA63552-X] 113 channels, 3391 events
+[2025-10-28 17:08:02] [INFO] Fetch complete: 1 succeeded, 0 failed
+[2025-10-28 17:08:02] [INFO]   Raw channels collected: 113
+[2025-10-28 17:08:02] [INFO] Merging duplicate channels across lineups...
+[2025-10-28 17:08:02] [INFO]   Final unique channels: 113
+[2025-10-28 17:08:02] [INFO]   Total events after deduplication: 3391
+[2025-10-28 17:08:02] [INFO] Writing 3391 valid events to XML
+[2025-10-28 17:08:02] [INFO] EPG successfully written to docs/EPG.xml
