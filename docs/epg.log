@@ -1,0 +1,56 @@
+[2025-10-28 09:20:18] [INFO] Starting EPG fetch for 46 lineup(s)
+[2025-10-28 09:20:18] [INFO]   Timespan: 24 hours
+[2025-10-28 09:20:18] [INFO]   Parallel: True (workers: 5)
+[2025-10-28 09:20:22] [INFO]   [USA-CA63552-X] 113 channels, 3391 events
+[2025-10-28 09:20:22] [INFO]   [USA-SC39467-X] 154 channels, 4088 events
+[2025-10-28 09:20:23] [INFO]   [USA-CA04536-X] 244 channels, 6687 events
+[2025-10-28 09:20:23] [INFO]   [USA-CA04423-X] 315 channels, 8347 events
+[2025-10-28 09:20:23] [INFO]   [USA-CA04577-X] 519 channels, 12902 events
+[2025-10-28 09:20:27] [INFO]   [USA-CA63870-X] 121 channels, 3623 events
+[2025-10-28 09:20:27] [INFO]   [USA-CA70211-X] 99 channels, 2814 events
+[2025-10-28 09:20:28] [INFO]   [USA-CA64361-X] 148 channels, 4321 events
+[2025-10-28 09:20:28] [INFO]   [USA-CA04523-X] 626 channels, 15436 events
+[2025-10-28 09:20:29] [INFO]   [USA-CA04818-X] 562 channels, 13541 events
+[2025-10-28 09:20:32] [INFO]   [USA-CA04563-X] 481 channels, 12585 events
+[2025-10-28 09:20:33] [INFO]   [USA-CA66343-X] 596 channels, 16100 events
+[2025-10-28 09:20:33] [INFO]   [USA-CA55363-X] 592 channels, 14637 events
+[2025-10-28 09:20:34] [INFO]   [USA-CA67659-X] 578 channels, 15497 events
+[2025-10-28 09:20:35] [INFO]   [USA-CA04931-X] 527 channels, 14192 events
+[2025-10-28 09:20:38] [INFO]   [USA-CA02268-X] 322 channels, 8681 events
+[2025-10-28 09:20:38] [INFO]   [USA-CA58597-X] 533 channels, 14152 events
+[2025-10-28 09:20:39] [INFO]   [USA-DITV501-X] 615 channels, 16636 events
+[2025-10-28 09:20:40] [INFO]   [USA-ECHOST-X] 488 channels, 12832 events
+[2025-10-28 09:20:43] [INFO]   [USA-NY66739-X] 617 channels, 13823 events
+[2025-10-28 09:20:43] [INFO]   [USA-CA57315-L] 498 channels, 12850 events
+[2025-10-28 09:20:44] [INFO]   [USA-CA04863-X] 310 channels, 8304 events
+[2025-10-28 09:20:44] [INFO]   [USA-DISH803-X] 584 channels, 15797 events
+[2025-10-28 09:20:47] [INFO]   [USA-CA67310-L] 505 channels, 12926 events
+[2025-10-28 09:20:49] [INFO]   [USA-CA04768-X] 648 channels, 16437 events
+[2025-10-28 09:20:49] [INFO]   [USA-DITV803-X] 614 channels, 16597 events
+[2025-10-28 09:20:49] [INFO]   [USA-CA67310-X] 464 channels, 11885 events
+[2025-10-28 09:20:50] [INFO]   [USA-IL56991-X] 599 channels, 14822 events
+[2025-10-28 09:20:53] [INFO]   [USA-CO68828-X] 512 channels, 13507 events
+[2025-10-28 09:20:54] [INFO]   [USA-CA04486-X] 310 channels, 8318 events
+[2025-10-28 09:20:54] [INFO]   [USA-CA71911-X] 93 channels, 2538 events
+[2025-10-28 09:20:56] [INFO]   [USA-DITV825-X] 590 channels, 15866 events
+[2025-10-28 09:20:56] [INFO]   [USA-CA66564-X] 583 channels, 15748 events
+[2025-10-28 09:20:58] [INFO]   [USA-DISH825-X] 542 channels, 14595 events
+[2025-10-28 09:21:00] [INFO]   [USA-DITV804-X] 578 channels, 15510 events
+[2025-10-28 09:21:00] [INFO]   [USA-CA04542-L] 467 channels, 11649 events
+[2025-10-28 09:21:01] [INFO]   [USA-CA65644-L] 462 channels, 11624 events
+[2025-10-28 09:21:02] [INFO]   [USA-CO68610-X] 708 channels, 15328 events
+[2025-10-28 09:21:04] [INFO]   [USA-CA63959-X] 136 channels, 3083 events
+[2025-10-28 09:21:04] [INFO]   [USA-CA04470-L] 432 channels, 10789 events
+[2025-10-28 09:21:06] [INFO]   [USA-DITV807-X] 611 channels, 16544 events
+[2025-10-28 09:21:07] [INFO]   [USA-CA04487-X] 534 channels, 14253 events
+[2025-10-28 09:21:10] [INFO]   [USA-CA00056-X] 519 channels, 13922 events
+[2025-10-28 09:21:10] [INFO]   [USA-CA04437-X] 576 channels, 14129 events
+[2025-10-28 09:21:11] [INFO]   [USA-CA54023-X] 555 channels, 13621 events
+[2025-10-28 09:21:11] [INFO]   [USA-DISH862-X] 541 channels, 14599 events
+[2025-10-28 09:21:11] [INFO] Fetch complete: 46 succeeded, 0 failed
+[2025-10-28 09:21:11] [INFO]   Raw channels collected: 21221
+[2025-10-28 09:21:11] [INFO] Merging duplicate channels across lineups...
+[2025-10-28 09:21:12] [INFO]   Final unique channels: 3524
+[2025-10-28 09:21:12] [INFO]   Total events after deduplication: 84377
+[2025-10-28 09:21:14] [INFO] Writing 84377 valid events to XML
+[2025-10-28 09:21:14] [INFO] EPG successfully written to docs/EPG.xml

@@ -18,13 +18,22 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Debug file paths
+        run: |
+          pwd
+          ls -lh
+          ls -lh zap2it.db || echo "zap2it.db not found!"
+
+
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install requests
 
       - name: Run epg2.py
+        working-directory: ./
         run: python epg2.py
+
 
       - name: Commit and push EPG.xml
         run: |
