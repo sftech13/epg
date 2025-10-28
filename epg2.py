@@ -22,7 +22,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
-CONFIG_FILE = "/home/sftech13/git/epg/epg_config.json"
+from pathlib import Path
+CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
+
 DB_FILE = "/home/sftech13/git/epg/zap2it.db"
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
 USER_AGENTS = [
