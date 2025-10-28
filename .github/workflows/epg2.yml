@@ -3,10 +3,10 @@ name: Run EPG2
 on:
   schedule:
     - cron: "0 */4 * * *"   # Every 4 hours
-  workflow_dispatch:        # Manual run option
+  workflow_dispatch: 
 
 permissions:
-  contents: write    # ✅ give Actions permission to push
+  contents: write 
 
 jobs:
   run-epg:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ use token for authenticated push
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull LFS files (safeguard)
         run: git lfs pull
@@ -51,4 +51,4 @@ jobs:
           git commit -m "Auto-update EPG feed" || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ ensure push is authorized
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
