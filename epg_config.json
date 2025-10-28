@@ -1,8 +1,8 @@
 {
-  "EPG_LOOKUP_MODE": "keyword",
-  "EPG_LOOKUP_VALUE": "california,los angeles,san diego,san francisco,san jose,sacramento",
+  "EPG_LOOKUP_MODE": "",
+  "EPG_LOOKUP_VALUE": "",
   "EPG_ZIP": "",
-  "EPG_LINEUP_ID": "",
+  "EPG_LINEUP_ID": "USA-CA63552-X",
   "EPG_MAX_LINEUPS": 50,
   "EPG_TIMESPAN_DAYS": 1,
   "EPG_DELAY": 1,
