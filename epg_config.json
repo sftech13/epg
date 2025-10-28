@@ -1,0 +1,17 @@
+{
+  "EPG_LOOKUP_MODE": "keyword",
+  "EPG_LOOKUP_VALUE": "california,los angeles,san diego,san francisco,san jose,sacramento",
+  "EPG_ZIP": "",
+  "EPG_LINEUP_ID": "",
+  "EPG_MAX_LINEUPS": 50,
+  "EPG_TIMESPAN_DAYS": 1,
+  "EPG_DELAY": 1,
+  "EPG_RETRY_COUNT": 3,
+  "EPG_OUTPUT": "docs/EPG.xml",
+  "EPG_LOG_FILE": "docs/epg.log",
+  "EPG_DB_PATH": "zap2it.db",
+  "EPG_THUMBNAILS": true,
+  "EPG_PARALLEL": true,
+  "EPG_MAX_WORKERS": 5,
+  "EPG_LOG_LEVEL": "INFO"
+}

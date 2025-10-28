@@ -1,0 +1,35 @@
+name: Run EPG2
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"  # Every 4 hours
+  workflow_dispatch:       # Manual run option
+
+jobs:
+  run-epg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install requests
+
+      - name: Run epg2.py
+        run: python epg2.py
+
+      - name: Commit and push EPG.xml
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/EPG.xml docs/epg.log
+          git commit -m "Auto-update EPG feed" || echo "No changes to commit"
+          git push
