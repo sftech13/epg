@@ -2,28 +2,33 @@ name: Run EPG2
 
 on:
   schedule:
-    - cron: "0 */4 * * *"  # Every 4 hours
-  workflow_dispatch:       # Manual run option
+    - cron: "0 */4 * * *"   # Every 4 hours
+  workflow_dispatch:        # Manual run option
 
 jobs:
   run-epg:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repo (with LFS)
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          lfs: true  # pulls large files too
+
+      - name: Pull LFS files (safeguard)
+        run: git lfs pull
 
       - name: Debug file paths
         run: |
           pwd
           ls -lh
-          ls -lh zap2it.db || echo "zap2it.db not found!"
+          file zap2it.db || echo "zap2it.db not found!"
+          du -h zap2it.db || echo "DB has no size"
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -33,7 +38,6 @@ jobs:
       - name: Run epg2.py
         working-directory: ./
         run: python epg2.py
-
 
       - name: Commit and push EPG.xml
         run: |
