@@ -5,6 +5,9 @@ on:
     - cron: "0 */4 * * *"   # Every 4 hours
   workflow_dispatch:        # Manual run option
 
+permissions:
+  contents: write    # ✅ give Actions permission to push
+
 jobs:
   run-epg:
     runs-on: ubuntu-latest
@@ -13,7 +16,8 @@ jobs:
       - name: Checkout repo (with LFS)
         uses: actions/checkout@v4
         with:
-          lfs: true  # pulls large files too
+          lfs: true
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ use token for authenticated push
 
       - name: Pull LFS files (safeguard)
         run: git lfs pull
@@ -46,3 +50,5 @@ jobs:
           git add docs/EPG.xml docs/epg.log
           git commit -m "Auto-update EPG feed" || echo "No changes to commit"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ ensure push is authorized
