@@ -2,7 +2,7 @@ name: Run EPG2
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # Every 4 hours
+    - cron: "0 */12 * * *"   # Every 4 hours
   workflow_dispatch: 
 
 permissions:

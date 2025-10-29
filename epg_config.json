@@ -3,7 +3,8 @@
   "EPG_LOOKUP_VALUE": "california,los angeles,san diego,san francisco,san jose,sacramento",
   "EPG_ZIP": "",
   "EPG_LINEUP_ID": "",
-  "EPG_MAX_LINEUPS": 50,
+  "EPG_OTA_ONLY": true,
+  "EPG_MAX_LINEUPS": 5,
   "EPG_TIMESPAN_DAYS": 1,
   "EPG_DELAY": 1,
   "EPG_RETRY_COUNT": 3,
@@ -13,5 +14,5 @@
   "EPG_THUMBNAILS": true,
   "EPG_PARALLEL": true,
   "EPG_MAX_WORKERS": 5,
-  "EPG_LOG_LEVEL": "INFO"
+  "EPG_LOG_LEVEL": "DEBUG"
 }

@@ -15,6 +15,7 @@ import contextlib
 import sqlite3
 import datetime as _dt
 import requests
+import argparse
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from collections import defaultdict
@@ -22,30 +23,24 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
-from pathlib import Path
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
-
 DB_FILE = "/home/sftech13/git/epg/zap2it.db"
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
+
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
 ]
+
 BASE_URL = "https://tvlistings.gracenote.com/api/grid"
-COUNTRY_3 = {"US": "USA", "CA": "CAN"}
+COUNTRY_3 = {"US": "USA", "CA": "CAN", "UK": "GBR", "GB": "GBR"}
+COUNTRY_2 = {"USA": "us", "CAN": "ca", "GBR": "uk", "United States": "us", "Canada": "ca", "United Kingdom": "uk"}
 
 # ---------------- Logging ----------------
 def setup_logging(verbosity, log_file: str = None):
-    """
-    Setup logging with appropriate level and optional file output.
-    
-    Args:
-        verbosity: Can be int (0-2) or string ('DEBUG', 'INFO', 'WARNING', 'ERROR')
-        log_file: Optional path to log file
-    """
-    # Handle string log levels
+    """Setup logging with appropriate level and optional file output."""
     if isinstance(verbosity, str):
         level_map = {
             'DEBUG': logging.DEBUG,
@@ -57,7 +52,6 @@ def setup_logging(verbosity, log_file: str = None):
         }
         level = level_map.get(verbosity.upper(), logging.INFO)
     else:
-        # Handle integer verbosity (backwards compatible)
         verbosity = int(verbosity)
         if verbosity == 0:
             level = logging.WARNING
@@ -66,18 +60,14 @@ def setup_logging(verbosity, log_file: str = None):
         else:
             level = logging.DEBUG
     
-    # Setup handlers list
     formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s', 
                                   datefmt='%Y-%m-%d %H:%M:%S')
-    
     handlers = []
     
-    # Console handler
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
     handlers.append(console_handler)
     
-    # File handler if specified
     if log_file:
         try:
             file_handler = logging.FileHandler(log_file)
@@ -86,12 +76,7 @@ def setup_logging(verbosity, log_file: str = None):
         except Exception as e:
             print(f"Warning: Could not create log file {log_file}: {e}", file=sys.stderr)
     
-    # Configure logging with all handlers
-    logging.basicConfig(
-        level=level,
-        handlers=handlers,
-        force=True  # Force reconfiguration if called multiple times
-    )
+    logging.basicConfig(level=level, handlers=handlers, force=True)
 
 # ---------------- Single Instance Lock ----------------
 def _release_lock():
@@ -135,6 +120,14 @@ def _single_instance_guard():
         _release_lock()
 
 # ---------------- API helpers ----------------
+# Global CDN subdomain (can be overridden by config)
+_CDN_SUBDOMAIN = "zap2it"
+
+def _set_cdn_subdomain(subdomain: str):
+    """Set the CDN subdomain for image URLs."""
+    global _CDN_SUBDOMAIN
+    _CDN_SUBDOMAIN = subdomain
+
 def _ua():
     """Return a random user agent using secrets for better randomness."""
     return USER_AGENTS[secrets.randbelow(len(USER_AGENTS))]
@@ -158,6 +151,27 @@ def _device_from_lineup(lineup_id: str) -> str:
         return "-"
     m = re.search(r"-([A-Z])$", s)
     return m.group(1) if m else "-"
+
+def _fix_thumbnail_url(thumbnail: str) -> str:
+    """Fix incomplete thumbnail URLs from GraceNote API to use proper tmsimg.com CDN."""
+    if not thumbnail:
+        return ""
+    
+    # Already a complete URL
+    if thumbnail.startswith("http://") or thumbnail.startswith("https://"):
+        return thumbnail
+    
+    # Missing protocol (format: //domain.com/path)
+    if thumbnail.startswith("//"):
+        return f"https:{thumbnail}"
+    
+    # Partial path (format: assets/p1123231_e_v4_aa or just the ID)
+    # Use configured CDN subdomain (default: developer for public/sample access)
+    # Licensed customers should set EPG_CDN_SUBDOMAIN to their assigned subdomain
+    if thumbnail.startswith("assets/"):
+        return f"https://{_CDN_SUBDOMAIN}.tmsimg.com/{thumbnail}.jpg"
+    else:
+        return f"https://{_CDN_SUBDOMAIN}.tmsimg.com/assets/{thumbnail}.jpg"
 
 def _build_url(lineup_id: str, headend_id: str, country: str, postal: str, 
                time_sec: int, chunk_hours: int, is_ota: bool) -> str:
@@ -212,7 +226,8 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
         "chunks_failed": 0,
         "total_chunks": len(offsets),
         "channels_found": 0,
-        "events_found": 0
+        "events_found": 0,
+        "is_ota": is_ota
     }
 
     for idx, offset in enumerate(offsets):
@@ -236,12 +251,12 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                                 "callSign": ch.get("callSign") or ch.get("name"),
                                 "channelNo": ch.get("channelNo") or ch.get("channel"),
                                 "affiliateName": ch.get("affiliateName"),
-                                "thumbnail": ch.get("thumbnail"),
-                                "events": []
+                                "thumbnail": _fix_thumbnail_url(ch.get("thumbnail")),
+                                "events": [],
+                                "isOTA": is_ota
                             }
                         base = channels_map[cid]
                         for ev in ch.get("events", []) or []:
-                            # Enrich event with additional metadata
                             prog = ev.get("program", {}) or {}
                             enriched_event = {
                                 "startTime": ev.get("startTime"),
@@ -251,22 +266,26 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                                 "seasonTitle": prog.get("seasonTitle"),
                                 "showType": prog.get("showType"),
                                 "runTime": prog.get("runTime"),
-                                "isNew": ev.get("isNew") or prog.get("isNew"),
+                                "isNew": ev.get("isNew") or prog.get("isNew") or prog.get("new"),
                                 "seasonPremiere": prog.get("seasonPremiere"),
                                 "seasonFinale": prog.get("seasonFinale"),
                                 "genres": prog.get("genres") or [],
                                 "language": prog.get("language"),
-                                "thumbnail": prog.get("thumbnail") or ev.get("thumbnail"),
-                                "preferredImage": prog.get("preferredImage", {}).get("uri"),
+                                "thumbnail": _fix_thumbnail_url(prog.get("thumbnail") or ev.get("thumbnail")),
+                                "preferredImage": _fix_thumbnail_url((prog.get("preferredImage") or {}).get("uri")),
                                 "seasonNum": prog.get("seasonNum"),
                                 "episodeNum": prog.get("episodeNum"),
                                 "seriesId": prog.get("seriesId"),
                                 "programId": prog.get("programId"),
                                 "cast": prog.get("cast") or [],
                                 "crew": prog.get("crew") or [],
-                                # Normalize ratings
                                 "ratings": _extract_rating(prog.get("ratings")),
                             }
+                            
+                            # Debug logging for isNew field
+                            if enriched_event.get("isNew"):
+                                logging.debug(f"Found NEW episode: {enriched_event['title']} (isNew={enriched_event['isNew']})")
+                            
                             base["events"].append(enriched_event)
                     stats["chunks_fetched"] += 1
                     break
@@ -291,13 +310,12 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                     stats["chunks_failed"] += 1
                     break
                 wait = min(30, 2 ** (attempt - 1)) + secrets.randbelow(1000) / 1000
-                logging.warning(f"[{lineup_id_input}] Network error: {e} — retrying in {wait:.1f}s")
+                logging.warning(f"[{lineup_id_input}] Network error: {e} � retrying in {wait:.1f}s")
                 time.sleep(wait)
 
         if delay_seconds > 0 and idx < len(offsets) - 1:
             time.sleep(delay_seconds)
 
-    # Deduplicate and enrich events
     for ch in channels_map.values():
         ch["events"] = _deduplicate_events_enhanced(ch["events"])
     
@@ -314,7 +332,6 @@ def _extract_rating(ratings_data):
     if not ratings_data:
         return None
     
-    # Handle list format
     if isinstance(ratings_data, list) and len(ratings_data) > 0:
         rating = ratings_data[0]
         if isinstance(rating, dict):
@@ -323,7 +340,6 @@ def _extract_rating(ratings_data):
                 "value": rating.get("code", "")
             }
     
-    # Handle dict format
     if isinstance(ratings_data, dict):
         return {
             "system": ratings_data.get("body", ""),
@@ -333,14 +349,10 @@ def _extract_rating(ratings_data):
     return None
 
 def _deduplicate_events_enhanced(events: List[Dict]) -> List[Dict]:
-    """
-    Remove duplicate events and prefer ones with richer metadata.
-    Keeps the event with more fields populated (description, thumbnail, season info, etc.).
-    """
+    """Remove duplicate events and prefer ones with richer metadata."""
     seen = {}
     
     def _metadata_score(ev):
-        """Score an event based on how much metadata it has."""
         score = 0
         if ev.get("description"): score += 3
         if ev.get("thumbnail") or ev.get("preferredImage"): score += 2
@@ -354,44 +366,121 @@ def _deduplicate_events_enhanced(events: List[Dict]) -> List[Dict]:
         return score
     
     for ev in sorted(events, key=lambda e: e.get("startTime") or ""):
-        key = (
-            ev.get("startTime"),
-            ev.get("title")
-        )
+        key = (ev.get("startTime"), ev.get("title"))
         
         if key not in seen:
             seen[key] = ev
         else:
-            # Keep the one with better metadata
             if _metadata_score(ev) > _metadata_score(seen[key]):
                 seen[key] = ev
     
     return list(seen.values())
 
-
-def _normalize_callsign(callsign: str) -> str:
-    """Normalize call sign for better merging (e.g., CBS HD -> CBS)."""
+def _is_likely_new_episode(ev: Dict, current_time: _dt.datetime = None) -> bool:
+    """
+    Heuristic to determine if an episode is likely a new/first-run episode.
+    Used when API doesn't provide isNew flag.
+    """
+    if current_time is None:
+        current_time = _dt.datetime.now(_dt.timezone.utc)
+    
+    # Check if explicitly marked as new
+    if ev.get("isNew") is True:
+        return True
+    
+    # Check if explicitly marked as rerun
+    if ev.get("isNew") is False:
+        return False
+    
+    # Check title/description for "new" indicators (including unicode subscript)
+    title = (ev.get("title") or "").lower()
+    desc = (ev.get("description") or "").lower()
+    
+    # Explicit "new" markers in title/description
+    # Include unicode subscript 'new' characters: ??w or similar
+    new_markers = [
+        "(new)", "[new]", "new episode", "series premiere", "season premiere",
+        "??w", "n??",  # subscript/superscript variants
+        " new ", " new!", " new."  # word boundaries
+    ]
+    for marker in new_markers:
+        if marker in title or marker in desc:
+            logging.debug(f"Marked as NEW (keyword '{marker}'): {ev.get('title')}")
+            return True
+    
+    # Check for premiere/finale flags
+    if ev.get("seasonPremiere") or ev.get("seasonFinale"):
+        logging.debug(f"Marked as NEW (premiere/finale): {ev.get('title')}")
+        return True
+    
+    # Check if it's a recent episode
+    start_time = _zap_iso_to_dt(ev.get("startTime"))
+    if start_time:
+        days_until = (start_time - current_time).days
+        
+        # More aggressive: mark as new if airing TODAY or within next 24 hours
+        if 0 <= days_until <= 1:
+            # Has season/episode numbers (likely scripted show)
+            season_num = ev.get("seasonNum")
+            episode_num = ev.get("episodeNum")
+            if season_num and episode_num:
+                try:
+                    if int(season_num) >= 1 and int(episode_num) >= 1:
+                        logging.debug(f"Marked as NEW (recent episode S{season_num}E{episode_num}): {ev.get('title')}")
+                        return True
+                except (ValueError, TypeError):
+                    pass
+            
+            # Live sports/events
+            show_type = (ev.get("showType") or "").lower()
+            if show_type:
+                if any(t in show_type for t in ["sports", "sport event", "special", "event"]):
+                    logging.debug(f"Marked as NEW (sports/event): {ev.get('title')}")
+                    return True
+            
+            # Check for common sports/live event keywords in title
+            sports_keywords = ["vs.", "vs ", " at ", "live:", "playoffs", "championship", 
+                             "game ", "match ", "nfl", "nba", "mlb", "nhl", "mls"]
+            if any(keyword in title for keyword in sports_keywords):
+                logging.debug(f"Marked as NEW (sports keyword): {ev.get('title')}")
+                return True
+            
+            # Check for late-night/news that typically air new content
+            if any(keyword in title for keyword in ["tonight show", "late show", "late night",
+                                                     "jimmy fallon", "jimmy kimmel", "stephen colbert",
+                                                     "the daily show", "last week tonight"]):
+                # Only weekdays (new episodes typically Mon-Thu or Mon-Fri)
+                if start_time.weekday() < 5:  # Monday=0, Friday=4
+                    logging.debug(f"Marked as NEW (late night show): {ev.get('title')}")
+                    return True
+    
+    return False
+    """Normalize call sign for better merging."""
     if not callsign:
         return ""
     cs = callsign.upper().strip()
-    # Remove common suffixes like HD, SD, DT, etc.
     cs = re.sub(r'\b(HD|SD|DT|TV|PLUS|FEED)\b', '', cs)
-    # Remove channel numbers and punctuation like (2), (3)
     cs = re.sub(r'\(\d+\)', '', cs)
     cs = re.sub(r'[^A-Z0-9 ]', '', cs)
     cs = re.sub(r'\s+', ' ', cs).strip()
     return cs
 
+def _normalize_callsign(callsign: str) -> str:
+    """Normalize call sign for better merging."""
+    if not callsign:
+        return ""
+    cs = callsign.upper().strip()
+    cs = re.sub(r'\b(HD|SD|DT|TV|PLUS|FEED)\b', '', cs)
+    cs = re.sub(r'\(\d+\)', '', cs)
+    cs = re.sub(r'[^A-Z0-9 ]', '', cs)
+    cs = re.sub(r'\s+', ' ', cs).strip()
+    return cs
 
 def merge_duplicate_channels(all_channels: List[Dict]) -> List[Dict]:
-    """
-    Merge channels with the same normalized call sign or affiliate name.
-    Keeps the best metadata and deduplicates events.
-    """
+    """Merge channels with the same normalized call sign or affiliate name."""
     channels_by_key = defaultdict(list)
 
     for ch in all_channels:
-        # Normalize call sign or fallback to affiliate name or channel number
         call_sign = _normalize_callsign(ch.get("callSign")) \
                     or _normalize_callsign(ch.get("affiliateName")) \
                     or str(ch.get("channelNo") or "").strip()
@@ -406,14 +495,12 @@ def merge_duplicate_channels(all_channels: List[Dict]) -> List[Dict]:
 
         logging.debug(f"Merging {len(channel_group)} instances of channel group '{key}'")
 
-        # Pick the best channel based on metadata richness
         base = max(channel_group, key=lambda c: (
             bool(c.get("thumbnail")),
             bool(c.get("affiliateName")),
             len(c.get("events", []))
         ))
 
-        # Unify stationId if missing or inconsistent
         station_id = base.get("stationId")
         if not station_id:
             for ch in channel_group:
@@ -422,29 +509,56 @@ def merge_duplicate_channels(all_channels: List[Dict]) -> List[Dict]:
                     break
         base["stationId"] = station_id
 
-        # Merge events from all channels in the group
         all_events = []
         for ch in channel_group:
             all_events.extend(ch.get("events", []))
 
         base["events"] = _deduplicate_events_enhanced(all_events)
-
         merged_channels.append(base)
 
-    # Sort by normalized call sign and then by channel number
     merged_channels.sort(key=lambda c: (
         _normalize_callsign(c.get("callSign")) or "",
         int(c.get("channelNo") or 0) if str(c.get("channelNo", "")).replace(".", "").isdigit() else 0
     ))
 
-    # Optional: log unmerged channels if needed
     if len(merged_channels) != len(all_channels):
         logging.debug(f"After merging: {len(merged_channels)} unique channels (was {len(all_channels)})")
 
     return merged_channels
 
-
-
+def get_country_suffix(lineup_id: str, db_path: str = DB_FILE) -> str:
+    """Get country suffix for channel IDs based on lineup."""
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+        cur.execute("SELECT country, country_name FROM channels_by_country WHERE lineupid = ? LIMIT 1", (lineup_id,))
+        result = cur.fetchone()
+        conn.close()
+        
+        if result:
+            country_code = result[0] or ""
+            country_name = result[1] or ""
+            # Try to get 2-letter code
+            suffix = COUNTRY_2.get(country_code) or COUNTRY_2.get(country_name)
+            if suffix:
+                return suffix
+            # Fallback to first 2 letters of country code
+            if len(country_code) >= 2:
+                return country_code[:2].lower()
+        
+        # Final fallback
+        if lineup_id.startswith("USA"):
+            return "us"
+        elif lineup_id.startswith("CAN"):
+            return "ca"
+        elif lineup_id.startswith("GBR") or lineup_id.startswith("UK"):
+            return "uk"
+        
+        return "xx"  # Unknown
+        
+    except Exception as e:
+        logging.warning(f"Could not determine country suffix for {lineup_id}: {e}")
+        return "xx"
 
 # ---------------- Time & XML helpers ----------------
 def _zap_iso_to_dt(s):
@@ -484,21 +598,31 @@ def _validate_event(ev: Dict, ch_id: str) -> bool:
     
     return True
 
-def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool = True):
-    """Write channels and events to XMLTV format with full Emby-compatible metadata."""
+def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool = True, 
+                country_suffix_map: Dict[str, str] = None, use_heuristic: bool = True):
+    """Write channels and events to XMLTV format with country-based channel IDs."""
     tv = ET.Element("tv")
     tv.set("generator-info-name", "GraceNote EPG Fetcher Enhanced")
     tv.set("generator-info-url", "https://github.com")
     
     channels = sorted(channels, key=lambda c: str(c.get("callSign") or "").lower())
 
-    # Write channel data
+    # Write channel data with country-specific IDs
     for ch in channels:
-        cid = str(ch.get("stationId") or ch.get("channelId") or "")
-        if not cid:
-            continue
-            
-        ch_el = ET.SubElement(tv, "channel", {"id": cid})
+        # Use callsign.country format
+        call_sign = ch.get("callSign") or ch.get("affiliateName") or str(ch.get("channelNo") or "")
+        call_sign = re.sub(r'[^A-Za-z0-9]', '', call_sign)  # Remove special chars
+        
+        # Determine country suffix
+        country_suffix = "xx"
+        if country_suffix_map:
+            station_id = str(ch.get("stationId") or ch.get("channelId") or "")
+            country_suffix = country_suffix_map.get(station_id, "xx")
+        
+        # Format: CALLSIGN.country
+        channel_id = f"{call_sign}.{country_suffix}".lower()
+        
+        ch_el = ET.SubElement(tv, "channel", {"id": channel_id})
 
         for val in [
             ch.get("callSign"),
@@ -508,26 +632,44 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
             if val:
                 ET.SubElement(ch_el, "display-name").text = str(val)
 
-        # Channel icon/thumbnail
         thumb = ch.get("thumbnail")
-        if thumb and not thumb.startswith("http"):
-            thumb = f"https:{thumb}.jpg" if thumb.startswith("//") else f"https:{thumb}"
-
         if include_thumbnails and thumb:
-            ET.SubElement(ch_el, "icon", {"src": str(thumb)})
+            # Validate URL before adding
+            if thumb.startswith("http") and "." in thumb:
+                ET.SubElement(ch_el, "icon", {"src": str(thumb)})
+            else:
+                logging.debug(f"Invalid channel thumbnail for {call_sign}: {thumb}")
 
-    # Write programme data with enhanced metadata
+    # Write programme data
     valid_events = 0
     invalid_events = 0
+    new_episodes = 0
+    reruns = 0
+    sample_count = 0
     
     for ch in channels:
-        cid = str(ch.get("stationId") or ch.get("channelId") or "")
+        call_sign = ch.get("callSign") or ch.get("affiliateName") or str(ch.get("channelNo") or "")
+        call_sign = re.sub(r'[^A-Za-z0-9]', '', call_sign)
+        
+        country_suffix = "xx"
+        if country_suffix_map:
+            station_id = str(ch.get("stationId") or ch.get("channelId") or "")
+            country_suffix = country_suffix_map.get(station_id, "xx")
+        
+        channel_id = f"{call_sign}.{country_suffix}".lower()
         events = sorted(ch.get("events", []), key=lambda e: e.get("startTime") or "")
         
         for ev in events:
-            if not _validate_event(ev, cid):
+            if not _validate_event(ev, channel_id):
                 invalid_events += 1
                 continue
+            
+            # Log first 10 events as samples to see patterns
+            if sample_count < 10 and use_heuristic:
+                logging.debug(f"Sample event #{sample_count + 1}:")
+                logging.debug(f"  Title: '{ev.get('title')}'")
+                logging.debug(f"  Has season/episode: S{ev.get('seasonNum')}E{ev.get('episodeNum')}")
+                sample_count += 1
                 
             start_dt = _zap_iso_to_dt(ev.get("startTime"))
             end_dt = _zap_iso_to_dt(ev.get("endTime"))
@@ -535,51 +677,43 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
             prog_el = ET.SubElement(tv, "programme", {
                 "start": _xmltv_time(start_dt),
                 "stop": _xmltv_time(end_dt),
-                "channel": cid,
+                "channel": channel_id,
             })
 
-            # Title
             title = ev.get("title")
             if title:
                 ET.SubElement(prog_el, "title", {"lang": "en"}).text = str(title)
 
-            # Sub-title (season title or episode name)
             subtitle = ev.get("seasonTitle")
             if subtitle:
                 ET.SubElement(prog_el, "sub-title", {"lang": "en"}).text = str(subtitle)
 
-            # Description
             desc = ev.get("description")
             if desc:
                 ET.SubElement(prog_el, "desc", {"lang": "en"}).text = str(desc)
 
-            # Categories (showType + genres)
             show_type = ev.get("showType")
             if show_type:
                 ET.SubElement(prog_el, "category", {"lang": "en"}).text = str(show_type)
             
             genres = ev.get("genres") or []
             if isinstance(genres, list):
-                for genre in genres[:5]:  # Limit to 5 genres
+                for genre in genres[:5]:
                     if genre:
                         ET.SubElement(prog_el, "category", {"lang": "en"}).text = str(genre)
 
-            # Language
             language = ev.get("language")
             if language:
                 ET.SubElement(prog_el, "language").text = str(language)
 
-            # Length/Duration
             runtime = ev.get("runTime")
             if runtime:
                 try:
-                    # Convert to minutes if it's in seconds
                     minutes = int(runtime) if int(runtime) < 500 else int(runtime) // 60
                     ET.SubElement(prog_el, "length", {"units": "minutes"}).text = str(minutes)
                 except (ValueError, TypeError):
                     pass
 
-            # Episode numbers (xmltv_ns format: season.episode.part)
             season_num = ev.get("seasonNum")
             episode_num = ev.get("episodeNum")
             if season_num is not None or episode_num is not None:
@@ -588,20 +722,18 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
                 xmltv_ns = f"{s}.{e}."
                 ET.SubElement(prog_el, "episode-num", {"system": "xmltv_ns"}).text = xmltv_ns
 
-            # Episode number (dd_progid format - series ID)
             series_id = ev.get("seriesId") or ev.get("programId")
             if series_id:
                 ET.SubElement(prog_el, "episode-num", {"system": "dd_progid"}).text = str(series_id)
 
-            # Icon/Thumbnail (program artwork)
             prog_thumb = ev.get("preferredImage") or ev.get("thumbnail")
-            if prog_thumb:
-                if not prog_thumb.startswith("http"):
-                    prog_thumb = f"https:{prog_thumb}" if prog_thumb.startswith("//") else f"https:{prog_thumb}"
-                if include_thumbnails:
+            if prog_thumb and include_thumbnails:
+                # Validate URL before adding
+                if prog_thumb.startswith("http") and "." in prog_thumb:
                     ET.SubElement(prog_el, "icon", {"src": str(prog_thumb)})
+                else:
+                    logging.warning(f"Invalid thumbnail URL for '{title}': {prog_thumb}")
 
-            # Rating
             ratings = ev.get("ratings")
             if ratings:
                 rating_el = ET.SubElement(prog_el, "rating")
@@ -610,14 +742,12 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
                 if ratings.get("value"):
                     ET.SubElement(rating_el, "value").text = str(ratings["value"])
 
-            # Credits (cast and crew)
             cast_list = ev.get("cast") or []
             crew_list = ev.get("crew") or []
             if cast_list or crew_list:
                 credits_el = ET.SubElement(prog_el, "credits")
                 
-                # Add actors
-                for actor in cast_list[:10]:  # Limit to 10 actors
+                for actor in cast_list[:10]:
                     if isinstance(actor, dict):
                         name = actor.get("name")
                         role = actor.get("role")
@@ -629,8 +759,7 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
                     elif isinstance(actor, str):
                         ET.SubElement(credits_el, "actor").text = str(actor)
                 
-                # Add crew
-                for crew_member in crew_list[:10]:  # Limit to 10 crew
+                for crew_member in crew_list[:10]:
                     if isinstance(crew_member, dict):
                         name = crew_member.get("name")
                         role = crew_member.get("role", "").lower()
@@ -642,14 +771,12 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
                             elif "producer" in role:
                                 ET.SubElement(credits_el, "producer").text = str(name)
 
-            # New episode flag
             is_new = ev.get("isNew")
             if is_new:
                 ET.SubElement(prog_el, "new")
-            elif is_new is False:  # Explicitly marked as rerun
+            elif is_new is False:
                 ET.SubElement(prog_el, "previously-shown")
 
-            # Premiere/Finale flags
             if ev.get("seasonPremiere"):
                 ET.SubElement(prog_el, "premiere")
             if ev.get("seasonFinale"):
@@ -661,19 +788,21 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
         logging.warning(f"Skipped {invalid_events} invalid events during XML generation")
     
     logging.info(f"Writing {valid_events} valid events to XML")
+    logging.info(f"  New episodes: {new_episodes}")
+    logging.info(f"  Reruns: {reruns}")
+    logging.info(f"  Unknown status: {valid_events - new_episodes - reruns}")
 
     tree = ET.ElementTree(tv)
     try:
         ET.indent(tree, space="  ")
     except AttributeError:
-        # Python < 3.9 doesn't have indent
         pass
     
     tree.write(str(out_path), encoding="utf-8", xml_declaration=True)
 
 # ---------------- DB Lookup ----------------
 def get_lineups_from_column(column: str, value: str, max_lineups: int = None, 
-                           db_path: str = DB_FILE) -> List[str]:
+                           db_path: str = DB_FILE, ota_only: bool = False) -> List[str]:
     """Query database for lineups matching a column value."""
     if not Path(db_path).exists():
         logging.error(f"Database file {db_path} not found")
@@ -683,21 +812,26 @@ def get_lineups_from_column(column: str, value: str, max_lineups: int = None,
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
         kw = f"%{value.lower()}%"
-        cur.execute(f"SELECT DISTINCT lineupid FROM channels_by_country WHERE lower({column}) LIKE ?", (kw,))
+        
+        query = f"SELECT DISTINCT lineupid FROM channels_by_country WHERE lower({column}) LIKE ?"
+        if ota_only:
+            query += " AND (lineupid LIKE '%OTA%' OR lineupid LIKE '%LOCALBROADCAST%' OR lineupid LIKE '%-DEFAULT')"
+        
+        cur.execute(query, (kw,))
         results = [row[0] for row in cur.fetchall()]
         conn.close()
         
         if max_lineups and len(results) > max_lineups:
             results = results[:max_lineups]
         
-        logging.debug(f"Found {len(results)} lineup IDs for {column}='{value}'")
+        logging.debug(f"Found {len(results)} lineup IDs for {column}='{value}'" + (" (OTA only)" if ota_only else ""))
         return results
     except Exception as e:
         logging.error(f"Database query failed: {e}")
         return []
 
 def get_lineups_from_keyword(keyword: str, max_lineups: int = None, 
-                            db_path: str = DB_FILE) -> List[str]:
+                            db_path: str = DB_FILE, ota_only: bool = False) -> List[str]:
     """Query database for lineups matching keyword across multiple columns."""
     if not Path(db_path).exists():
         logging.error(f"Database file {db_path} not found")
@@ -707,21 +841,58 @@ def get_lineups_from_keyword(keyword: str, max_lineups: int = None,
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
         kw = f"%{keyword.lower()}%"
-        cur.execute("""
+        
+        query = """
             SELECT DISTINCT lineupid FROM channels_by_country
             WHERE lower(lineup_name) LIKE ?
                OR lower(country_name) LIKE ?
                OR lower(country) LIKE ?
                OR lower(station_name) LIKE ?
                OR lower(lineupid) LIKE ?
-        """, (kw, kw, kw, kw, kw))
+        """
+        
+        if ota_only:
+            query += " AND (lineupid LIKE '%OTA%' OR lineupid LIKE '%LOCALBROADCAST%' OR lineupid LIKE '%-DEFAULT')"
+        
+        cur.execute(query, (kw, kw, kw, kw, kw))
         results = [row[0] for row in cur.fetchall()]
         conn.close()
         
         if max_lineups and len(results) > max_lineups:
             results = results[:max_lineups]
         
-        logging.debug(f"Found {len(results)} lineup IDs for keyword='{keyword}'")
+        logging.debug(f"Found {len(results)} lineup IDs for keyword='{keyword}'" + (" (OTA only)" if ota_only else ""))
+        return results
+    except Exception as e:
+        logging.error(f"Database query failed: {e}")
+        return []
+
+def get_ota_lineups_by_country(country: str, db_path: str = DB_FILE, max_lineups: int = None) -> List[str]:
+    """Get all OTA (local broadcast) lineups for a specific country."""
+    if not Path(db_path).exists():
+        logging.error(f"Database file {db_path} not found")
+        return []
+    
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+        
+        # Search by country code or country name
+        query = """
+            SELECT DISTINCT lineupid FROM channels_by_country
+            WHERE (lower(country) = ? OR lower(country_name) = ?)
+            AND (lineupid LIKE '%OTA%' OR lineupid LIKE '%LOCALBROADCAST%' OR lineupid LIKE '%-DEFAULT')
+        """
+        
+        country_lower = country.lower()
+        cur.execute(query, (country_lower, country_lower))
+        results = [row[0] for row in cur.fetchall()]
+        conn.close()
+        
+        if max_lineups and len(results) > max_lineups:
+            results = results[:max_lineups]
+        
+        logging.info(f"Found {len(results)} OTA lineups for country '{country}'")
         return results
     except Exception as e:
         logging.error(f"Database query failed: {e}")
@@ -741,8 +912,8 @@ def filter_broken_lineups(lineup_ids: List[str]) -> List[str]:
     return result
 
 # ---------------- Config Loader ----------------
-def load_config() -> Dict:
-    """Load configuration from file and environment variables."""
+def load_config(args=None) -> Dict:
+    """Load configuration from file, environment variables, and command-line arguments."""
     config = {
         "EPG_LINEUP_ID": "",
         "EPG_LOOKUP_MODE": "",
@@ -760,7 +931,10 @@ def load_config() -> Dict:
         "EPG_RETRY_COUNT": 3,
         "EPG_LOG_FILE": None,
         "EPG_PARALLEL": False,
-        "EPG_MAX_WORKERS": 3
+        "EPG_MAX_WORKERS": 3,
+        "EPG_OTA_ONLY": False,
+        "EPG_CDN_SUBDOMAIN": "zap2it",  # Default to zap2it.tmsimg.com for GraceNote images
+        "EPG_DETECT_NEW_HEURISTIC": True  # Use heuristics to detect new episodes when API doesn't provide isNew
     }
     
     # Load from file
@@ -794,9 +968,53 @@ def load_config() -> Dict:
                 except ValueError:
                     logging.warning(f"Invalid integer for {key}: {val}")
                     continue
-            elif key in ["EPG_THUMBNAILS", "EPG_PARALLEL"]:
+            elif key in ["EPG_THUMBNAILS", "EPG_PARALLEL", "EPG_OTA_ONLY"]:
                 val = val.lower() in ("true", "1", "yes", "on")
             config[key] = val
+
+    # Override with command-line arguments
+    if args:
+        if args.lineup_id:
+            config["EPG_LINEUP_ID"] = args.lineup_id
+        if args.country:
+            config["EPG_COUNTRY"] = args.country
+        if args.zip:
+            config["EPG_ZIP"] = args.zip
+        if args.output:
+            config["EPG_OUTPUT"] = args.output
+        if args.days:
+            config["EPG_TIMESPAN_DAYS"] = args.days
+        if args.delay:
+            config["EPG_DELAY"] = args.delay
+        if args.log_level:
+            config["EPG_LOG_LEVEL"] = args.log_level
+        if args.log_file:
+            config["EPG_LOG_FILE"] = args.log_file
+        if args.db_path:
+            config["EPG_DB_PATH"] = args.db_path
+        if args.max_lineups:
+            config["EPG_MAX_LINEUPS"] = args.max_lineups
+        if args.retry_count:
+            config["EPG_RETRY_COUNT"] = args.retry_count
+        if args.parallel:
+            config["EPG_PARALLEL"] = True
+        if args.max_workers:
+            config["EPG_MAX_WORKERS"] = args.max_workers
+        if args.no_thumbnails:
+            config["EPG_THUMBNAILS"] = False
+        if args.ota_only:
+            config["EPG_OTA_ONLY"] = True
+        if args.lookup_mode:
+            config["EPG_LOOKUP_MODE"] = args.lookup_mode
+        if args.lookup_value:
+            config["EPG_LOOKUP_VALUE"] = args.lookup_value
+        if args.cdn_subdomain:
+            config["EPG_CDN_SUBDOMAIN"] = args.cdn_subdomain
+        if hasattr(args, 'no_heuristic') and args.no_heuristic:
+            config["EPG_DETECT_NEW_HEURISTIC"] = False
+
+    # Set CDN subdomain globally
+    _set_cdn_subdomain(config.get("EPG_CDN_SUBDOMAIN", "zap2it"))
 
     # Convert days to hours
     days = int(config.get("EPG_TIMESPAN_DAYS", 1))
@@ -809,19 +1027,22 @@ def load_config() -> Dict:
         raw_val = config["EPG_LOOKUP_VALUE"]
         lookup_values = [v.strip() for v in raw_val.split(",") if v.strip()]
         db_path = config.get("EPG_DB_PATH", DB_FILE)
+        ota_only = config.get("EPG_OTA_ONLY", False)
         all_lineups = []
 
-        logging.info(f"Looking up lineups with mode='{mode}', values={lookup_values}")
+        logging.info(f"Looking up lineups with mode='{mode}', values={lookup_values}" + (" (OTA only)" if ota_only else ""))
 
         for val in lookup_values:
             if mode == "country_name":
-                all_lineups.extend(get_lineups_from_column("country_name", val, max_lineups, db_path))
+                all_lineups.extend(get_lineups_from_column("country_name", val, max_lineups, db_path, ota_only))
             elif mode == "country":
-                all_lineups.extend(get_lineups_from_column("country", val, max_lineups, db_path))
+                all_lineups.extend(get_lineups_from_column("country", val, max_lineups, db_path, ota_only))
             elif mode == "station_name":
-                all_lineups.extend(get_lineups_from_column("station_name", val, max_lineups, db_path))
+                all_lineups.extend(get_lineups_from_column("station_name", val, max_lineups, db_path, ota_only))
             elif mode == "keyword":
-                all_lineups.extend(get_lineups_from_keyword(val, max_lineups, db_path))
+                all_lineups.extend(get_lineups_from_keyword(val, max_lineups, db_path, ota_only))
+            elif mode == "ota":
+                all_lineups.extend(get_ota_lineups_by_country(val, db_path, max_lineups))
             else:
                 logging.error(f"Unsupported lookup mode: {mode}")
 
@@ -877,6 +1098,7 @@ def run_epg(config: Dict):
     output_file = Path(config["EPG_OUTPUT"])
     parallel = config.get("EPG_PARALLEL", False)
     max_workers = int(config.get("EPG_MAX_WORKERS", 3))
+    db_path = config.get("EPG_DB_PATH", DB_FILE)
 
     logging.info(f"Starting EPG fetch for {len(lineup_ids)} lineup(s)")
     logging.info(f"  Timespan: {timespan} hours")
@@ -884,9 +1106,9 @@ def run_epg(config: Dict):
     
     all_channels = []
     all_stats = {}
+    country_suffix_map = {}
     
     if parallel and len(lineup_ids) > 1:
-        # Parallel execution
         args_list = [
             (lid, country, postal, timespan, delay, retry_count) 
             for lid in lineup_ids
@@ -901,13 +1123,20 @@ def run_epg(config: Dict):
                     lineup_id, channels, stats = future.result()
                     all_channels.extend(channels)
                     all_stats[lineup_id] = stats
+                    
+                    # Build country suffix map
+                    suffix = get_country_suffix(lineup_id, db_path)
+                    for ch in channels:
+                        station_id = str(ch.get("stationId") or ch.get("channelId") or "")
+                        if station_id:
+                            country_suffix_map[station_id] = suffix
+                    
                     logging.info(f"  [{lineup_id}] {stats.get('channels_found', 0)} channels, "
                                f"{stats.get('events_found', 0)} events")
                 except Exception as e:
                     logging.error(f"  [{lineup}] Failed: {e}")
                     all_stats[lineup] = {"error": str(e)}
     else:
-        # Sequential execution
         for idx, lineup in enumerate(lineup_ids, 1):
             logging.info(f"Fetching lineup {idx}/{len(lineup_ids)}: {lineup}")
             try:
@@ -921,20 +1150,26 @@ def run_epg(config: Dict):
                 )
                 all_channels.extend(channels)
                 all_stats[lineup] = stats
+                
+                # Build country suffix map
+                suffix = get_country_suffix(lineup, db_path)
+                for ch in channels:
+                    station_id = str(ch.get("stationId") or ch.get("channelId") or "")
+                    if station_id:
+                        country_suffix_map[station_id] = suffix
+                
                 logging.info(f"  [{lineup}] {stats.get('channels_found', 0)} channels, "
                            f"{stats.get('events_found', 0)} events")
             except Exception as e:
                 logging.error(f"  [{lineup}] Failed: {e}")
                 all_stats[lineup] = {"error": str(e)}
 
-    # Print summary
     successful = sum(1 for s in all_stats.values() if "error" not in s)
     failed = len(all_stats) - successful
     
     logging.info(f"Fetch complete: {successful} succeeded, {failed} failed")
     logging.info(f"  Raw channels collected: {len(all_channels)}")
     
-    # Merge duplicate channels across lineups
     logging.info("Merging duplicate channels across lineups...")
     all_channels = merge_duplicate_channels(all_channels)
     
@@ -948,19 +1183,116 @@ def run_epg(config: Dict):
         logging.error("No channels retrieved. Exiting.")
         sys.exit(1)
 
-    # Write output
     try:
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        write_xmltv(all_channels, output_file, include_thumbnails=config.get("EPG_THUMBNAILS", True))
+        write_xmltv(all_channels, output_file, 
+                   include_thumbnails=config.get("EPG_THUMBNAILS", True),
+                   country_suffix_map=country_suffix_map,
+                   use_heuristic=config.get("EPG_DETECT_NEW_HEURISTIC", True))
         logging.info(f"EPG successfully written to {output_file}")
     except Exception as e:
         logging.error(f"Failed to write XMLTV: {e}")
         sys.exit(1)
 
+# ---------------- Command-Line Interface ----------------
+def parse_arguments():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Enhanced EPG Fetcher with GraceNote API",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Fetch specific lineup
+  %(prog)s --lineup-id USA-CA90210-X --country US --zip 90210
+
+  # Fetch all US OTA (local broadcast) channels
+  %(prog)s --lookup-mode ota --lookup-value "United States" --ota-only
+
+  # Fetch by country name (OTA only)
+  %(prog)s --lookup-mode country_name --lookup-value "United States" --ota-only
+
+  # Fetch multiple lineups in parallel
+  %(prog)s --lineup-id USA-CA90210-X,USA-NY10001-X --parallel --max-workers 5
+
+  # Fetch with verbose logging
+  %(prog)s --lineup-id USA-CA90210-X --log-level DEBUG --log-file epg.log
+        """
+    )
+    
+    # Lineup selection
+    lineup_group = parser.add_argument_group('Lineup Selection')
+    lineup_group.add_argument('--lineup-id', type=str, 
+                             help='Comma-separated lineup IDs (e.g., USA-CA90210-X)')
+    lineup_group.add_argument('--lookup-mode', type=str, 
+                             choices=['country', 'country_name', 'station_name', 'keyword', 'ota'],
+                             help='Database lookup mode')
+    lineup_group.add_argument('--lookup-value', type=str,
+                             help='Value to search for (comma-separated for multiple)')
+    lineup_group.add_argument('--ota-only', action='store_true',
+                             help='Filter to only OTA (Over-The-Air) local broadcast channels')
+    
+    # Location
+    location_group = parser.add_argument_group('Location')
+    location_group.add_argument('--country', type=str,
+                               help='Country code (US, CA, UK, etc.)')
+    location_group.add_argument('--zip', type=str,
+                               help='Postal/ZIP code')
+    
+    # Output
+    output_group = parser.add_argument_group('Output')
+    output_group.add_argument('--output', '-o', type=str,
+                             help='Output XMLTV file path (default: EPG.xml)')
+    output_group.add_argument('--no-thumbnails', action='store_true',
+                             help='Exclude thumbnail/icon URLs from output')
+    
+    # Fetching
+    fetch_group = parser.add_argument_group('Fetching Options')
+    fetch_group.add_argument('--days', type=int,
+                            help='Number of days to fetch (1-7, default: 1)')
+    fetch_group.add_argument('--delay', type=int,
+                            help='Delay in seconds between API requests')
+    fetch_group.add_argument('--retry-count', type=int,
+                            help='Number of retries for failed requests (default: 3)')
+    fetch_group.add_argument('--max-lineups', type=int,
+                            help='Maximum number of lineups to fetch from database lookup')
+    
+    # Parallel execution
+    parallel_group = parser.add_argument_group('Parallel Execution')
+    parallel_group.add_argument('--parallel', action='store_true',
+                               help='Fetch multiple lineups in parallel')
+    parallel_group.add_argument('--max-workers', type=int,
+                               help='Maximum parallel workers (default: 3)')
+    
+    # Logging
+    log_group = parser.add_argument_group('Logging')
+    log_group.add_argument('--log-level', type=str,
+                          choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
+                          help='Logging level')
+    log_group.add_argument('--log-file', type=str,
+                          help='Log file path (logs to console if not specified)')
+    
+    # Database
+    db_group = parser.add_argument_group('Database')
+    db_group.add_argument('--db-path', type=str,
+                         help=f'Path to SQLite database (default: {DB_FILE})')
+    
+    # CDN Options
+    cdn_group = parser.add_argument_group('CDN Options')
+    cdn_group.add_argument('--cdn-subdomain', type=str,
+                          help='TMS Image CDN subdomain (default: zap2it)')
+    
+    # Detection Options
+    detect_group = parser.add_argument_group('Detection Options')
+    detect_group.add_argument('--no-heuristic', action='store_true',
+                             help='Disable heuristic detection of new episodes (only use API data)')
+    
+    return parser.parse_args()
+
 # ---------------- Main ----------------
 if __name__ == "__main__":
-    config = load_config()
-    # Use EPG_LOG_LEVEL if set, otherwise fall back to EPG_VERBOSE
+    args = parse_arguments()
+    config = load_config(args)
+    
     log_level = config.get("EPG_LOG_LEVEL") or config.get("EPG_VERBOSE", 1)
     setup_logging(log_level, config.get("EPG_LOG_FILE"))
     
