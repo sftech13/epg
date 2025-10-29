@@ -164,10 +164,7 @@ def _fix_thumbnail_url(thumbnail: str) -> str:
     # Missing protocol (format: //domain.com/path)
     if thumbnail.startswith("//"):
         return f"https:{thumbnail}"
-    
-    # Partial path (format: assets/p1123231_e_v4_aa or just the ID)
-    # Use configured CDN subdomain (default: developer for public/sample access)
-    # Licensed customers should set EPG_CDN_SUBDOMAIN to their assigned subdomain
+
     if thumbnail.startswith("assets/"):
         return f"https://{_CDN_SUBDOMAIN}.tmsimg.com/{thumbnail}.jpg"
     else:
