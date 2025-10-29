@@ -458,3 +458,59 @@
 [2025-10-29 16:23:33] [INFO]   Total events after deduplication: 83752
 [2025-10-29 16:23:36] [INFO] Writing 83752 valid events to XML
 [2025-10-29 16:23:37] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-29 20:19:13] [INFO] Starting EPG fetch for 46 lineup(s)
+[2025-10-29 20:19:13] [INFO]   Timespan: 24 hours
+[2025-10-29 20:19:13] [INFO]   Parallel: True (workers: 5)
+[2025-10-29 20:19:17] [INFO]   [USA-CA63552-X] 113 channels, 3356 events
+[2025-10-29 20:19:17] [INFO]   [USA-SC39467-X] 154 channels, 4044 events
+[2025-10-29 20:19:18] [INFO]   [USA-CA04423-X] 315 channels, 8344 events
+[2025-10-29 20:19:18] [INFO]   [USA-CA04536-X] 244 channels, 6636 events
+[2025-10-29 20:19:18] [INFO]   [USA-CA04577-X] 519 channels, 12922 events
+[2025-10-29 20:19:22] [INFO]   [USA-CA63870-X] 121 channels, 3592 events
+[2025-10-29 20:19:22] [INFO]   [USA-CA70211-X] 99 channels, 2777 events
+[2025-10-29 20:19:22] [INFO]   [USA-CA64361-X] 148 channels, 4288 events
+[2025-10-29 20:19:23] [INFO]   [USA-CA04523-X] 626 channels, 15358 events
+[2025-10-29 20:19:24] [INFO]   [USA-CA04818-X] 562 channels, 13578 events
+[2025-10-29 20:19:28] [INFO]   [USA-CA04563-X] 481 channels, 12597 events
+[2025-10-29 20:19:29] [INFO]   [USA-CA66343-X] 596 channels, 16047 events
+[2025-10-29 20:19:29] [INFO]   [USA-CA55363-X] 592 channels, 14678 events
+[2025-10-29 20:19:30] [INFO]   [USA-CA67659-X] 578 channels, 15423 events
+[2025-10-29 20:19:31] [INFO]   [USA-CA04931-X] 527 channels, 14221 events
+[2025-10-29 20:19:34] [INFO]   [USA-CA02268-X] 322 channels, 8684 events
+[2025-10-29 20:19:35] [INFO]   [USA-CA58597-X] 533 channels, 14179 events
+[2025-10-29 20:19:36] [INFO]   [USA-DITV501-X] 615 channels, 16581 events
+[2025-10-29 20:19:37] [INFO]   [USA-NY66739-X] 617 channels, 13346 events
+[2025-10-29 20:19:37] [INFO]   [USA-ECHOST-X] 488 channels, 12847 events
+[2025-10-29 20:19:40] [INFO]   [USA-CA04863-X] 310 channels, 8301 events
+[2025-10-29 20:19:41] [INFO]   [USA-CA57315-L] 498 channels, 12839 events
+[2025-10-29 20:19:41] [INFO]   [USA-DISH803-X] 584 channels, 15800 events
+[2025-10-29 20:19:44] [INFO]   [USA-CA67310-L] 505 channels, 12910 events
+[2025-10-29 20:19:44] [INFO]   [USA-CA04768-X] 648 channels, 16318 events
+[2025-10-29 20:19:46] [INFO]   [USA-DITV803-X] 614 channels, 16538 events
+[2025-10-29 20:19:48] [INFO]   [USA-CA67310-X] 464 channels, 11864 events
+[2025-10-29 20:19:49] [INFO]   [USA-IL56991-X] 599 channels, 14811 events
+[2025-10-29 20:19:50] [INFO]   [USA-CA04486-X] 310 channels, 8315 events
+[2025-10-29 20:19:50] [INFO]   [USA-CO68828-X] 512 channels, 13538 events
+[2025-10-29 20:19:53] [INFO]   [USA-CA71911-X] 93 channels, 2531 events
+[2025-10-29 20:19:54] [INFO]   [USA-CA66564-X] 583 channels, 15679 events
+[2025-10-29 20:19:54] [INFO]   [USA-DITV825-X] 590 channels, 15825 events
+[2025-10-29 20:19:56] [INFO]   [USA-DISH825-X] 542 channels, 14611 events
+[2025-10-29 20:19:58] [INFO]   [USA-DITV804-X] 578 channels, 15459 events
+[2025-10-29 20:20:00] [INFO]   [USA-CA04542-L] 467 channels, 11658 events
+[2025-10-29 20:20:01] [INFO]   [USA-CA65644-L] 462 channels, 11643 events
+[2025-10-29 20:20:02] [INFO]   [USA-CO68610-X] 708 channels, 15281 events
+[2025-10-29 20:20:02] [INFO]   [USA-CA04470-L] 432 channels, 10806 events
+[2025-10-29 20:20:03] [INFO]   [USA-CA63959-X] 136 channels, 3050 events
+[2025-10-29 20:20:07] [INFO]   [USA-DITV807-X] 611 channels, 16514 events
+[2025-10-29 20:20:07] [INFO]   [USA-CA04487-X] 534 channels, 14305 events
+[2025-10-29 20:20:10] [INFO]   [USA-CA04437-X] 576 channels, 14170 events
+[2025-10-29 20:20:10] [INFO]   [USA-CA00056-X] 519 channels, 13948 events
+[2025-10-29 20:20:11] [INFO]   [USA-CA54023-X] 555 channels, 13715 events
+[2025-10-29 20:20:13] [INFO]   [USA-DISH862-X] 541 channels, 14615 events
+[2025-10-29 20:20:13] [INFO] Fetch complete: 46 succeeded, 0 failed
+[2025-10-29 20:20:13] [INFO]   Raw channels collected: 21221
+[2025-10-29 20:20:13] [INFO] Merging duplicate channels across lineups...
+[2025-10-29 20:20:14] [INFO]   Final unique channels: 3524
+[2025-10-29 20:20:14] [INFO]   Total events after deduplication: 83890
+[2025-10-29 20:20:17] [INFO] Writing 83890 valid events to XML
+[2025-10-29 20:20:18] [INFO] EPG successfully written to docs/EPG.xml
