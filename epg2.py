@@ -419,10 +419,19 @@ def merge_duplicate_channels(all_channels: List[Dict]) -> List[Dict]:
         base["events"] = _deduplicate_events_enhanced(all_events)
         merged_channels.append(base)
 
-    merged_channels.sort(key=lambda c: (
-        _normalize_callsign(c.get("callSign")) or "",
-        int(c.get("channelNo") or 0) if str(c.get("channelNo", "")).replace(".", "").isdigit() else 0
-    ))
+    def _safe_channel_sort_key(ch):
+        """Sort channels safely, handling subchannels like '7.1' correctly."""
+        call = _normalize_callsign(ch.get("callSign")) or ""
+        num_str = str(ch.get("channelNo") or "").strip()
+        try:
+            # Gracefully handle floats (e.g. "7.1") or missing values
+            num = float(num_str) if re.match(r"^\d+(\.\d+)?$", num_str) else 0.0
+        except (ValueError, TypeError):
+            num = 0.0
+        return (call, num)
+
+    merged_channels.sort(key=_safe_channel_sort_key)
+
 
     if len(merged_channels) != len(all_channels):
         logging.debug(f"After merging: {len(merged_channels)} unique channels (was {len(all_channels)})")
@@ -673,7 +682,7 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
     logging.info(f"Writing {valid_events} valid events to XML")
     logging.info(f"  New episodes: {new_episodes}")
     logging.info(f"  Reruns: {reruns}")
-    logging.info(f"  Unknown status: {valid_events - new_episodes - reruns}")
+    #logging.info(f"  Unknown status: {valid_events - new_episodes - reruns}")
 
     tree = ET.ElementTree(tv)
     try:
@@ -783,7 +792,7 @@ def get_ota_lineups_by_country(country: str, db_path: str = DB_FILE, max_lineups
 def filter_broken_lineups(lineup_ids: List[str]) -> List[str]:
     """Remove known broken/test lineups."""
     bad_patterns = ["xumotv", "sandbox", "test", "dummy", "dtvnow", "amzpv", 
-                    "youtube", "gnstr", "imdbtv"]
+                    "youtube", "gnstr", "imdbtv","samsung", "pluto", "tubitv", "rakuten", "slingtv"]
     result = []
     for lid in lineup_ids:
         lid_lower = lid.lower()
@@ -936,6 +945,13 @@ def load_config(args=None) -> Dict:
 def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
     """Wrapper for parallel execution."""
     lineup, country, postal, timespan, delay, retry_count = args
+    if not postal:
+        zip_lookup = lookup_zip_for_lineup(lineup)
+        if zip_lookup:
+            postal = zip_lookup
+        else:
+            postal = "90001"
+
     try:
         channels, stats = fetch_grid(
             country=country,
@@ -951,6 +967,20 @@ def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
         return lineup, [], {"error": str(e)}
 
 # ---------------- Runner ----------------
+def lookup_zip_for_lineup(lineup_id: str, db_path: str = DB_FILE) -> Optional[str]:
+    """Get representative ZIP for each lineup from database."""
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+        cur.execute("SELECT postal_code FROM channels_by_country WHERE lineupid=? LIMIT 1", (lineup_id,))
+        row = cur.fetchone()
+        conn.close()
+        if row and row[0]:
+            return row[0]
+    except Exception as e:
+        logging.debug(f"ZIP lookup failed for {lineup_id}: {e}")
+    return None
+
 def run_epg(config: Dict):
     """Main EPG fetching logic."""
     lineup_ids = [lid.strip() for lid in str(config["EPG_LINEUP_ID"]).split(",") if lid.strip()]

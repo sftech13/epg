@@ -122,3 +122,767 @@
 [2025-10-28 17:12:30] [INFO]   Total events after deduplication: 84104
 [2025-10-28 17:12:33] [INFO] Writing 84104 valid events to XML
 [2025-10-28 17:12:34] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:28:28] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:28:28] [INFO]   Timespan: 24 hours
+[2025-10-31 12:28:28] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:28:31] [INFO]   [USA-CA63552-X] 113 channels, 3366 events
+[2025-10-31 12:28:32] [INFO]   [USA-SC39467-X] 154 channels, 3965 events
+[2025-10-31 12:28:32] [INFO]   [USA-CA04536-X] 244 channels, 6522 events
+[2025-10-31 12:28:32] [INFO]   [USA-CA04423-X] 315 channels, 8174 events
+[2025-10-31 12:28:33] [INFO]   [USA-CA04577-X] 519 channels, 12697 events
+[2025-10-31 12:28:33] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:28:33] [INFO]   Raw channels collected: 1345
+[2025-10-31 12:28:33] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:28:33] [INFO]   Final unique channels: 778
+[2025-10-31 12:28:33] [INFO]   Total events after deduplication: 20353
+[2025-10-31 12:28:33] [INFO] Writing 20353 valid events to XML
+[2025-10-31 12:28:33] [INFO]   New episodes: 2585
+[2025-10-31 12:28:33] [INFO]   Reruns: 17768
+[2025-10-31 12:28:33] [INFO]   Unknown status: 0
+[2025-10-31 12:28:33] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:29:57] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:29:57] [INFO]   Timespan: 24 hours
+[2025-10-31 12:29:57] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:29:57] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:57] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:57] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:57] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:57] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:58] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:58] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:58] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:58] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:58] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:59] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:59] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:59] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:59] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:29:59] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [INFO]   [USA-OTA13623] 0 channels, 0 events
+[2025-10-31 12:30:00] [INFO]   [USA-OTA14043] 0 channels, 0 events
+[2025-10-31 12:30:00] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [INFO]   [USA-OTA49286] 0 channels, 0 events
+[2025-10-31 12:30:00] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [INFO]   [USA-LA67343-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:30:00] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:30:00] [INFO]   [USA-GU70062-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:30:00] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:30:00] [INFO]   Raw channels collected: 0
+[2025-10-31 12:30:00] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:30:00] [INFO]   Final unique channels: 0
+[2025-10-31 12:30:00] [INFO]   Total events after deduplication: 0
+[2025-10-31 12:30:00] [ERROR] No channels retrieved. Exiting.
+[2025-10-31 12:30:29] [ERROR] No lineup IDs found.
+[2025-10-31 12:30:29] [ERROR]   Lookup mode: counry
+[2025-10-31 12:30:29] [ERROR]   Lookup value: United States
+[2025-10-31 12:30:29] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2025-10-31 12:30:53] [ERROR] No lineup IDs found.
+[2025-10-31 12:30:53] [ERROR]   Lookup mode: country
+[2025-10-31 12:30:53] [ERROR]   Lookup value: United States
+[2025-10-31 12:30:53] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2025-10-31 12:31:25] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:31:25] [INFO]   Timespan: 24 hours
+[2025-10-31 12:31:25] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:31:25] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:25] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:25] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:25] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:25] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:26] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:26] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:26] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:26] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:26] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:27] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:27] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:27] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:27] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:27] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [INFO]   [USA-GU70062-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:31:28] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [INFO]   [USA-OTA13623] 0 channels, 0 events
+[2025-10-31 12:31:28] [INFO]   [USA-OTA14043] 0 channels, 0 events
+[2025-10-31 12:31:28] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:31:28] [INFO]   [USA-OTA49286] 0 channels, 0 events
+[2025-10-31 12:31:28] [INFO]   [USA-LA67343-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:31:28] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:31:28] [INFO]   Raw channels collected: 0
+[2025-10-31 12:31:28] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:31:28] [INFO]   Final unique channels: 0
+[2025-10-31 12:31:28] [INFO]   Total events after deduplication: 0
+[2025-10-31 12:31:28] [ERROR] No channels retrieved. Exiting.
+[2025-10-31 12:35:43] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:35:43] [INFO]   Timespan: 24 hours
+[2025-10-31 12:35:43] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:35:43] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:43] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:43] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:43] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:43] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:44] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:44] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:44] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:44] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:44] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:45] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:45] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:45] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:45] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:45] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [INFO]   [USA-LA67343-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:35:46] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [INFO]   [USA-OTA13623] 0 channels, 0 events
+[2025-10-31 12:35:46] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [INFO]   [USA-OTA14043] 0 channels, 0 events
+[2025-10-31 12:35:46] [INFO]   [USA-GU70062-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:35:46] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:35:46] [INFO]   [USA-OTA49286] 0 channels, 0 events
+[2025-10-31 12:35:46] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:35:46] [INFO]   Raw channels collected: 0
+[2025-10-31 12:35:46] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:35:46] [INFO]   Final unique channels: 0
+[2025-10-31 12:35:46] [INFO]   Total events after deduplication: 0
+[2025-10-31 12:35:46] [ERROR] No channels retrieved. Exiting.
+[2025-10-31 12:38:42] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:38:42] [INFO]   Timespan: 24 hours
+[2025-10-31 12:38:42] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:38:46] [INFO]   [USA-GU70062-DEFAULT] 183 channels, 4918 events
+[2025-10-31 12:38:46] [INFO]   [USA-OTA14043] 183 channels, 4918 events
+[2025-10-31 12:38:46] [INFO]   [USA-OTA49286] 183 channels, 4918 events
+[2025-10-31 12:38:46] [INFO]   [USA-LA67343-DEFAULT] 183 channels, 4918 events
+[2025-10-31 12:38:46] [INFO]   [USA-OTA13623] 183 channels, 4918 events
+[2025-10-31 12:38:46] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:38:46] [INFO]   Raw channels collected: 915
+[2025-10-31 12:38:46] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:38:46] [ERROR] Failed to acquire lock: invalid literal for int() with base 10: '7.1'
+[2025-10-31 12:38:59] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:38:59] [INFO]   Timespan: 24 hours
+[2025-10-31 12:38:59] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:39:03] [INFO]   [USA-OTA13623] 183 channels, 4918 events
+[2025-10-31 12:39:03] [INFO]   [USA-LA67343-DEFAULT] 183 channels, 4918 events
+[2025-10-31 12:39:03] [INFO]   [USA-OTA49286] 183 channels, 4918 events
+[2025-10-31 12:39:03] [INFO]   [USA-OTA14043] 183 channels, 4918 events
+[2025-10-31 12:39:03] [INFO]   [USA-GU70062-DEFAULT] 183 channels, 4918 events
+[2025-10-31 12:39:03] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:39:03] [INFO]   Raw channels collected: 915
+[2025-10-31 12:39:03] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:39:03] [ERROR] Failed to acquire lock: invalid literal for int() with base 10: '7.1'
+[2025-10-31 12:42:48] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:42:48] [INFO]   Timespan: 24 hours
+[2025-10-31 12:42:48] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:42:53] [INFO]   [USA-OTA14043] 183 channels, 4917 events
+[2025-10-31 12:42:53] [INFO]   [USA-OTA13623] 183 channels, 4917 events
+[2025-10-31 12:42:53] [INFO]   [USA-LA67343-DEFAULT] 183 channels, 4917 events
+[2025-10-31 12:42:53] [INFO]   [USA-OTA49286] 183 channels, 4917 events
+[2025-10-31 12:42:53] [INFO]   [USA-GU70062-DEFAULT] 183 channels, 4917 events
+[2025-10-31 12:42:53] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:42:53] [INFO]   Raw channels collected: 915
+[2025-10-31 12:42:53] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:42:53] [INFO]   Final unique channels: 183
+[2025-10-31 12:42:53] [INFO]   Total events after deduplication: 4917
+[2025-10-31 12:42:53] [INFO] Writing 4917 valid events to XML
+[2025-10-31 12:42:53] [INFO]   New episodes: 425
+[2025-10-31 12:42:53] [INFO]   Reruns: 4492
+[2025-10-31 12:42:53] [INFO]   Unknown status: 0
+[2025-10-31 12:42:53] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:44:40] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:44:40] [INFO]   Timespan: 24 hours
+[2025-10-31 12:44:40] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:44:40] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:40] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:40] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:40] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:40] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:41] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:41] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:41] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:41] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:41] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:42] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:42] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:42] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:42] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:42] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [INFO]   [USA-OTA49286] 0 channels, 0 events
+[2025-10-31 12:44:43] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [INFO]   [USA-OTA13623] 0 channels, 0 events
+[2025-10-31 12:44:43] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [INFO]   [USA-OTA14043] 0 channels, 0 events
+[2025-10-31 12:44:43] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:44:43] [INFO]   [USA-LA67343-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:44:43] [INFO]   [USA-GU70062-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:44:43] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:44:43] [INFO]   Raw channels collected: 0
+[2025-10-31 12:44:43] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:44:43] [INFO]   Final unique channels: 0
+[2025-10-31 12:44:43] [INFO]   Total events after deduplication: 0
+[2025-10-31 12:44:43] [ERROR] No channels retrieved. Exiting.
+[2025-10-31 12:45:03] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:45:03] [INFO]   Timespan: 24 hours
+[2025-10-31 12:45:03] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:45:03] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:03] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:03] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:03] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:03] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:04] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:04] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:04] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:04] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:04] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:05] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:05] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:05] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:05] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:05] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:06] [ERROR] [USA-OTA13623] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:06] [INFO]   [USA-OTA13623] 0 channels, 0 events
+[2025-10-31 12:45:06] [ERROR] [USA-OTA49286] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:06] [ERROR] [USA-GU70062-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:06] [INFO]   [USA-OTA49286] 0 channels, 0 events
+[2025-10-31 12:45:06] [INFO]   [USA-GU70062-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:45:07] [ERROR] [USA-OTA14043] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:07] [ERROR] [USA-LA67343-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:45:07] [INFO]   [USA-OTA14043] 0 channels, 0 events
+[2025-10-31 12:45:07] [INFO]   [USA-LA67343-DEFAULT] 0 channels, 0 events
+[2025-10-31 12:45:07] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:45:07] [INFO]   Raw channels collected: 0
+[2025-10-31 12:45:07] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:45:07] [INFO]   Final unique channels: 0
+[2025-10-31 12:45:07] [INFO]   Total events after deduplication: 0
+[2025-10-31 12:45:07] [ERROR] No channels retrieved. Exiting.
+[2025-10-31 12:46:01] [INFO] Starting EPG fetch for 5 lineup(s)
+[2025-10-31 12:46:01] [INFO]   Timespan: 24 hours
+[2025-10-31 12:46:01] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:46:05] [INFO]   [USA-GU70062-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:46:05] [INFO]   [USA-OTA49286] 197 channels, 5373 events
+[2025-10-31 12:46:05] [INFO]   [USA-OTA14043] 197 channels, 5373 events
+[2025-10-31 12:46:05] [INFO]   [USA-LA67343-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:46:05] [INFO]   [USA-OTA13623] 197 channels, 5373 events
+[2025-10-31 12:46:05] [INFO] Fetch complete: 5 succeeded, 0 failed
+[2025-10-31 12:46:05] [INFO]   Raw channels collected: 985
+[2025-10-31 12:46:05] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:46:05] [INFO]   Final unique channels: 197
+[2025-10-31 12:46:05] [INFO]   Total events after deduplication: 5373
+[2025-10-31 12:46:05] [INFO] Writing 5373 valid events to XML
+[2025-10-31 12:46:05] [INFO]   New episodes: 368
+[2025-10-31 12:46:05] [INFO]   Reruns: 5005
+[2025-10-31 12:46:05] [INFO]   Unknown status: 0
+[2025-10-31 12:46:05] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:46:29] [INFO] Starting EPG fetch for 50 lineup(s)
+[2025-10-31 12:46:29] [INFO]   Timespan: 24 hours
+[2025-10-31 12:46:29] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:46:33] [INFO]   [USA-OTA14043] 197 channels, 5373 events
+[2025-10-31 12:46:33] [INFO]   [USA-LA67343-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:46:33] [INFO]   [USA-GU70062-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:46:33] [INFO]   [USA-OTA49286] 197 channels, 5373 events
+[2025-10-31 12:46:34] [INFO]   [USA-OTA13623] 197 channels, 5373 events
+[2025-10-31 12:46:38] [INFO]   [USA-OTA05460] 197 channels, 5373 events
+[2025-10-31 12:46:38] [INFO]   [USA-OTA12958] 197 channels, 5373 events
+[2025-10-31 12:46:38] [INFO]   [USA-OTA12953] 197 channels, 5373 events
+[2025-10-31 12:46:38] [INFO]   [USA-OTA98231] 197 channels, 5373 events
+[2025-10-31 12:46:38] [INFO]   [USA-OTA59427] 197 channels, 5373 events
+[2025-10-31 12:46:42] [INFO]   [USA-OTA16504] 197 channels, 5373 events
+[2025-10-31 12:46:42] [INFO]   [USA-OTA13678] 197 channels, 5373 events
+[2025-10-31 12:46:42] [INFO]   [USA-OTA05846] 197 channels, 5373 events
+[2025-10-31 12:46:42] [INFO]   [USA-OTA48039] 197 channels, 5373 events
+[2025-10-31 12:46:42] [INFO]   [USA-OTA48371] 197 channels, 5373 events
+[2025-10-31 12:46:46] [INFO]   [USA-OTA48060] 197 channels, 5373 events
+[2025-10-31 12:46:46] [INFO]   [USA-OTA14226] 197 channels, 5373 events
+[2025-10-31 12:46:46] [INFO]   [USA-OTA14305] 197 channels, 5373 events
+[2025-10-31 12:46:46] [INFO]   [USA-OTA14623] 197 channels, 5373 events
+[2025-10-31 12:46:46] [INFO]   [USA-OTA04491] 197 channels, 5373 events
+[2025-10-31 12:46:50] [INFO]   [USA-OTA98221] 197 channels, 5373 events
+[2025-10-31 12:46:50] [INFO]   [USA-OTA98362] 197 channels, 5373 events
+[2025-10-31 12:46:50] [INFO]   [USA-OTA98226] 197 channels, 5373 events
+[2025-10-31 12:46:50] [INFO]   [USA-OTA48235] 197 channels, 5373 events
+[2025-10-31 12:46:50] [INFO]   [USA-OTA14612] 197 channels, 5373 events
+[2025-10-31 12:46:54] [INFO]   [USA-OTA48207] 197 channels, 5373 events
+[2025-10-31 12:46:54] [INFO]   [USA-OTA16509] 197 channels, 5373 events
+[2025-10-31 12:46:54] [INFO]   [USA-OTA48088] 197 channels, 5373 events
+[2025-10-31 12:46:54] [INFO]   [USA-OTA55606] 197 channels, 5373 events
+[2025-10-31 12:46:55] [INFO]   [USA-OTA14173] 197 channels, 5373 events
+[2025-10-31 12:46:58] [INFO]   [USA-OTA04747] 197 channels, 5373 events
+[2025-10-31 12:46:58] [INFO]   [USA-OTA12979] 197 channels, 5373 events
+[2025-10-31 12:46:59] [INFO]   [USA-OTA04756] 197 channels, 5373 events
+[2025-10-31 12:46:59] [INFO]   [USA-OTA14202] 197 channels, 5373 events
+[2025-10-31 12:46:59] [INFO]   [USA-OTA13664] 197 channels, 5373 events
+[2025-10-31 12:47:02] [INFO]   [USA-OTA14622] 197 channels, 5373 events
+[2025-10-31 12:47:02] [INFO]   [USA-OTA58222] 197 channels, 5373 events
+[2025-10-31 12:47:03] [INFO]   [USA-OTA94062] 197 channels, 5373 events
+[2025-10-31 12:47:03] [INFO]   [USA-OTA93252] 197 channels, 5373 events
+[2025-10-31 12:47:03] [INFO]   [USA-OTA92549] 197 channels, 5373 events
+[2025-10-31 12:47:07] [INFO]   [USA-OTA93777] 197 channels, 5373 events
+[2025-10-31 12:47:07] [INFO]   [USA-OTA78040] 197 channels, 5373 events
+[2025-10-31 12:47:07] [INFO]   [USA-OTA74650] 197 channels, 5373 events
+[2025-10-31 12:47:07] [INFO]   [USA-OTA96079] 197 channels, 5373 events
+[2025-10-31 12:47:08] [INFO]   [USA-OTA92281] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO]   [USA-OTA73702] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO]   [USA-OTA34120] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO]   [USA-OTA38363] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO]   [USA-OTA31014] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO]   [USA-OTA46508] 197 channels, 5373 events
+[2025-10-31 12:47:12] [INFO] Fetch complete: 50 succeeded, 0 failed
+[2025-10-31 12:47:12] [INFO]   Raw channels collected: 9850
+[2025-10-31 12:47:12] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:47:12] [INFO]   Final unique channels: 197
+[2025-10-31 12:47:12] [INFO]   Total events after deduplication: 5373
+[2025-10-31 12:47:13] [INFO] Writing 5373 valid events to XML
+[2025-10-31 12:47:13] [INFO]   New episodes: 368
+[2025-10-31 12:47:13] [INFO]   Reruns: 5005
+[2025-10-31 12:47:13] [INFO]   Unknown status: 0
+[2025-10-31 12:47:13] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:47:40] [INFO] Starting EPG fetch for 50 lineup(s)
+[2025-10-31 12:47:40] [INFO]   Timespan: 24 hours
+[2025-10-31 12:47:40] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:47:41] [ERROR] [BHS-0000029-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:41] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:41] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:41] [ERROR] [ABW-0000103-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:42] [ERROR] [BHS-0000029-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:42] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:42] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:42] [ERROR] [ABW-0000103-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:43] [ERROR] [BHS-0000029-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:43] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:43] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:43] [ERROR] [ABW-0000103-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [ERROR] [BHS-0000029-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [INFO]   [BHS-0000029-X] 0 channels, 0 events
+[2025-10-31 12:47:44] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [INFO]   [BRB-0004494-X] 0 channels, 0 events
+[2025-10-31 12:47:44] [INFO]   [BMU-0000013-X] 0 channels, 0 events
+[2025-10-31 12:47:44] [ERROR] [ABW-0000103-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [INFO]   [ABW-0000103-X] 0 channels, 0 events
+[2025-10-31 12:47:44] [ERROR] [CYM-0004493-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:44] [ERROR] [CAN-0009968-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:45] [INFO]   [VGB-0000034-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:47:45] [ERROR] [JAM-0002285-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:45] [ERROR] [CYM-0004493-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:45] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:45] [ERROR] [CAN-0009968-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:46] [ERROR] [JAM-0002285-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:46] [ERROR] [CYM-0004493-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:46] [ERROR] [CAN-0009968-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:46] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:47] [ERROR] [JAM-0002285-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:47] [ERROR] [CYM-0004493-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:47] [INFO]   [CYM-0004493-X] 0 channels, 0 events
+[2025-10-31 12:47:47] [ERROR] [CAN-0009968-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:47] [INFO]   [CAN-0009968-X] 0 channels, 0 events
+[2025-10-31 12:47:47] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:47] [INFO]   [GRD-0000033-X] 0 channels, 0 events
+[2025-10-31 12:47:48] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:48] [ERROR] [TTO-0004215-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:48] [INFO]   [DOM-0000124-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:47:48] [ERROR] [JAM-0002285-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:48] [INFO]   [JAM-0002285-X] 0 channels, 0 events
+[2025-10-31 12:47:48] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:49] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:49] [ERROR] [TTO-0004215-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:49] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:50] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:50] [ERROR] [TTO-0004215-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:50] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:51] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:51] [INFO]   [LCA-0000271-X] 0 channels, 0 events
+[2025-10-31 12:47:51] [ERROR] [TTO-0004215-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:51] [INFO]   [TTO-0004215-X] 0 channels, 0 events
+[2025-10-31 12:47:51] [INFO]   [KNA-0000050-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:47:52] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:52] [INFO]   [TCA-0003402-X] 0 channels, 0 events
+[2025-10-31 12:47:53] [INFO]   [USA-DITV501-X] 615 channels, 16813 events
+[2025-10-31 12:47:56] [INFO]   [USA-NJ29458-L] 491 channels, 13142 events
+[2025-10-31 12:47:56] [INFO]   [USA-DISH501-X] 559 channels, 14855 events
+[2025-10-31 12:47:56] [INFO]   [USA-NY31534-X] 449 channels, 11681 events
+[2025-10-31 12:47:57] [ERROR] [USA-VIZIO-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:58] [INFO]   [USA-IL56991-X] 599 channels, 14757 events
+[2025-10-31 12:47:58] [ERROR] [USA-VIZIO-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:47:58] [INFO]   [USA-NY31532-L] 489 channels, 13066 events
+[2025-10-31 12:47:59] [ERROR] [USA-VIZIO-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:00] [ERROR] [USA-VIZIO-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:00] [INFO]   [USA-VIZIO-X] 0 channels, 0 events
+[2025-10-31 12:48:01] [INFO]   [USA-NY72041-X] 96 channels, 2725 events
+[2025-10-31 12:48:01] [INFO]   [USA-NY53039-X] 512 channels, 13409 events
+[2025-10-31 12:48:04] [INFO]   [USA-NY65256-X] 618 channels, 15950 events
+[2025-10-31 12:48:04] [INFO]   [USA-CT62508-X] 518 channels, 13606 events
+[2025-10-31 12:48:05] [INFO]   [USA-DITV567-X] 589 channels, 16014 events
+[2025-10-31 12:48:07] [INFO]   [USA-NJ29490-X] 353 channels, 9749 events
+[2025-10-31 12:48:07] [INFO]   [USA-CT58914-L] 484 channels, 12751 events
+[2025-10-31 12:48:09] [INFO]   [USA-DISH803-X] 584 channels, 15591 events
+[2025-10-31 12:48:10] [INFO]   [USA-CA67310-L] 505 channels, 12846 events
+[2025-10-31 12:48:11] [INFO]   [USA-CA04768-X] 648 channels, 16219 events
+[2025-10-31 12:48:13] [INFO]   [USA-DITV803-X] 614 channels, 16796 events
+[2025-10-31 12:48:14] [ERROR] [AIA-0000040-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:14] [INFO]   [USA-NY66739-X] 617 channels, 15883 events
+[2025-10-31 12:48:14] [INFO]   [USA-CA67310-X] 464 channels, 11807 events
+[2025-10-31 12:48:15] [ERROR] [AIA-0000040-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:16] [ERROR] [AIA-0000040-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:16] [INFO]   [USA-CO68828-X] 513 channels, 13316 events
+[2025-10-31 12:48:17] [ERROR] [AIA-0000040-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:17] [INFO]   [USA-CA04523-X] 626 channels, 15278 events
+[2025-10-31 12:48:17] [INFO]   [AIA-0000040-X] 0 channels, 0 events
+[2025-10-31 12:48:17] [ERROR] [CAN-0005993-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:18] [ERROR] [CAN-0005993-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:19] [INFO]   [BLZ-0000270-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:19] [INFO]   [ABW-0000103-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:19] [ERROR] [CRI-0001295-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:19] [ERROR] [CUW-0003397-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:20] [ERROR] [CAN-0005993-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:20] [ERROR] [CRI-0001295-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:20] [ERROR] [CUW-0003397-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:21] [ERROR] [CAN-0005993-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:21] [INFO]   [CAN-0005993-X] 0 channels, 0 events
+[2025-10-31 12:48:21] [INFO]   [BES-0000044-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:21] [ERROR] [CRI-0001295-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:21] [ERROR] [CUW-0003397-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:21] [INFO]   [CYM-0000035-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:22] [ERROR] [LCA-0005828-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:22] [ERROR] [CRI-0001295-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:22] [INFO]   [CRI-0001295-X] 0 channels, 0 events
+[2025-10-31 12:48:22] [ERROR] [CUW-0003397-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:22] [INFO]   [CUW-0003397-X] 0 channels, 0 events
+[2025-10-31 12:48:23] [ERROR] [LCA-0005828-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:24] [ERROR] [LCA-0005828-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:25] [INFO]   [DMA-0000032-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:25] [ERROR] [LCA-0005828-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:48:25] [INFO]   [LCA-0005828-X] 0 channels, 0 events
+[2025-10-31 12:48:26] [INFO]   [KNA-0003394-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:48:26] [INFO]   [USA-IL67615-X] 107 channels, 3254 events
+[2025-10-31 12:48:27] [INFO]   [USA-IL00239-X] 296 channels, 7388 events
+[2025-10-31 12:48:31] [INFO]   [USA-IL53277-X] 601 channels, 14922 events
+[2025-10-31 12:48:31] [INFO] Fetch complete: 50 succeeded, 0 failed
+[2025-10-31 12:48:31] [INFO]   Raw channels collected: 13720
+[2025-10-31 12:48:31] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:48:31] [INFO]   Final unique channels: 2916
+[2025-10-31 12:48:31] [INFO]   Total events after deduplication: 74330
+[2025-10-31 12:48:32] [INFO] Writing 74330 valid events to XML
+[2025-10-31 12:48:32] [INFO]   New episodes: 6945
+[2025-10-31 12:48:32] [INFO]   Reruns: 67385
+[2025-10-31 12:48:32] [INFO]   Unknown status: 0
+[2025-10-31 12:48:33] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:50:02] [ERROR] No lineup IDs found.
+[2025-10-31 12:50:02] [ERROR]   Lookup mode: counrty
+[2025-10-31 12:50:02] [ERROR]   Lookup value: usa
+[2025-10-31 12:50:02] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2025-10-31 12:51:15] [ERROR] No lineup IDs found.
+[2025-10-31 12:51:15] [ERROR]   Lookup mode: counrty
+[2025-10-31 12:51:15] [ERROR]   Lookup value: USA
+[2025-10-31 12:51:15] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2025-10-31 12:51:31] [INFO] Starting EPG fetch for 46 lineup(s)
+[2025-10-31 12:51:31] [INFO]   Timespan: 24 hours
+[2025-10-31 12:51:31] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:51:32] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:33] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:34] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:35] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:35] [INFO]   [USA-SLINGTV-X] 0 channels, 0 events
+[2025-10-31 12:51:36] [INFO]   [USA-VA70448-X] 70 channels, 2802 events
+[2025-10-31 12:51:36] [INFO]   [USA-KY16437-X] 185 channels, 4728 events
+[2025-10-31 12:51:37] [INFO]   [USA-NJ29458-L] 491 channels, 13139 events
+[2025-10-31 12:51:38] [INFO]   [USA-NJ67209-X] 605 channels, 15916 events
+[2025-10-31 12:51:40] [INFO]   [USA-ECHOST-X] 488 channels, 12536 events
+[2025-10-31 12:51:41] [INFO]   [USA-NE72069-X] 233 channels, 5439 events
+[2025-10-31 12:51:42] [INFO]   [USA-HI51409-L] 617 channels, 14927 events
+[2025-10-31 12:51:42] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:43] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:43] [INFO]   [USA-MN22623-X] 588 channels, 13970 events
+[2025-10-31 12:51:43] [INFO]   [USA-MN22583-X] 564 channels, 13441 events
+[2025-10-31 12:51:44] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:45] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:51:45] [INFO]   [USA-SAMSUNG-X] 0 channels, 0 events
+[2025-10-31 12:51:46] [INFO]   [USA-MN22515-X] 580 channels, 13743 events
+[2025-10-31 12:51:47] [INFO]   [USA-MI21536-X] 512 channels, 13623 events
+[2025-10-31 12:51:48] [INFO]   [USA-CO71769-X] 230 channels, 5576 events
+[2025-10-31 12:51:49] [INFO]   [USA-MA00247-X] 584 channels, 14120 events
+[2025-10-31 12:51:51] [INFO]   [USA-MA55456-X] 673 channels, 16569 events
+[2025-10-31 12:51:53] [INFO]   [USA-TX60536-X] 302 channels, 7878 events
+[2025-10-31 12:51:53] [INFO]   [USA-NY66739-X] 617 channels, 15885 events
+[2025-10-31 12:51:54] [INFO]   [USA-WI72059-X] 213 channels, 5513 events
+[2025-10-31 12:51:55] [INFO]   [USA-CO68610-X] 708 channels, 15619 events
+[2025-10-31 12:51:55] [INFO]   [USA-GLRYSTR-X] 71 channels, 1356 events
+[2025-10-31 12:51:58] [INFO]   [USA-NY31451-X] 333 channels, 7914 events
+[2025-10-31 12:51:58] [INFO]   [USA-CA04523-X] 626 channels, 15274 events
+[2025-10-31 12:51:59] [INFO]   [USA-PA37625-X] 98 channels, 2713 events
+[2025-10-31 12:51:59] [INFO]   [USA-WI48519-X] 441 channels, 10977 events
+[2025-10-31 12:52:00] [INFO]   [USA-NY63086-X] 479 channels, 12282 events
+[2025-10-31 12:52:03] [INFO]   [USA-PA70300-X] 286 channels, 7425 events
+[2025-10-31 12:52:03] [INFO]   [USA-IL63451-X] 467 channels, 12046 events
+[2025-10-31 12:52:04] [INFO]   [USA-PA37752-X] 285 channels, 7430 events
+[2025-10-31 12:52:05] [INFO]   [USA-TX57921-X] 219 channels, 5930 events
+[2025-10-31 12:52:06] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:52:07] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:52:07] [INFO]   [USA-WA71086-X] 218 channels, 5750 events
+[2025-10-31 12:52:08] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:52:08] [INFO]   [USA-MT25412-X] 286 channels, 6937 events
+[2025-10-31 12:52:09] [INFO]   [USA-GA67805-X] 1126 channels, 32456 events
+[2025-10-31 12:52:09] [INFO]   [USA-DITV-X] 514 channels, 13678 events
+[2025-10-31 12:52:10] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:52:10] [INFO]   [USA-PLUTOTV-X] 0 channels, 0 events
+[2025-10-31 12:52:11] [INFO]   [USA-CO69930-X] 67 channels, 1788 events
+[2025-10-31 12:52:13] [INFO]   [USA-FL71942-X] 321 channels, 6115 events
+[2025-10-31 12:52:13] [INFO]   [USA-GU70062-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:52:14] [INFO]   [USA-CO68828-X] 513 channels, 13305 events
+[2025-10-31 12:52:15] [INFO]   [USA-CA66343-X] 597 channels, 15853 events
+[2025-10-31 12:52:16] [INFO]   [USA-GU70062-X] 164 channels, 4410 events
+[2025-10-31 12:52:18] [INFO]   [USA-GA71729-X] 179 channels, 4655 events
+[2025-10-31 12:52:18] [INFO]   [USA-CA02268-L] 217 channels, 5558 events
+[2025-10-31 12:52:19] [INFO]   [USA-NY72041-X] 96 channels, 2730 events
+[2025-10-31 12:52:20] [INFO]   [USA-AL01441-L] 456 channels, 11151 events
+[2025-10-31 12:52:22] [INFO]   [USA-PA37621-X] 493 channels, 11635 events
+[2025-10-31 12:52:22] [INFO] Fetch complete: 46 succeeded, 0 failed
+[2025-10-31 12:52:22] [INFO]   Raw channels collected: 17009
+[2025-10-31 12:52:22] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:52:22] [INFO]   Final unique channels: 5402
+[2025-10-31 12:52:22] [INFO]   Total events after deduplication: 137361
+[2025-10-31 12:52:24] [INFO] Writing 137361 valid events to XML
+[2025-10-31 12:52:24] [INFO]   New episodes: 18008
+[2025-10-31 12:52:24] [INFO]   Reruns: 119353
+[2025-10-31 12:52:24] [INFO]   Unknown status: 0
+[2025-10-31 12:52:25] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:53:04] [INFO] Starting EPG fetch for 50 lineup(s)
+[2025-10-31 12:53:04] [INFO]   Timespan: 24 hours
+[2025-10-31 12:53:04] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:53:08] [INFO]   [USA-LA67343-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:53:08] [INFO]   [USA-OTA14043] 197 channels, 5373 events
+[2025-10-31 12:53:09] [INFO]   [USA-OTA13623] 197 channels, 5373 events
+[2025-10-31 12:53:09] [INFO]   [USA-OTA49286] 197 channels, 5373 events
+[2025-10-31 12:53:09] [INFO]   [USA-GU70062-DEFAULT] 197 channels, 5373 events
+[2025-10-31 12:53:13] [INFO]   [USA-OTA05460] 197 channels, 5373 events
+[2025-10-31 12:53:13] [INFO]   [USA-OTA98231] 197 channels, 5373 events
+[2025-10-31 12:53:13] [INFO]   [USA-OTA12958] 197 channels, 5373 events
+[2025-10-31 12:53:13] [INFO]   [USA-OTA12953] 197 channels, 5373 events
+[2025-10-31 12:53:13] [INFO]   [USA-OTA59427] 197 channels, 5373 events
+[2025-10-31 12:53:17] [INFO]   [USA-OTA16504] 197 channels, 5373 events
+[2025-10-31 12:53:17] [INFO]   [USA-OTA05846] 197 channels, 5373 events
+[2025-10-31 12:53:17] [INFO]   [USA-OTA48371] 197 channels, 5373 events
+[2025-10-31 12:53:17] [INFO]   [USA-OTA13678] 197 channels, 5373 events
+[2025-10-31 12:53:17] [INFO]   [USA-OTA48039] 197 channels, 5373 events
+[2025-10-31 12:53:21] [INFO]   [USA-OTA14226] 197 channels, 5373 events
+[2025-10-31 12:53:21] [INFO]   [USA-OTA14305] 197 channels, 5373 events
+[2025-10-31 12:53:21] [INFO]   [USA-OTA14623] 197 channels, 5373 events
+[2025-10-31 12:53:21] [INFO]   [USA-OTA48060] 197 channels, 5373 events
+[2025-10-31 12:53:21] [INFO]   [USA-OTA04491] 197 channels, 5373 events
+[2025-10-31 12:53:25] [INFO]   [USA-OTA98226] 197 channels, 5373 events
+[2025-10-31 12:53:25] [INFO]   [USA-OTA98221] 197 channels, 5373 events
+[2025-10-31 12:53:25] [INFO]   [USA-OTA98362] 197 channels, 5373 events
+[2025-10-31 12:53:25] [INFO]   [USA-OTA48235] 197 channels, 5373 events
+[2025-10-31 12:53:26] [INFO]   [USA-OTA14612] 197 channels, 5373 events
+[2025-10-31 12:53:29] [INFO]   [USA-OTA48207] 197 channels, 5373 events
+[2025-10-31 12:53:29] [INFO]   [USA-OTA16509] 197 channels, 5373 events
+[2025-10-31 12:53:29] [INFO]   [USA-OTA55606] 197 channels, 5373 events
+[2025-10-31 12:53:30] [INFO]   [USA-OTA48088] 197 channels, 5373 events
+[2025-10-31 12:53:30] [INFO]   [USA-OTA14173] 197 channels, 5373 events
+[2025-10-31 12:53:33] [INFO]   [USA-OTA04756] 197 channels, 5373 events
+[2025-10-31 12:53:33] [INFO]   [USA-OTA04747] 197 channels, 5373 events
+[2025-10-31 12:53:33] [INFO]   [USA-OTA12979] 197 channels, 5373 events
+[2025-10-31 12:53:34] [INFO]   [USA-OTA14202] 197 channels, 5373 events
+[2025-10-31 12:53:34] [INFO]   [USA-OTA13664] 197 channels, 5373 events
+[2025-10-31 12:53:37] [INFO]   [USA-OTA14622] 197 channels, 5373 events
+[2025-10-31 12:53:38] [INFO]   [USA-OTA58222] 197 channels, 5373 events
+[2025-10-31 12:53:38] [INFO]   [USA-OTA94062] 197 channels, 5373 events
+[2025-10-31 12:53:38] [INFO]   [USA-OTA92549] 197 channels, 5373 events
+[2025-10-31 12:53:39] [INFO]   [USA-OTA93252] 197 channels, 5373 events
+[2025-10-31 12:53:42] [INFO]   [USA-OTA78040] 197 channels, 5373 events
+[2025-10-31 12:53:42] [INFO]   [USA-OTA96079] 197 channels, 5373 events
+[2025-10-31 12:53:42] [INFO]   [USA-OTA93777] 197 channels, 5373 events
+[2025-10-31 12:53:42] [INFO]   [USA-OTA74650] 197 channels, 5373 events
+[2025-10-31 12:53:43] [INFO]   [USA-OTA92281] 197 channels, 5373 events
+[2025-10-31 12:53:46] [INFO]   [USA-OTA73702] 197 channels, 5373 events
+[2025-10-31 12:53:46] [INFO]   [USA-OTA31014] 197 channels, 5373 events
+[2025-10-31 12:53:47] [INFO]   [USA-OTA38363] 197 channels, 5373 events
+[2025-10-31 12:53:47] [INFO]   [USA-OTA34120] 197 channels, 5373 events
+[2025-10-31 12:53:47] [INFO]   [USA-OTA46508] 197 channels, 5373 events
+[2025-10-31 12:53:47] [INFO] Fetch complete: 50 succeeded, 0 failed
+[2025-10-31 12:53:47] [INFO]   Raw channels collected: 9850
+[2025-10-31 12:53:47] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:53:48] [INFO]   Final unique channels: 197
+[2025-10-31 12:53:48] [INFO]   Total events after deduplication: 5373
+[2025-10-31 12:53:48] [INFO] Writing 5373 valid events to XML
+[2025-10-31 12:53:48] [INFO]   New episodes: 368
+[2025-10-31 12:53:48] [INFO]   Reruns: 5005
+[2025-10-31 12:53:48] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:55:30] [INFO] Starting EPG fetch for 46 lineup(s)
+[2025-10-31 12:55:30] [INFO]   Timespan: 72 hours
+[2025-10-31 12:55:30] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:55:30] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:31] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:32] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:33] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:34] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:36] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:37] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:38] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:39] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:40] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:41] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:42] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:55:42] [INFO]   [USA-SLINGTV-X] 0 channels, 0 events
+[2025-10-31 12:55:43] [INFO]   [USA-VA70448-X] 70 channels, 8160 events
+[2025-10-31 12:55:44] [INFO]   [USA-KY16437-X] 185 channels, 13600 events
+[2025-10-31 12:55:47] [INFO]   [USA-NJ29458-L] 491 channels, 37285 events
+[2025-10-31 12:55:48] [INFO]   [USA-NJ67209-X] 605 channels, 45222 events
+[2025-10-31 12:55:59] [INFO]   [USA-NE72069-X] 233 channels, 15504 events
+[2025-10-31 12:55:59] [INFO]   [USA-ECHOST-X] 488 channels, 35657 events
+[2025-10-31 12:56:02] [INFO]   [USA-HI51409-L] 617 channels, 42743 events
+[2025-10-31 12:56:02] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:03] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:04] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:05] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:06] [INFO]   [USA-MN22583-X] 564 channels, 37752 events
+[2025-10-31 12:56:06] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:06] [INFO]   [USA-MN22623-X] 588 channels, 39275 events
+[2025-10-31 12:56:07] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:09] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:10] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:11] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:12] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:13] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:14] [ERROR] [USA-SAMSUNG-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:56:14] [INFO]   [USA-SAMSUNG-X] 0 channels, 0 events
+[2025-10-31 12:56:19] [INFO]   [USA-MI21536-X] 512 channels, 38322 events
+[2025-10-31 12:56:19] [INFO]   [USA-MN22515-X] 580 channels, 38617 events
+[2025-10-31 12:56:21] [INFO]   [USA-CO71769-X] 230 channels, 15945 events
+[2025-10-31 12:56:24] [INFO]   [USA-MA00247-X] 584 channels, 40219 events
+[2025-10-31 12:56:34] [INFO]   [USA-MA55456-X] 673 channels, 47010 events
+[2025-10-31 12:56:37] [INFO]   [USA-TX60536-X] 302 channels, 22261 events
+[2025-10-31 12:56:39] [INFO]   [USA-NY66739-X] 617 channels, 44894 events
+[2025-10-31 12:56:39] [INFO]   [USA-CO68610-X] 708 channels, 43497 events
+[2025-10-31 12:56:40] [INFO]   [USA-WI72059-X] 213 channels, 15657 events
+[2025-10-31 12:56:47] [INFO]   [USA-GLRYSTR-X] 71 channels, 3924 events
+[2025-10-31 12:56:55] [INFO]   [USA-PA37625-X] 98 channels, 7852 events
+[2025-10-31 12:56:56] [INFO]   [USA-NY31451-X] 333 channels, 22508 events
+[2025-10-31 12:56:57] [INFO]   [USA-WI48519-X] 441 channels, 31199 events
+[2025-10-31 12:56:57] [INFO]   [USA-CA04523-X] 626 channels, 43593 events
+[2025-10-31 12:57:05] [INFO]   [USA-NY63086-X] 479 channels, 34894 events
+[2025-10-31 12:57:12] [INFO]   [USA-PA70300-X] 286 channels, 21379 events
+[2025-10-31 12:57:14] [INFO]   [USA-PA37752-X] 285 channels, 21396 events
+[2025-10-31 12:57:15] [INFO]   [USA-IL63451-X] 467 channels, 34353 events
+[2025-10-31 12:57:21] [INFO]   [USA-TX57921-X] 219 channels, 16914 events
+[2025-10-31 12:57:21] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:22] [INFO]   [USA-GA67805-X] 1126 channels, 90066 events
+[2025-10-31 12:57:23] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:24] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:25] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:26] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:27] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:27] [INFO]   [USA-WA71086-X] 218 channels, 16513 events
+[2025-10-31 12:57:28] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:29] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:30] [INFO]   [USA-MT25412-X] 286 channels, 19678 events
+[2025-10-31 12:57:30] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:31] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:32] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:33] [INFO]   [USA-DITV-X] 514 channels, 39060 events
+[2025-10-31 12:57:34] [ERROR] [USA-PLUTOTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:57:34] [INFO]   [USA-PLUTOTV-X] 0 channels, 0 events
+[2025-10-31 12:57:35] [INFO]   [USA-CO69930-X] 67 channels, 5118 events
+[2025-10-31 12:57:43] [INFO]   [USA-FL71942-X] 321 channels, 17469 events
+[2025-10-31 12:57:48] [INFO]   [USA-GU70062-DEFAULT] 197 channels, 15306 events
+[2025-10-31 12:57:48] [INFO]   [USA-CO68828-X] 513 channels, 37958 events
+[2025-10-31 12:57:50] [INFO]   [USA-GU70062-X] 164 channels, 12785 events
+[2025-10-31 12:57:55] [INFO]   [USA-CA66343-X] 597 channels, 45221 events
+[2025-10-31 12:58:00] [INFO]   [USA-CA02268-L] 217 channels, 15739 events
+[2025-10-31 12:58:03] [INFO]   [USA-NY72041-X] 96 channels, 7935 events
+[2025-10-31 12:58:04] [INFO]   [USA-GA71729-X] 179 channels, 13357 events
+[2025-10-31 12:58:09] [INFO]   [USA-AL01441-L] 456 channels, 31658 events
+[2025-10-31 12:58:12] [INFO]   [USA-PA37621-X] 493 channels, 33147 events
+[2025-10-31 12:58:12] [INFO] Fetch complete: 46 succeeded, 0 failed
+[2025-10-31 12:58:12] [INFO]   Raw channels collected: 17009
+[2025-10-31 12:58:12] [INFO] Merging duplicate channels across lineups...
+[2025-10-31 12:58:13] [INFO]   Final unique channels: 5402
+[2025-10-31 12:58:13] [INFO]   Total events after deduplication: 385546
+[2025-10-31 12:58:21] [INFO] Writing 385546 valid events to XML
+[2025-10-31 12:58:21] [INFO]   New episodes: 46388
+[2025-10-31 12:58:21] [INFO]   Reruns: 339158
+[2025-10-31 12:58:24] [INFO] EPG successfully written to docs/EPG.xml
+[2025-10-31 12:59:00] [INFO] Starting EPG fetch for 44 lineup(s)
+[2025-10-31 12:59:00] [INFO]   Timespan: 72 hours
+[2025-10-31 12:59:00] [INFO]   Parallel: True (workers: 5)
+[2025-10-31 12:59:00] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:01] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:03] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:04] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:05] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:06] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:07] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:08] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:09] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:10] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:11] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:12] [ERROR] [USA-SLINGTV-X] Bad request (likely invalid headend or postalCode)
+[2025-10-31 12:59:12] [INFO]   [USA-SLINGTV-X] 0 channels, 0 events
+[2025-10-31 12:59:13] [INFO]   [USA-VA70448-X] 70 channels, 8055 events
+[2025-10-31 12:59:14] [INFO]   [USA-KY16437-X] 185 channels, 13444 events
+[2025-10-31 12:59:17] [INFO]   [USA-NJ29458-L] 491 channels, 36846 events
+[2025-10-31 12:59:18] [INFO]   [USA-NJ67209-X] 605 channels, 44706 events
+[2025-10-31 12:59:29] [INFO]   [USA-NE72069-X] 233 channels, 15330 events
+[2025-10-31 12:59:30] [INFO]   [USA-ECHOST-X] 488 channels, 35238 events
+[2025-10-31 12:59:33] [INFO]   [USA-HI51409-L] 617 channels, 42223 events
+[2025-10-31 12:59:36] [INFO]   [USA-MN22623-X] 588 channels, 38812 events
+[2025-10-31 12:59:37] [INFO]   [USA-MN22583-X] 564 channels, 37302 events
+[2025-10-31 12:59:49] [INFO]   [USA-MN22515-X] 580 channels, 38197 events
+[2025-10-31 12:59:49] [INFO]   [USA-MI21536-X] 512 channels, 37886 events
+[2025-10-31 12:59:50] [INFO]   [USA-MA00247-X] 584 channels, 39743 events
+[2025-10-31 12:59:51] [INFO]   [USA-CO71769-X] 230 channels, 15770 events
+[2025-10-31 12:59:56] [INFO]   [USA-MA55456-X] 673 channels, 46443 events
+[2025-10-31 13:00:07] [INFO]   [USA-WI72059-X] 213 channels, 15495 events
+[2025-10-31 13:00:07] [WARNING] [USA-TX60536-X] Retry 1/3 in 1.2s (status 429)
+[2025-10-31 13:00:07] [WARNING] [USA-GLRYSTR-X] Retry 1/3 in 1.9s (status 429)
+[2025-10-31 13:00:07] [WARNING] [USA-CO68610-X] Retry 1/3 in 1.3s (status 429)
+[2025-10-31 13:00:07] [INFO]   [USA-NY66739-X] 617 channels, 44418 events
+[2025-10-31 13:00:07] [WARNING] [USA-CA04523-X] Retry 1/3 in 1.4s (status 429)
+[2025-10-31 13:00:07] [WARNING] [USA-NY31451-X] Retry 1/3 in 1.8s (status 429)
+[2025-10-31 13:00:08] [WARNING] [USA-TX60536-X] Retry 2/3 in 2.4s (status 429)
+[2025-10-31 13:00:08] [WARNING] [USA-CO68610-X] Retry 2/3 in 2.7s (status 429)
+[2025-10-31 13:00:09] [WARNING] [USA-CA04523-X] Retry 2/3 in 2.7s (status 429)
+[2025-10-31 13:00:09] [WARNING] [USA-GLRYSTR-X] Retry 2/3 in 2.8s (status 429)
+[2025-10-31 13:00:09] [WARNING] [USA-NY31451-X] Retry 2/3 in 2.4s (status 429)
+[2025-10-31 13:00:11] [WARNING] [USA-TX60536-X] Retry 3/3 in 4.7s (status 429)
+[2025-10-31 13:00:11] [WARNING] [USA-CO68610-X] Retry 3/3 in 4.2s (status 429)
+[2025-10-31 13:00:11] [WARNING] [USA-CA04523-X] Retry 3/3 in 4.6s (status 429)
+[2025-10-31 13:00:12] [WARNING] [USA-NY31451-X] Retry 3/3 in 4.7s (status 429)
+[2025-10-31 13:00:12] [WARNING] [USA-GLRYSTR-X] Retry 3/3 in 4.6s (status 429)
+[2025-10-31 13:00:16] [INFO]   [USA-TX60536-X] 302 channels, 20105 events
+[2025-10-31 13:00:16] [INFO]   [USA-CO68610-X] 708 channels, 39292 events
+[2025-10-31 13:00:16] [WARNING] [USA-WI48519-X] Retry 1/3 in 1.9s (status 429)
+[2025-10-31 13:00:16] [WARNING] [USA-PA37625-X] Retry 1/3 in 1.9s (status 429)
+[2025-10-31 13:00:17] [WARNING] [USA-CA04523-X] Retry 1/3 in 1.3s (status 429)
+[2025-10-31 13:00:17] [WARNING] [USA-NY31451-X] Retry 1/3 in 1.3s (status 429)
+[2025-10-31 13:00:18] [WARNING] [USA-GLRYSTR-X] Retry 1/3 in 1.6s (status 429)
+[2025-10-31 13:00:18] [WARNING] [USA-WI48519-X] Retry 2/3 in 2.3s (status 429)
+[2025-10-31 13:00:18] [WARNING] [USA-PA37625-X] Retry 2/3 in 2.7s (status 429)
+[2025-10-31 13:00:18] [WARNING] [USA-CA04523-X] Retry 2/3 in 2.0s (status 429)
+[2025-10-31 13:00:19] [WARNING] [USA-NY31451-X] Retry 2/3 in 2.3s (status 429)
+[2025-10-31 13:00:19] [WARNING] [USA-GLRYSTR-X] Retry 2/3 in 2.8s (status 429)
+[2025-10-31 13:00:20] [WARNING] [USA-WI48519-X] Retry 3/3 in 4.8s (status 429)
+[2025-10-31 13:00:20] [WARNING] [USA-CA04523-X] Retry 3/3 in 4.2s (status 429)
+[2025-10-31 13:00:20] [WARNING] [USA-PA37625-X] Retry 3/3 in 4.2s (status 429)
+[2025-10-31 13:00:21] [WARNING] [USA-NY31451-X] Retry 3/3 in 4.5s (status 429)
+[2025-10-31 13:00:22] [WARNING] [USA-GLRYSTR-X] Retry 3/3 in 4.5s (status 429)
+[2025-10-31 13:00:26] [WARNING] [USA-PA37625-X] Retry 1/3 in 1.8s (status 429)
+[2025-10-31 13:00:26] [WARNING] [USA-CA04523-X] Retry 1/3 in 1.9s (status 429)
+[2025-10-31 13:00:26] [WARNING] [USA-WI48519-X] Retry 1/3 in 1.4s (status 429)
+[2025-10-31 13:00:27] [WARNING] [USA-NY31451-X] Retry 1/3 in 1.7s (status 429)
+[2025-10-31 13:00:27] [WARNING] [USA-WI48519-X] Retry 2/3 in 2.6s (status 429)
+[2025-10-31 13:00:28] [WARNING] [USA-PA37625-X] Retry 2/3 in 2.7s (status 429)
+[2025-10-31 13:00:28] [WARNING] [USA-GLRYSTR-X] Retry 1/3 in 1.8s (status 429)
+[2025-10-31 13:00:28] [WARNING] [USA-CA04523-X] Retry 2/3 in 2.9s (status 429)
+[2025-10-31 13:00:28] [WARNING] [USA-NY31451-X] Retry 2/3 in 3.0s (status 429)
+[2025-10-31 13:00:29] [WARNING] [USA-GLRYSTR-X] Retry 2/3 in 2.9s (status 429)
+[2025-10-31 13:00:30] [WARNING] [USA-WI48519-X] Retry 3/3 in 4.1s (status 429)
+[2025-10-31 13:00:30] [WARNING] [USA-PA37625-X] Retry 3/3 in 4.9s (status 429)
+[2025-10-31 13:00:31] [WARNING] [USA-CA04523-X] Retry 3/3 in 4.2s (status 429)
+[2025-10-31 13:00:31] [WARNING] [USA-NY31451-X] Retry 3/3 in 4.6s (status 429)
+[2025-10-31 13:00:32] [WARNING] [USA-GLRYSTR-X] Retry 3/3 in 4.6s (status 429)
