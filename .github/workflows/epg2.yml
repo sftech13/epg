@@ -47,8 +47,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add docs/EPG.xml docs/epg.log
+
+          # Force add even if .gitignore excludes it
+          git add -f docs/EPG.xml docs/epg.log || echo "Nothing to add"
           git commit -m "Auto-update EPG feed" || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
