@@ -1014,3 +1014,19 @@
 [2025-11-04 01:00:09] [INFO]   New episodes: 4909
 [2025-11-04 01:00:09] [INFO]   Reruns: 38319
 [2025-11-04 01:00:10] [INFO] EPG successfully written to docs/EPG.xml
+[2025-11-04 12:27:48] [INFO] Starting EPG fetch for 4 lineup(s)
+[2025-11-04 12:27:48] [INFO]   Timespan: 48 hours
+[2025-11-04 12:27:48] [INFO]   Parallel: True (workers: 5)
+[2025-11-04 12:27:58] [INFO]   [USA-KY16437-X] 185 channels, 9590 events
+[2025-11-04 12:27:59] [INFO]   [USA-VA70448-X] 70 channels, 5245 events
+[2025-11-04 12:28:00] [INFO]   [USA-NJ29458-L] 491 channels, 25994 events
+[2025-11-04 12:28:01] [INFO]   [USA-NJ67209-X] 605 channels, 31527 events
+[2025-11-04 12:28:01] [INFO] Fetch complete: 4 succeeded, 0 failed
+[2025-11-04 12:28:01] [INFO]   Raw channels collected: 1351
+[2025-11-04 12:28:01] [INFO] Merging duplicate channels across lineups...
+[2025-11-04 12:28:01] [INFO]   Final unique channels: 807
+[2025-11-04 12:28:01] [INFO]   Total events after deduplication: 44110
+[2025-11-04 12:28:02] [INFO] Writing 44110 valid events to XML
+[2025-11-04 12:28:02] [INFO]   New episodes: 5007
+[2025-11-04 12:28:02] [INFO]   Reruns: 39103
+[2025-11-04 12:28:03] [INFO] EPG successfully written to docs/EPG.xml
