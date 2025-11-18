@@ -1,6 +1,6 @@
 {
-  "EPG_LOOKUP_MODE": "country",
-  "EPG_LOOKUP_VALUE": "USA",
+  "EPG_LOOKUP_MODE": "keyword",
+  "EPG_LOOKUP_VALUE": "california,los angeles,san diego,san francisco,san jose,sacramento",
   "EPG_ZIP": "",
   "EPG_LINEUP_ID": "",
   "EPG_OTA_ONLY": false,
