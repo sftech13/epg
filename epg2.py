@@ -23,8 +23,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
+VERSION = "2.0.0"
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
-DB_FILE = "/home/sftech13/git/epg/zap2it.db"
+DB_FILE = str(Path(__file__).parent / "zap2it.db")
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
 
 USER_AGENTS = [
@@ -693,18 +694,24 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
     tree.write(str(out_path), encoding="utf-8", xml_declaration=True)
 
 # ---------------- DB Lookup ----------------
-def get_lineups_from_column(column: str, value: str, max_lineups: int = None, 
+ALLOWED_LOOKUP_COLUMNS = {"country_name", "country", "station_name", "lineup_name", "lineupid"}
+
+def get_lineups_from_column(column: str, value: str, max_lineups: int = None,
                            db_path: str = DB_FILE, ota_only: bool = False) -> List[str]:
     """Query database for lineups matching a column value."""
+    if column not in ALLOWED_LOOKUP_COLUMNS:
+        logging.error(f"Invalid lookup column: {column}. Allowed: {ALLOWED_LOOKUP_COLUMNS}")
+        return []
+
     if not Path(db_path).exists():
         logging.error(f"Database file {db_path} not found")
         return []
-    
+
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
         kw = f"%{value.lower()}%"
-        
+
         query = f"SELECT DISTINCT lineupid FROM channels_by_country WHERE lower({column}) LIKE ?"
         if ota_only:
             query += " AND (lineupid LIKE '%OTA%' OR lineupid LIKE '%LOCALBROADCAST%' OR lineupid LIKE '%-DEFAULT')"
@@ -825,6 +832,7 @@ def load_config(args=None) -> Dict:
         "EPG_MAX_WORKERS": 3,
         "EPG_OTA_ONLY": False,
         "EPG_CDN_SUBDOMAIN": "zap2it",
+        "EPG_FALLBACK_ZIP": "",
     }
     
     if Path(CONFIG_FILE).exists():
@@ -896,6 +904,8 @@ def load_config(args=None) -> Dict:
             config["EPG_LOOKUP_VALUE"] = args.lookup_value
         if args.cdn_subdomain:
             config["EPG_CDN_SUBDOMAIN"] = args.cdn_subdomain
+        if args.fallback_zip:
+            config["EPG_FALLBACK_ZIP"] = args.fallback_zip
 
     _set_cdn_subdomain(config.get("EPG_CDN_SUBDOMAIN", "zap2it"))
 
@@ -944,13 +954,14 @@ def load_config(args=None) -> Dict:
 # ---------------- Parallel Fetcher ----------------
 def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
     """Wrapper for parallel execution."""
-    lineup, country, postal, timespan, delay, retry_count = args
+    lineup, country, postal, timespan, delay, retry_count, fallback_zip = args
     if not postal:
         zip_lookup = lookup_zip_for_lineup(lineup)
         if zip_lookup:
             postal = zip_lookup
-        else:
-            postal = "90001"
+        elif fallback_zip:
+            postal = fallback_zip
+            logging.debug(f"Using fallback ZIP {fallback_zip} for {lineup}")
 
     try:
         channels, stats = fetch_grid(
@@ -981,10 +992,44 @@ def lookup_zip_for_lineup(lineup_id: str, db_path: str = DB_FILE) -> Optional[st
         logging.debug(f"ZIP lookup failed for {lineup_id}: {e}")
     return None
 
+def print_summary_table(all_stats: Dict, total_channels: int, total_events: int, output_file: Path):
+    """Print a formatted summary table of the fetch results."""
+    print("\n" + "="*70)
+    print("EPG FETCH SUMMARY")
+    print("="*70)
+
+    # Column headers
+    print(f"{'Lineup ID':<40} {'Status':<10} {'Channels':>8} {'Events':>10}")
+    print("-"*70)
+
+    for lineup_id, stats in sorted(all_stats.items()):
+        if "error" in stats:
+            status = "FAILED"
+            ch_count = "-"
+            ev_count = "-"
+        else:
+            status = "OK"
+            ch_count = str(stats.get("channels_found", 0))
+            ev_count = str(stats.get("events_found", 0))
+
+        # Truncate long lineup IDs
+        display_id = lineup_id[:38] + ".." if len(lineup_id) > 40 else lineup_id
+        print(f"{display_id:<40} {status:<10} {ch_count:>8} {ev_count:>10}")
+
+    print("-"*70)
+    successful = sum(1 for s in all_stats.values() if "error" not in s)
+    failed = len(all_stats) - successful
+    print(f"{'TOTAL':<40} {f'{successful}/{len(all_stats)}':<10} {total_channels:>8} {total_events:>10}")
+    print("="*70)
+    print(f"Output: {output_file}")
+    if failed > 0:
+        print(f"Warning: {failed} lineup(s) failed to fetch")
+    print("")
+
 def run_epg(config: Dict):
     """Main EPG fetching logic."""
     lineup_ids = [lid.strip() for lid in str(config["EPG_LINEUP_ID"]).split(",") if lid.strip()]
-    
+
     if not lineup_ids:
         logging.error("No lineup IDs found.")
         logging.error(f"  Lookup mode: {config.get('EPG_LOOKUP_MODE')}")
@@ -1001,45 +1046,50 @@ def run_epg(config: Dict):
     parallel = config.get("EPG_PARALLEL", False)
     max_workers = int(config.get("EPG_MAX_WORKERS", 3))
     db_path = config.get("EPG_DB_PATH", DB_FILE)
+    fallback_zip = config.get("EPG_FALLBACK_ZIP", "")
 
     logging.info(f"Starting EPG fetch for {len(lineup_ids)} lineup(s)")
-    logging.info(f"  Timespan: {timespan} hours")
-    logging.info(f"  Parallel: {parallel} (workers: {max_workers if parallel else 'N/A'})")
-    
+    logging.info(f"  Timespan: {timespan} hours ({timespan // 24} days)")
+    logging.info(f"  Parallel: {parallel}" + (f" (workers: {max_workers})" if parallel else ""))
+
     all_channels = []
     all_stats = {}
     country_suffix_map = {}
-    
+    completed_count = 0
+
     if parallel and len(lineup_ids) > 1:
         args_list = [
-            (lid, country, postal, timespan, delay, retry_count) 
+            (lid, country, postal, timespan, delay, retry_count, fallback_zip)
             for lid in lineup_ids
         ]
-        
+
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {executor.submit(fetch_lineup_wrapper, args): args[0] for args in args_list}
-            
+
             for future in as_completed(futures):
                 lineup = futures[future]
+                completed_count += 1
+                progress = f"[{completed_count}/{len(lineup_ids)}]"
                 try:
                     lineup_id, channels, stats = future.result()
                     all_channels.extend(channels)
                     all_stats[lineup_id] = stats
-                    
+
                     suffix = get_country_suffix(lineup_id, db_path)
                     for ch in channels:
                         station_id = str(ch.get("stationId") or ch.get("channelId") or "")
                         if station_id:
                             country_suffix_map[station_id] = suffix
-                    
-                    logging.info(f"  [{lineup_id}] {stats.get('channels_found', 0)} channels, "
+
+                    logging.info(f"{progress} {lineup_id}: {stats.get('channels_found', 0)} channels, "
                                f"{stats.get('events_found', 0)} events")
                 except Exception as e:
-                    logging.error(f"  [{lineup}] Failed: {e}")
+                    logging.error(f"{progress} {lineup}: FAILED - {e}")
                     all_stats[lineup] = {"error": str(e)}
     else:
         for idx, lineup in enumerate(lineup_ids, 1):
-            logging.info(f"Fetching lineup {idx}/{len(lineup_ids)}: {lineup}")
+            progress = f"[{idx}/{len(lineup_ids)}]"
+            logging.info(f"{progress} Fetching: {lineup}")
             try:
                 channels, stats = fetch_grid(
                     country=country,
@@ -1051,22 +1101,22 @@ def run_epg(config: Dict):
                 )
                 all_channels.extend(channels)
                 all_stats[lineup] = stats
-                
+
                 suffix = get_country_suffix(lineup, db_path)
                 for ch in channels:
                     station_id = str(ch.get("stationId") or ch.get("channelId") or "")
                     if station_id:
                         country_suffix_map[station_id] = suffix
-                
-                logging.info(f"  [{lineup}] {stats.get('channels_found', 0)} channels, "
+
+                logging.info(f"{progress} {lineup}: {stats.get('channels_found', 0)} channels, "
                            f"{stats.get('events_found', 0)} events")
             except Exception as e:
-                logging.error(f"  [{lineup}] Failed: {e}")
+                logging.error(f"{progress} {lineup}: FAILED - {e}")
                 all_stats[lineup] = {"error": str(e)}
 
     successful = sum(1 for s in all_stats.values() if "error" not in s)
     failed = len(all_stats) - successful
-    
+
     logging.info(f"Fetch complete: {successful} succeeded, {failed} failed")
     logging.info(f"  Raw channels collected: {len(all_channels)}")
     
@@ -1085,13 +1135,16 @@ def run_epg(config: Dict):
 
     try:
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        write_xmltv(all_channels, output_file, 
+        write_xmltv(all_channels, output_file,
                    include_thumbnails=config.get("EPG_THUMBNAILS", True),
                    country_suffix_map=country_suffix_map)
         logging.info(f"EPG successfully written to {output_file}")
     except Exception as e:
         logging.error(f"Failed to write XMLTV: {e}")
         sys.exit(1)
+
+    # Print summary table
+    print_summary_table(all_stats, total_channels, total_events, output_file)
 
 # ---------------- Command-Line Interface ----------------
 def parse_arguments():
@@ -1130,32 +1183,38 @@ Examples:
                              help='Filter to only OTA (Over-The-Air) local broadcast channels')
     
     location_group = parser.add_argument_group('Location')
-    location_group.add_argument('--country', type=str,
-                               help='Country code (US, CA, UK, etc.)')
+    location_group.add_argument('--country', type=str, default='USA',
+                               help='Country code (default: %(default)s)')
     location_group.add_argument('--zip', type=str,
-                               help='Postal/ZIP code')
+                               help='Postal/ZIP code (auto-detected if not set)')
     
     output_group = parser.add_argument_group('Output')
-    output_group.add_argument('--output', '-o', type=str,
-                             help='Output XMLTV file path (default: EPG.xml)')
+    output_group.add_argument('--output', '-o', type=str, default='EPG.xml',
+                             help='Output XMLTV file path (default: %(default)s)')
     output_group.add_argument('--no-thumbnails', action='store_true',
                              help='Exclude thumbnail/icon URLs from output')
-    
+
     fetch_group = parser.add_argument_group('Fetching Options')
-    fetch_group.add_argument('--days', type=int,
-                            help='Number of days to fetch (1-7, default: 1)')
-    fetch_group.add_argument('--delay', type=int,
-                            help='Delay in seconds between API requests')
-    fetch_group.add_argument('--retry-count', type=int,
-                            help='Number of retries for failed requests (default: 3)')
+    fetch_group.add_argument('--days', type=int, default=1,
+                            help='Number of days to fetch, 1-7 (default: %(default)s)')
+    fetch_group.add_argument('--delay', type=int, default=0,
+                            help='Delay in seconds between API requests (default: %(default)s)')
+    fetch_group.add_argument('--retry-count', type=int, default=3,
+                            help='Number of retries for failed requests (default: %(default)s)')
     fetch_group.add_argument('--max-lineups', type=int,
                             help='Maximum number of lineups to fetch from database lookup')
-    
+
     parallel_group = parser.add_argument_group('Parallel Execution')
     parallel_group.add_argument('--parallel', action='store_true',
                                help='Fetch multiple lineups in parallel')
-    parallel_group.add_argument('--max-workers', type=int,
-                               help='Maximum parallel workers (default: 3)')
+    parallel_group.add_argument('--max-workers', type=int, default=3,
+                               help='Maximum parallel workers (default: %(default)s)')
+
+    misc_group = parser.add_argument_group('Miscellaneous')
+    misc_group.add_argument('--dry-run', action='store_true',
+                           help='Show what would be fetched without making API calls')
+    misc_group.add_argument('--init-config', action='store_true',
+                           help='Generate a sample config file and exit')
     
     log_group = parser.add_argument_group('Logging')
     log_group.add_argument('--log-level', type=str,
@@ -1171,17 +1230,100 @@ Examples:
     cdn_group = parser.add_argument_group('CDN Options')
     cdn_group.add_argument('--cdn-subdomain', type=str,
                           help='TMS Image CDN subdomain (default: zap2it)')
-    
+
+    advanced_group = parser.add_argument_group('Advanced')
+    advanced_group.add_argument('--fallback-zip', type=str,
+                               help='Fallback ZIP code when auto-lookup fails (default: none)')
+
+    parser.add_argument('--version', action='version', version=f'%(prog)s {VERSION}')
+
     return parser.parse_args()
+
+# ---------------- Init Config Helper ----------------
+def generate_sample_config():
+    """Generate a sample configuration file."""
+    sample = {
+        "EPG_LINEUP_ID": "",
+        "EPG_LOOKUP_MODE": "ota",
+        "EPG_LOOKUP_VALUE": "United States",
+        "EPG_COUNTRY": "USA",
+        "EPG_ZIP": "",
+        "EPG_OUTPUT": "EPG.xml",
+        "EPG_TIMESPAN_DAYS": 1,
+        "EPG_DELAY": 0,
+        "EPG_LOG_LEVEL": "INFO",
+        "EPG_THUMBNAILS": True,
+        "EPG_MAX_LINEUPS": 10,
+        "EPG_RETRY_COUNT": 3,
+        "EPG_PARALLEL": False,
+        "EPG_MAX_WORKERS": 3,
+        "EPG_OTA_ONLY": True,
+        "EPG_CDN_SUBDOMAIN": "zap2it"
+    }
+
+    config_path = Path(CONFIG_FILE)
+    if config_path.exists():
+        print(f"Config file already exists: {config_path}")
+        print("Remove it first if you want to regenerate.")
+        return False
+
+    with open(config_path, "w") as f:
+        json.dump(sample, f, indent=2)
+
+    print(f"Sample config created: {config_path}")
+    print("Edit this file to customize your EPG settings.")
+    return True
+
+# ---------------- Dry Run ----------------
+def dry_run(config: Dict):
+    """Show what would be fetched without making API calls."""
+    lineup_ids = [lid.strip() for lid in str(config.get("EPG_LINEUP_ID", "")).split(",") if lid.strip()]
+
+    print("\n" + "="*60)
+    print("DRY RUN - No API calls will be made")
+    print("="*60)
+
+    print(f"\nConfiguration:")
+    print(f"  Country:      {config.get('EPG_COUNTRY', 'USA')}")
+    print(f"  ZIP/Postal:   {config.get('EPG_ZIP') or '(auto-lookup)'}")
+    print(f"  Timespan:     {config.get('EPG_TIMESPAN', 24)} hours ({config.get('EPG_TIMESPAN_DAYS', 1)} days)")
+    print(f"  Output file:  {config.get('EPG_OUTPUT', 'EPG.xml')}")
+    print(f"  Thumbnails:   {'Yes' if config.get('EPG_THUMBNAILS', True) else 'No'}")
+    print(f"  Parallel:     {'Yes' if config.get('EPG_PARALLEL', False) else 'No'}")
+    if config.get('EPG_PARALLEL'):
+        print(f"  Max workers:  {config.get('EPG_MAX_WORKERS', 3)}")
+
+    print(f"\nLineups to fetch ({len(lineup_ids)}):")
+    if not lineup_ids:
+        print("  (none found - check your lookup settings)")
+    else:
+        for i, lid in enumerate(lineup_ids, 1):
+            ota_marker = " [OTA]" if _is_ota(lid) else ""
+            print(f"  {i:3}. {lid}{ota_marker}")
+
+    print("\n" + "="*60)
+    print("Run without --dry-run to execute the fetch.")
+    print("="*60 + "\n")
 
 # ---------------- Main ----------------
 if __name__ == "__main__":
     args = parse_arguments()
+
+    # Handle --init-config before loading config
+    if getattr(args, 'init_config', False):
+        success = generate_sample_config()
+        sys.exit(0 if success else 1)
+
     config = load_config(args)
-    
+
     log_level = config.get("EPG_LOG_LEVEL") or config.get("EPG_VERBOSE", 1)
     setup_logging(log_level, config.get("EPG_LOG_FILE"))
-    
+
+    # Handle --dry-run
+    if getattr(args, 'dry_run', False):
+        dry_run(config)
+        sys.exit(0)
+
     try:
         with _single_instance_guard():
             run_epg(config)
