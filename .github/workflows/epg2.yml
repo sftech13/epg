@@ -41,7 +41,7 @@ jobs:
 
       - name: Run epg2.py
         working-directory: ./
-        run: python epg2.py
+        run: python epg2.py --profiles
 
       - name: Commit and push EPG.xml
         run: |
