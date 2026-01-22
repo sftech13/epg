@@ -2,8 +2,8 @@
 zap2it.db filter=lfs diff=lfs merge=lfs -text
 
 # Merge strategy for EPG outputs (ours wins on conflicts)
-docs/EPG*.xml.gz merge=ours
-docs/epg.log merge=ours
+output/EPG*.xml.gz merge=ours
+output/epg.log merge=ours
 
 # Binary files
 *.gz binary

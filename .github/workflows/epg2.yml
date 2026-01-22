@@ -42,7 +42,7 @@ jobs:
           git config user.email "actions@github.com"
 
           # Force add all EPG files (gzipped outputs from multi-profile mode)
-          git add -f docs/EPG*.xml.gz docs/epg.log || echo "Nothing to add"
+          git add -f output/EPG*.xml.gz output/epg.log || echo "Nothing to add"
           git commit -m "Auto-update EPG feed" || echo "No changes to commit"
           git push
         env:

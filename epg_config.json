@@ -8,13 +8,13 @@
   "EPG_PARALLEL": true,
   "EPG_MAX_WORKERS": 5,
   "EPG_LOG_LEVEL": "INFO",
-  "EPG_LOG_FILE": "docs/epg.log",
+  "EPG_LOG_FILE": "output/epg.log",
   "EPG_DB_PATH": "zap2it.db",
 
   "EPG_PROFILES": [
     {
       "name": "US OTA",
-      "output": "docs/EPG-us-ota.xml.gz",
+      "output": "output/EPG-us-ota.xml.gz",
       "lookup_mode": "ota",
       "lookup_value": "United States",
       "ota_only": true,
@@ -22,7 +22,7 @@
     },
     {
       "name": "California Cable",
-      "output": "docs/EPG-california.xml.gz",
+      "output": "output/EPG-california.xml.gz",
       "lookup_mode": "keyword",
       "lookup_value": "california, los angeles, san diego, san francisco",
       "ota_only": false,
@@ -31,7 +31,7 @@
     {
       "_comment": "Canadian OTA lineups not supported by GraceNote API - using cable lineups instead",
       "name": "Canada Cable",
-      "output": "docs/EPG-canada.xml.gz",
+      "output": "output/EPG-canada.xml.gz",
       "lookup_mode": "country_name",
       "lookup_value": "Canada",
       "ota_only": false,
@@ -40,7 +40,7 @@
     {
       "_comment": "Latin American cable lineups - works with GraceNote API",
       "name": "Latin America",
-      "output": "docs/EPG-latam.xml.gz",
+      "output": "output/EPG-latam.xml.gz",
       "lookup_mode": "keyword",
       "lookup_value": "chile, argentina, colombia, peru, ecuador, venezuela, mexico, costa rica",
       "ota_only": false,
@@ -49,14 +49,14 @@
     {
       "_comment": "European EPG from globetvapp/epg GitHub - updated daily at 3AM UTC",
       "name": "Europe",
-      "output": "docs/EPG-europe.xml.gz",
+      "output": "output/EPG-europe.xml.gz",
       "source": "globetvapp",
       "globetvapp_countries": "uk, germany, france, spain, italy, netherlands, belgium, austria, switzerland, poland, sweden, norway, denmark, finland, ireland, portugal"
     },
     {
       "_comment": "Free streaming services EPG from i.mjh.nz - Pluto, Samsung TV+, Plex, etc.",
       "name": "Streaming Services",
-      "output": "docs/EPG-streaming.xml.gz",
+      "output": "output/EPG-streaming.xml.gz",
       "source": "mjh",
       "mjh_services": "pluto_us, pluto_uk, samsung_us, samsung_uk, plex_all, stirr, roku_us, tubi"
     }
@@ -67,7 +67,7 @@
     "EPG_LOOKUP_VALUE": "california",
     "EPG_OTA_ONLY": false,
     "EPG_MAX_LINEUPS": 5,
-    "EPG_OUTPUT": "docs/EPG.xml"
+    "EPG_OUTPUT": "output/EPG.xml"
   },
 
   "_notes": {

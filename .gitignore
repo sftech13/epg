@@ -23,7 +23,7 @@ env/
 
 # Logs (except epg.log which we commit)
 *.log
-!docs/epg.log
+!output/epg.log
 
 # Database dumps (not needed for runtime)
 *.sql
@@ -39,8 +39,8 @@ full_dump.sql
 Thumbs.db
 
 # Old uncompressed EPG (now using .gz)
-docs/EPG.xml
+output/EPG.xml
 
 # Local test outputs
 EPG*.xml
-!docs/EPG*.xml.gz
+!output/EPG*.xml.gz

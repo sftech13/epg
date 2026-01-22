@@ -38,7 +38,7 @@ Define multiple EPG outputs in one run. Each profile gets its own output file wi
   "EPG_PROFILES": [
     {
       "name": "US OTA",
-      "output": "docs/EPG-us-ota.xml",
+      "output": "output/EPG-us-ota.xml",
       "lookup_mode": "ota",
       "lookup_value": "United States",
       "ota_only": true,
@@ -46,7 +46,7 @@ Define multiple EPG outputs in one run. Each profile gets its own output file wi
     },
     {
       "name": "California Cable",
-      "output": "docs/EPG-california.xml",
+      "output": "output/EPG-california.xml",
       "lookup_mode": "keyword",
       "lookup_value": "california, los angeles",
       "ota_only": false,
@@ -54,7 +54,7 @@ Define multiple EPG outputs in one run. Each profile gets its own output file wi
     },
     {
       "name": "Canada OTA",
-      "output": "docs/EPG-canada-ota.xml",
+      "output": "output/EPG-canada-ota.xml",
       "lookup_mode": "ota",
       "lookup_value": "Canada",
       "ota_only": true,
@@ -79,7 +79,7 @@ python3 epg2.py --profiles
 | Option | Description | Example |
 |--------|-------------|---------|
 | `name` | Display name for the profile | `"US OTA"` |
-| `output` | Output XML file path | `"docs/EPG-us.xml"` |
+| `output` | Output XML file path | `"output/EPG-us.xml"` |
 | `lookup_mode` | How to find lineups | `"ota"`, `"keyword"`, `"country_name"` |
 | `lookup_value` | Search value(s), comma-separated | `"United States"` |
 | `ota_only` | Only OTA channels | `true` or `false` |
@@ -233,7 +233,7 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 ```json
 {
   "name": "Chile",
-  "output": "docs/EPG-chile.xml.gz",
+  "output": "output/EPG-chile.xml.gz",
   "lookup_mode": "country_name",
   "lookup_value": "Chile",
   "ota_only": false,
@@ -245,7 +245,7 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 ```json
 {
   "name": "Caribbean",
-  "output": "docs/EPG-caribbean.xml.gz",
+  "output": "output/EPG-caribbean.xml.gz",
   "lookup_mode": "keyword",
   "lookup_value": "jamaica, bahamas, trinidad, cayman, curacao, aruba, belize",
   "ota_only": false,
@@ -257,7 +257,7 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 ```json
 {
   "name": "Central America",
-  "output": "docs/EPG-central-america.xml.gz",
+  "output": "output/EPG-central-america.xml.gz",
   "lookup_mode": "keyword",
   "lookup_value": "guatemala, honduras, el salvador, nicaragua, panama",
   "ota_only": false,
@@ -278,7 +278,7 @@ For regions not supported by GraceNote (Europe, UK) and free streaming services,
 ```json
 {
   "name": "Europe",
-  "output": "docs/EPG-europe.xml.gz",
+  "output": "output/EPG-europe.xml.gz",
   "source": "globetvapp",
   "globetvapp_countries": "uk, germany, france, spain, italy, netherlands"
 }
@@ -291,7 +291,7 @@ For regions not supported by GraceNote (Europe, UK) and free streaming services,
 ```json
 {
   "name": "Streaming",
-  "output": "docs/EPG-streaming.xml.gz",
+  "output": "output/EPG-streaming.xml.gz",
   "source": "mjh",
   "mjh_services": "pluto_us, pluto_uk, samsung_us, plex_all, tubi"
 }
@@ -310,7 +310,7 @@ You can also specify direct XMLTV URLs:
 ```json
 {
   "name": "Custom",
-  "output": "docs/EPG-custom.xml.gz",
+  "output": "output/EPG-custom.xml.gz",
   "source": "external",
   "urls": "https://example.com/epg1.xml, https://example.com/epg2.xml.gz"
 }
