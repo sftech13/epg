@@ -1,6 +1,11 @@
 # EPG Fetcher (epg2.py)
 
-Fetches TV Electronic Program Guide data from the GraceNote API and outputs XMLTV format.
+Fetches TV Electronic Program Guide data from multiple sources and outputs XMLTV format.
+
+**Supported Sources:**
+- **GraceNote API** - USA, Canada, Latin America
+- **globetvapp/epg** - European countries (UK, Germany, France, etc.)
+- **i.mjh.nz** - Free streaming services (Pluto TV, Samsung TV+, Plex, Tubi, etc.)
 
 ## Quick Start
 
@@ -170,26 +175,31 @@ The script generates XMLTV files compatible with:
 
 ## Available Regions
 
-The GraceNote API database contains 52 countries, but **only some regions actually work** with the API.
-
-### Supported Regions
+### GraceNote API Regions
 
 | Region | Status | Notes |
 |--------|--------|-------|
 | USA | **Works** | OTA (over-the-air) and cable lineups both work |
 | Canada | **Works** | Cable only (OTA not supported by API) |
 | Latin America | **Works** | Cable lineups for Chile, Argentina, Colombia, Peru, etc. |
-| Europe | **Not supported** | API returns errors for all European lineups |
-| UK | **Not supported** | API returns errors for all UK lineups |
+
+### External Sources (Europe & Streaming)
+
+| Source | Region | Notes |
+|--------|--------|-------|
+| [globetvapp/epg](https://github.com/globetvapp/epg) | **Europe** | UK, Germany, France, Spain, Italy, + 20 more countries |
+| [i.mjh.nz](https://i.mjh.nz/) | **Streaming** | Pluto TV, Samsung TV+, Plex, Tubi, Stirr, Roku |
 
 ### Pre-configured Profiles
 
-| Profile | Countries | Lineups |
-|---------|-----------|---------|
-| US OTA | United States (OTA) | ~50 |
-| California Cable | US cable (CA region) | 10 |
-| Canada Cable | Canada | 10 |
-| Latin America | CHL, ARG, COL, PER, ECU, VEN, MEX, CRI | 20 |
+| Profile | Source | Countries/Services |
+|---------|--------|-------------------|
+| US OTA | GraceNote | United States (OTA) |
+| California Cable | GraceNote | US cable (CA region) |
+| Canada Cable | GraceNote | Canada |
+| Latin America | GraceNote | CHL, ARG, COL, PER, ECU, VEN, MEX, CRI |
+| **Europe** | globetvapp | UK, DE, FR, ES, IT, NL, BE, AT, CH, PL, SE, NO, DK, FI, IE, PT |
+| **Streaming Services** | i.mjh.nz | Pluto US/UK, Samsung US/UK, Plex, Stirr, Roku, Tubi |
 
 ### Countries in Database (API Support Varies)
 
@@ -255,9 +265,60 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 }
 ```
 
-> **Note:** European lineups (Germany, France, UK, etc.) are in the database but the GraceNote API does not serve data for them. Only use USA, Canada, and Latin American regions.
+> **Note:** For Europe, use the `globetvapp` source instead of GraceNote. For streaming services, use the `mjh` source.
 
-### Lookup Modes
+---
+
+## External EPG Sources (NEW in v2.2.0)
+
+For regions not supported by GraceNote (Europe, UK) and free streaming services, use external sources.
+
+### Europe Profile (globetvapp)
+
+```json
+{
+  "name": "Europe",
+  "output": "docs/EPG-europe.xml.gz",
+  "source": "globetvapp",
+  "globetvapp_countries": "uk, germany, france, spain, italy, netherlands"
+}
+```
+
+**Available countries:** austria, belgium, bulgaria, croatia, czech, denmark, finland, france, germany, greece, hungary, ireland, italy, netherlands, norway, poland, portugal, romania, russia, serbia, slovakia, slovenia, spain, sweden, switzerland, turkey, ukraine, uk
+
+### Streaming Services Profile (i.mjh.nz)
+
+```json
+{
+  "name": "Streaming",
+  "output": "docs/EPG-streaming.xml.gz",
+  "source": "mjh",
+  "mjh_services": "pluto_us, pluto_uk, samsung_us, plex_all, tubi"
+}
+```
+
+**Available services:**
+- **Pluto TV:** pluto_us, pluto_uk, pluto_de, pluto_fr, pluto_es, pluto_it
+- **Samsung TV+:** samsung_us, samsung_uk, samsung_de, samsung_fr
+- **Plex:** plex_us, plex_uk, plex_de, plex_all
+- **Others:** stirr, roku_us, tubi
+
+### Direct URL Profile
+
+You can also specify direct XMLTV URLs:
+
+```json
+{
+  "name": "Custom",
+  "output": "docs/EPG-custom.xml.gz",
+  "source": "external",
+  "urls": "https://example.com/epg1.xml, https://example.com/epg2.xml.gz"
+}
+```
+
+---
+
+### Lookup Modes (GraceNote profiles only)
 
 | Mode | Description | Example Value |
 |------|-------------|---------------|
@@ -266,6 +327,8 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 | `ota` | US OTA lineups only | `"United States"` |
 | `country` | Match by 3-letter country code | `"CHL"`, `"ARG"` |
 | `station_name` | Match by station/channel name | `"ESPN"`, `"CNN"` |
+
+> **Note:** Lookup modes only apply to GraceNote profiles. External sources (`globetvapp`, `mjh`) use their own configuration.
 
 ### Tips
 
@@ -279,9 +342,17 @@ To add a new region profile, add an entry to `EPG_PROFILES` in `epg_config.json`
 
 ## Version
 
-Current: **2.1.0**
+Current: **2.2.0**
 
 ## Changelog
+
+### v2.2.0
+- **NEW: External EPG sources** - Europe and streaming services support
+- Added `globetvapp` source for European countries (UK, Germany, France, etc.)
+- Added `mjh` source for streaming services (Pluto TV, Samsung TV+, Plex, Tubi, etc.)
+- Profiles can now use `source: "globetvapp"`, `source: "mjh"`, or `source: "external"`
+- Added XMLTV merge functionality for combining multiple external sources
+- Gzip download support for compressed EPG files
 
 ### v2.1.0
 - **NEW: Multi-profile mode** - generate multiple EPG files in one run

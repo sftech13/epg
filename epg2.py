@@ -23,7 +23,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
-VERSION = "2.1.0"
+VERSION = "2.2.0"
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
 DB_FILE = str(Path(__file__).parent / "zap2it.db")
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
@@ -758,6 +758,268 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
     else:
         tree.write(out_str, encoding="utf-8", xml_declaration=True)
 
+# ---------------- External EPG Sources ----------------
+# Supported external EPG providers
+EXTERNAL_EPG_SOURCES = {
+    # globetvapp/epg - European countries
+    "globetvapp": {
+        "base_url": "https://raw.githubusercontent.com/globetvapp/epg/main",
+        "countries": {
+            "austria": "Austria/austria1.xml",
+            "belgium": "Belgium/belgium1.xml",
+            "bulgaria": "Bulgaria/bulgaria1.xml",
+            "croatia": "Croatia/croatia1.xml",
+            "czech": "Czechrepublic/czechrepublic1.xml",
+            "denmark": "Denmark/denmark1.xml",
+            "finland": "Finland/finland1.xml",
+            "france": "France/france1.xml",
+            "germany": "Germany/germany1.xml",
+            "greece": "Greece/greece1.xml",
+            "hungary": "Hungary/hungary1.xml",
+            "ireland": "Ireland/ireland1.xml",
+            "italy": "Italy/italy1.xml",
+            "netherlands": "Netherlands/netherlands1.xml",
+            "norway": "Norway/norway1.xml",
+            "poland": "Poland/poland1.xml",
+            "portugal": "Portugal/portugal1.xml",
+            "romania": "Romania/romania1.xml",
+            "russia": "Russia/russia1.xml",
+            "serbia": "Serbia/serbia1.xml",
+            "slovakia": "Slovakia/slovakia1.xml",
+            "slovenia": "Slovenia/slovenia1.xml",
+            "spain": "Spain/spain1.xml",
+            "sweden": "Sweden/sweden1.xml",
+            "switzerland": "Switzerland/switzerland1.xml",
+            "turkey": "Turkey/turkey1.xml",
+            "ukraine": "Ukraine/ukraine1.xml",
+            "uk": "Unitedkingdom/unitedkingdom1.xml",
+            "united kingdom": "Unitedkingdom/unitedkingdom1.xml",
+        }
+    },
+    # i.mjh.nz - Streaming services EPG
+    "mjh": {
+        "services": {
+            "pluto_us": "https://i.mjh.nz/PlutoTV/us.xml.gz",
+            "pluto_uk": "https://i.mjh.nz/PlutoTV/uk.xml.gz",
+            "pluto_de": "https://i.mjh.nz/PlutoTV/de.xml.gz",
+            "pluto_fr": "https://i.mjh.nz/PlutoTV/fr.xml.gz",
+            "pluto_es": "https://i.mjh.nz/PlutoTV/es.xml.gz",
+            "pluto_it": "https://i.mjh.nz/PlutoTV/it.xml.gz",
+            "samsung_us": "https://i.mjh.nz/SamsungTVPlus/us.xml.gz",
+            "samsung_uk": "https://i.mjh.nz/SamsungTVPlus/uk.xml.gz",
+            "samsung_de": "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
+            "samsung_fr": "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
+            "plex_us": "https://i.mjh.nz/Plex/us.xml.gz",
+            "plex_uk": "https://i.mjh.nz/Plex/uk.xml.gz",
+            "plex_de": "https://i.mjh.nz/Plex/de.xml.gz",
+            "plex_all": "https://i.mjh.nz/Plex/all.xml.gz",
+            "stirr": "https://i.mjh.nz/Stirr/all.xml.gz",
+            "roku_us": "https://i.mjh.nz/Roku/us.xml.gz",
+            "tubi": "https://i.mjh.nz/Tubi/all.xml.gz",
+        }
+    }
+}
+
+
+def fetch_external_epg(url: str, max_retries: int = 3) -> Optional[ET.Element]:
+    """Download XMLTV from external URL and return parsed XML root element."""
+    import gzip
+    from io import BytesIO
+
+    for attempt in range(1, max_retries + 1):
+        try:
+            headers = {"User-Agent": _ua()}
+            logging.debug(f"Fetching external EPG: {url} (attempt {attempt}/{max_retries})")
+
+            response = requests.get(url, headers=headers, timeout=60)
+            response.raise_for_status()
+
+            content = response.content
+
+            # Handle gzipped content
+            if url.endswith('.gz') or response.headers.get('Content-Encoding') == 'gzip':
+                try:
+                    content = gzip.decompress(content)
+                except gzip.BadGzipFile:
+                    pass  # Not actually gzipped, use as-is
+
+            # Parse XML
+            root = ET.fromstring(content)
+
+            if root.tag != 'tv':
+                logging.warning(f"Unexpected root element '{root.tag}' in {url}")
+                return None
+
+            channel_count = len(root.findall('.//channel'))
+            programme_count = len(root.findall('.//programme'))
+            logging.info(f"Downloaded {url}: {channel_count} channels, {programme_count} programmes")
+
+            return root
+
+        except requests.RequestException as e:
+            if attempt < max_retries:
+                wait = 2 ** (attempt - 1)
+                logging.warning(f"Failed to fetch {url}: {e}, retrying in {wait}s")
+                time.sleep(wait)
+            else:
+                logging.error(f"Failed to fetch {url} after {max_retries} attempts: {e}")
+                return None
+        except ET.ParseError as e:
+            logging.error(f"Failed to parse XML from {url}: {e}")
+            return None
+
+    return None
+
+
+def merge_xmltv_elements(roots: List[ET.Element]) -> ET.Element:
+    """Merge multiple XMLTV root elements into one, deduplicating channels."""
+    merged = ET.Element("tv")
+    merged.set("generator-info-name", "EPG Fetcher External Merge")
+
+    seen_channels = {}  # id -> channel element
+    all_programmes = []
+
+    for root in roots:
+        if root is None:
+            continue
+
+        # Collect channels (dedupe by id)
+        for channel in root.findall('.//channel'):
+            ch_id = channel.get('id')
+            if ch_id and ch_id not in seen_channels:
+                seen_channels[ch_id] = channel
+
+        # Collect all programmes
+        for programme in root.findall('.//programme'):
+            all_programmes.append(programme)
+
+    # Add channels sorted by display-name
+    def get_display_name(ch):
+        dn = ch.find('display-name')
+        return (dn.text or '').lower() if dn is not None else ''
+
+    for ch_id, channel in sorted(seen_channels.items(), key=lambda x: get_display_name(x[1])):
+        merged.append(channel)
+
+    # Add programmes sorted by channel then start time
+    all_programmes.sort(key=lambda p: (p.get('channel', ''), p.get('start', '')))
+    for prog in all_programmes:
+        # Only include if channel exists
+        if prog.get('channel') in seen_channels:
+            merged.append(prog)
+
+    return merged
+
+
+def resolve_external_urls(profile: Dict) -> List[str]:
+    """Resolve external EPG URLs from profile configuration."""
+    urls = []
+    source = profile.get("source", "").lower()
+
+    # Direct URLs
+    if profile.get("urls"):
+        raw_urls = profile["urls"]
+        if isinstance(raw_urls, str):
+            urls.extend([u.strip() for u in raw_urls.split(",") if u.strip()])
+        elif isinstance(raw_urls, list):
+            urls.extend(raw_urls)
+
+    # globetvapp countries
+    if source == "globetvapp" or profile.get("globetvapp_countries"):
+        countries_raw = profile.get("globetvapp_countries") or profile.get("countries", "")
+        if isinstance(countries_raw, str):
+            countries = [c.strip().lower() for c in countries_raw.split(",") if c.strip()]
+        else:
+            countries = [c.lower() for c in countries_raw]
+
+        base_url = EXTERNAL_EPG_SOURCES["globetvapp"]["base_url"]
+        country_map = EXTERNAL_EPG_SOURCES["globetvapp"]["countries"]
+
+        for country in countries:
+            if country in country_map:
+                urls.append(f"{base_url}/{country_map[country]}")
+            else:
+                logging.warning(f"Unknown globetvapp country: {country}")
+
+    # i.mjh.nz streaming services
+    if source == "mjh" or profile.get("mjh_services"):
+        services_raw = profile.get("mjh_services") or profile.get("services", "")
+        if isinstance(services_raw, str):
+            services = [s.strip().lower() for s in services_raw.split(",") if s.strip()]
+        else:
+            services = [s.lower() for s in services_raw]
+
+        service_map = EXTERNAL_EPG_SOURCES["mjh"]["services"]
+
+        for service in services:
+            if service in service_map:
+                urls.append(service_map[service])
+            else:
+                logging.warning(f"Unknown mjh service: {service}")
+
+    return urls
+
+
+def fetch_and_merge_external(profile: Dict, output_path: Path, max_retries: int = 3) -> Dict:
+    """Fetch external EPG sources and merge into single output file."""
+    import gzip
+
+    urls = resolve_external_urls(profile)
+
+    if not urls:
+        return {"status": "error", "message": "No URLs resolved for external profile"}
+
+    logging.info(f"Fetching {len(urls)} external EPG source(s)")
+
+    roots = []
+    stats = {"urls_fetched": 0, "urls_failed": 0, "total_urls": len(urls)}
+
+    for url in urls:
+        root = fetch_external_epg(url, max_retries)
+        if root is not None:
+            roots.append(root)
+            stats["urls_fetched"] += 1
+        else:
+            stats["urls_failed"] += 1
+
+    if not roots:
+        return {"status": "error", "message": "All external fetches failed", "stats": stats}
+
+    # Merge all fetched EPGs
+    logging.info(f"Merging {len(roots)} EPG source(s)")
+    merged = merge_xmltv_elements(roots)
+
+    # Count results
+    stats["channels"] = len(merged.findall('.//channel'))
+    stats["programmes"] = len(merged.findall('.//programme'))
+
+    # Write output
+    tree = ET.ElementTree(merged)
+    try:
+        ET.indent(tree, space="  ")
+    except AttributeError:
+        pass
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    out_str = str(output_path)
+
+    if out_str.endswith('.gz'):
+        with gzip.open(out_str, 'wb') as f:
+            tree.write(f, encoding="utf-8", xml_declaration=True)
+    else:
+        tree.write(out_str, encoding="utf-8", xml_declaration=True)
+
+    logging.info(f"Written merged EPG to {output_path}: {stats['channels']} channels, {stats['programmes']} programmes")
+
+    return {
+        "status": "ok",
+        "channels": stats["channels"],
+        "events": stats["programmes"],
+        "output": str(output_path),
+        "stats": stats
+    }
+
+
 # ---------------- DB Lookup ----------------
 ALLOWED_LOOKUP_COLUMNS = {"country_name", "country", "station_name", "lineup_name", "lineupid"}
 
@@ -1376,11 +1638,41 @@ def run_all_profiles(base_config: Dict):
     for idx, profile in enumerate(profiles, 1):
         name = profile.get("name", f"Profile {idx}")
         output = profile.get("output", f"EPG-{idx}.xml")
+        source_type = profile.get("source", "gracenote").lower()
 
         print(f"\n{'─'*70}")
         print(f"PROFILE {idx}/{len(profiles)}: {name}")
         print(f"{'─'*70}")
 
+        # Handle external sources (globetvapp, mjh, direct URLs)
+        if source_type in ("external", "globetvapp", "mjh") or profile.get("urls"):
+            logging.info(f"[{name}] External source mode: {source_type}")
+            try:
+                result = fetch_and_merge_external(
+                    profile,
+                    Path(output),
+                    max_retries=int(base_config.get("EPG_RETRY_COUNT", 3))
+                )
+                if result.get("status") == "ok":
+                    results.append({
+                        "name": name,
+                        "status": "OK",
+                        "channels": result.get("channels", 0),
+                        "events": result.get("events", 0),
+                        "output": result.get("output", output)
+                    })
+                else:
+                    results.append({
+                        "name": name,
+                        "status": "FAILED",
+                        "reason": result.get("message", "Unknown error")
+                    })
+            except Exception as e:
+                logging.error(f"[{name}] External fetch error: {e}")
+                results.append({"name": name, "status": "FAILED", "reason": str(e)})
+            continue
+
+        # Handle GraceNote sources (original behavior)
         # Resolve lineups for this profile
         lineups = resolve_lineups_for_profile(profile, base_config)
 

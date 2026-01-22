@@ -1,1 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs (except epg.log which we commit)
+*.log
+!docs/epg.log
+
+# Database dumps (not needed for runtime)
+*.sql
+full_dump.sql
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Old uncompressed EPG (now using .gz)
 docs/EPG.xml
+
+# Local test outputs
+EPG*.xml
+!docs/EPG*.xml.gz

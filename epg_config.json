@@ -45,6 +45,20 @@
       "lookup_value": "chile, argentina, colombia, peru, ecuador, venezuela, mexico, costa rica",
       "ota_only": false,
       "max_lineups": 20
+    },
+    {
+      "_comment": "European EPG from globetvapp/epg GitHub - updated daily at 3AM UTC",
+      "name": "Europe",
+      "output": "docs/EPG-europe.xml.gz",
+      "source": "globetvapp",
+      "globetvapp_countries": "uk, germany, france, spain, italy, netherlands, belgium, austria, switzerland, poland, sweden, norway, denmark, finland, ireland, portugal"
+    },
+    {
+      "_comment": "Free streaming services EPG from i.mjh.nz - Pluto, Samsung TV+, Plex, etc.",
+      "name": "Streaming Services",
+      "output": "docs/EPG-streaming.xml.gz",
+      "source": "mjh",
+      "mjh_services": "pluto_us, pluto_uk, samsung_us, samsung_uk, plex_all, stirr, roku_us, tubi"
     }
   ],
 
@@ -57,8 +71,10 @@
   },
 
   "_notes": {
-    "unsupported_regions": "UK, Europe (Germany, France, etc.), and Canadian OTA lineups are NOT supported by GraceNote API.",
-    "supported_regions": "USA (OTA + cable), Canada (cable only), Latin America (cable) work with the API.",
-    "supported_ota": "Only US OTA (local broadcast) lineups work with the GraceNote API."
+    "gracenote_regions": "USA (OTA + cable), Canada (cable only), Latin America (cable) work with GraceNote API.",
+    "external_sources": "Europe uses globetvapp/epg (GitHub), Streaming uses i.mjh.nz. Both updated daily.",
+    "supported_ota": "Only US OTA (local broadcast) lineups work with the GraceNote API.",
+    "globetvapp_countries": "austria, belgium, bulgaria, croatia, czech, denmark, finland, france, germany, greece, hungary, ireland, italy, netherlands, norway, poland, portugal, romania, russia, serbia, slovakia, slovenia, spain, sweden, switzerland, turkey, ukraine, uk",
+    "mjh_services": "pluto_us, pluto_uk, pluto_de, pluto_fr, pluto_es, pluto_it, samsung_us, samsung_uk, samsung_de, samsung_fr, plex_us, plex_uk, plex_de, plex_all, stirr, roku_us, tubi"
   }
 }
