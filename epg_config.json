@@ -1,7 +1,7 @@
 {
   "_comment": "EPG Fetcher Configuration - See README.md for details",
 
-  "EPG_TIMESPAN_DAYS": 2,
+  "EPG_TIMESPAN_DAYS": 5,
   "EPG_DELAY": 1,
   "EPG_RETRY_COUNT": 3,
   "EPG_THUMBNAILS": true,
