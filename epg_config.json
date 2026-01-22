@@ -1,26 +1,64 @@
 {
   "_comment": "EPG Fetcher Configuration - See README.md for details",
 
-  "EPG_LOOKUP_MODE": "keyword",
-  "EPG_LOOKUP_VALUE": "california, los angeles, san diego, san francisco, san jose, sacramento",
-  "EPG_OTA_ONLY": false,
-  "EPG_MAX_LINEUPS": 5,
-
-  "EPG_LINEUP_ID": "",
-  "EPG_ZIP": "",
-
   "EPG_TIMESPAN_DAYS": 2,
   "EPG_DELAY": 1,
   "EPG_RETRY_COUNT": 3,
-
-  "EPG_OUTPUT": "docs/EPG.xml",
   "EPG_THUMBNAILS": true,
-
   "EPG_PARALLEL": true,
   "EPG_MAX_WORKERS": 5,
-
   "EPG_LOG_LEVEL": "INFO",
   "EPG_LOG_FILE": "docs/epg.log",
+  "EPG_DB_PATH": "zap2it.db",
 
-  "EPG_DB_PATH": "zap2it.db"
+  "EPG_PROFILES": [
+    {
+      "name": "US OTA",
+      "output": "docs/EPG-us-ota.xml.gz",
+      "lookup_mode": "ota",
+      "lookup_value": "United States",
+      "ota_only": true,
+      "max_lineups": 50
+    },
+    {
+      "name": "California Cable",
+      "output": "docs/EPG-california.xml.gz",
+      "lookup_mode": "keyword",
+      "lookup_value": "california, los angeles, san diego, san francisco",
+      "ota_only": false,
+      "max_lineups": 10
+    },
+    {
+      "_comment": "Canadian OTA lineups not supported by GraceNote API - using cable lineups instead",
+      "name": "Canada Cable",
+      "output": "docs/EPG-canada.xml.gz",
+      "lookup_mode": "country_name",
+      "lookup_value": "Canada",
+      "ota_only": false,
+      "max_lineups": 10
+    },
+    {
+      "_comment": "Latin American cable lineups - works with GraceNote API",
+      "name": "Latin America",
+      "output": "docs/EPG-latam.xml.gz",
+      "lookup_mode": "keyword",
+      "lookup_value": "chile, argentina, colombia, peru, ecuador, venezuela, mexico, costa rica",
+      "ota_only": false,
+      "max_lineups": 20
+    }
+  ],
+
+  "_fallback_single_run": {
+    "EPG_LOOKUP_MODE": "keyword",
+    "EPG_LOOKUP_VALUE": "california",
+    "EPG_OTA_ONLY": false,
+    "EPG_MAX_LINEUPS": 5,
+    "EPG_OUTPUT": "docs/EPG.xml"
+  },
+
+  "_notes": {
+    "unsupported_regions": "UK, Europe (Germany, France, etc.), and Canadian OTA lineups are NOT supported by GraceNote API.",
+    "supported_regions": "USA (OTA + cable), Canada (cable only), Latin America (cable) work with the API.",
+    "supported_ota": "Only US OTA (local broadcast) lineups work with the GraceNote API."
+  }
 }

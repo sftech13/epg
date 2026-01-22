@@ -23,7 +23,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
 DB_FILE = str(Path(__file__).parent / "zap2it.db")
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
@@ -133,9 +133,20 @@ def _ua():
     return USER_AGENTS[secrets.randbelow(len(USER_AGENTS))]
 
 def _is_ota(lineup_id: str) -> bool:
-    """Check if lineup is Over-The-Air broadcast."""
+    """Check if lineup is Over-The-Air broadcast.
+
+    Only USA OTA lineups (containing 'OTA' or 'LOCALBROADCAST') are true OTA.
+    European/other -DEFAULT lineups are cable/satellite, not OTA.
+    """
     s = (lineup_id or "").upper()
-    return "OTA" in s or "LOCALBROADCAST" in s or s.endswith("-DEFAULT")
+    # Only USA lineups with OTA or LOCALBROADCAST are real OTA
+    # European -DEFAULT lineups (like DEU-1000143-DEFAULT) are cable, not OTA
+    if "OTA" in s or "LOCALBROADCAST" in s:
+        return True
+    # The special lineupId-DEFAULT format is used for API calls to OTA
+    if s == "LINEUPID-DEFAULT" or "-LINEUPID-DEFAULT" in s:
+        return True
+    return False
 
 def _headend_from_lineup(lineup_id: str) -> str:
     """Extract headend ID from lineup ID."""
@@ -171,9 +182,11 @@ def _fix_thumbnail_url(thumbnail: str) -> str:
     else:
         return f"https://{_CDN_SUBDOMAIN}.tmsimg.com/assets/{thumbnail}.jpg"
 
-def _build_url(lineup_id: str, headend_id: str, country: str, postal: str, 
+def _build_url(lineup_id: str, headend_id: str, country: str, postal: str,
                time_sec: int, chunk_hours: int, is_ota: bool) -> str:
     """Build API URL with proper parameters."""
+    from urllib.parse import quote
+
     device = _device_from_lineup(lineup_id)
     user_id = secrets.token_hex(4)
 
@@ -196,20 +209,32 @@ def _build_url(lineup_id: str, headend_id: str, country: str, postal: str,
     else:
         params.insert(6, ("postalCode", "-"))
 
-    qs = "&".join(f"{k}={v}" for k, v in params if v not in (None, ""))
+    # URL-encode parameter values (especially for postal codes with spaces)
+    qs = "&".join(f"{quote(k, safe='')}={quote(str(v), safe='')}" for k, v in params if v not in (None, ""))
     return f"{BASE_URL}?{qs}"
 
 # ---------------- Fetch Logic ----------------
-def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 72, 
-               delay_seconds: int = 0, max_retries: int = 3, 
+def _api_lineup_and_headend(country: str, lineup_id: str) -> Tuple[str, str]:
+    """
+    Transform lineup ID and headend for API calls.
+    For OTA lineups: lineupId becomes {COUNTRY}-lineupId-DEFAULT, headendId becomes "lineupId"
+    For non-OTA: lineup stays as-is, headend is extracted from the lineup ID.
+    """
+    c3 = COUNTRY_3.get(country.upper(), country.upper())
+    if _is_ota(lineup_id):
+        return f"{c3}-lineupId-DEFAULT", "lineupId"
+    return lineup_id, _headend_from_lineup(lineup_id)
+
+
+def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 72,
+               delay_seconds: int = 0, max_retries: int = 3,
                session: requests.Session = None) -> Tuple[List[Dict], Dict]:
     """
     Fetch EPG data for a given lineup and return channels/events with enriched metadata.
     Returns: (channels_list, stats_dict)
     """
     c3 = COUNTRY_3.get(country.upper(), country.upper())
-    lineup_api = lineup_id_input
-    headend_api = _headend_from_lineup(lineup_id_input)
+    lineup_api, headend_api = _api_lineup_and_headend(c3, lineup_id_input)
     total_hours = int(timespan)
     chunk_hours = 6
     
@@ -256,6 +281,18 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                         base = channels_map[cid]
                         for ev in ch.get("events", []) or []:
                             prog = ev.get("program", {}) or {}
+                            # Rating can be at event level (string like "TV-14") or prog level
+                            event_rating = ev.get("rating")  # Direct rating string
+                            prog_rating = _extract_rating(prog.get("ratings"))
+                            if event_rating and not prog_rating:
+                                prog_rating = {"system": "VCHIP", "value": event_rating}
+
+                            # Duration: event.duration is minutes, prog.runTime may also exist
+                            duration = ev.get("duration") or prog.get("runTime")
+
+                            # Tags provide audio/video info like Stereo, CC, HD
+                            tags = ev.get("tags") or []
+
                             enriched_event = {
                                 "startTime": ev.get("startTime"),
                                 "endTime": ev.get("endTime"),
@@ -263,7 +300,7 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                                 "description": prog.get("shortDesc") or ev.get("description"),
                                 "seasonTitle": prog.get("seasonTitle") or prog.get("episodeTitle"),
                                 "showType": prog.get("showType"),
-                                "runTime": prog.get("runTime"),
+                                "runTime": duration,
                                 "isNew": ev.get("isNew") or prog.get("isNew") or prog.get("new") or ("New" in (ev.get("flag") or [])),
                                 "seasonPremiere": prog.get("seasonPremiere"),
                                 "seasonFinale": prog.get("seasonFinale"),
@@ -274,10 +311,15 @@ def fetch_grid(country: str, lineup_id_input: str, postal: str, timespan: int = 
                                 "seasonNum": prog.get("seasonNum") or prog.get("season"),
                                 "episodeNum": prog.get("episodeNum") or prog.get("episode"),
                                 "seriesId": prog.get("seriesId") or ev.get("seriesId"),
-                                "programId": prog.get("programId") or prog.get("id"),
+                                "programId": prog.get("programId") or prog.get("id") or prog.get("tmsId"),
+                                "tmsId": prog.get("tmsId") or prog.get("id"),
+                                "releaseYear": prog.get("releaseYear"),
                                 "cast": prog.get("cast") or [],
                                 "crew": prog.get("crew") or [],
-                                "ratings": _extract_rating(prog.get("ratings")),
+                                "ratings": prog_rating,
+                                "stereo": "Stereo" in tags,
+                                "cc": "CC" in tags,
+                                "hd": "HD" in tags or "HDTV" in tags,
                             }
                             base["events"].append(enriched_event)
                     stats["chunks_fetched"] += 1
@@ -674,7 +716,23 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
                 ET.SubElement(prog_el, "premiere")
             if ev.get("seasonFinale"):
                 ET.SubElement(prog_el, "last-chance")
-            
+
+            # Release year (primarily for movies)
+            release_year = ev.get("releaseYear")
+            if release_year:
+                ET.SubElement(prog_el, "date").text = str(release_year)
+
+            # Audio/Video quality indicators
+            if ev.get("stereo") or ev.get("cc") or ev.get("hd"):
+                if ev.get("stereo"):
+                    audio_el = ET.SubElement(prog_el, "audio")
+                    ET.SubElement(audio_el, "stereo").text = "stereo"
+                if ev.get("hd"):
+                    video_el = ET.SubElement(prog_el, "video")
+                    ET.SubElement(video_el, "quality").text = "HDTV"
+                if ev.get("cc"):
+                    subtitles_el = ET.SubElement(prog_el, "subtitles", {"type": "teletext"})
+
             valid_events += 1
 
     if invalid_events > 0:
@@ -690,8 +748,15 @@ def write_xmltv(channels: List[Dict], out_path: Path, include_thumbnails: bool =
         ET.indent(tree, space="  ")
     except AttributeError:
         pass
-    
-    tree.write(str(out_path), encoding="utf-8", xml_declaration=True)
+
+    # Write to gzip if path ends with .gz, otherwise plain XML
+    out_str = str(out_path)
+    if out_str.endswith('.gz'):
+        import gzip
+        with gzip.open(out_str, 'wb') as f:
+            tree.write(f, encoding="utf-8", xml_declaration=True)
+    else:
+        tree.write(out_str, encoding="utf-8", xml_declaration=True)
 
 # ---------------- DB Lookup ----------------
 ALLOWED_LOOKUP_COLUMNS = {"country_name", "country", "station_name", "lineup_name", "lineupid"}
@@ -808,6 +873,55 @@ def filter_broken_lineups(lineup_ids: List[str]) -> List[str]:
             continue
         result.append(lid)
     return result
+
+# ---------------- Profile & Config Helpers ----------------
+def resolve_lineups_for_profile(profile: Dict, base_config: Dict) -> List[str]:
+    """Resolve lineup IDs for a single profile."""
+    mode = profile.get("lookup_mode", "").lower()
+    raw_val = profile.get("lookup_value", "")
+    ota_only = profile.get("ota_only", False)
+    max_lineups = profile.get("max_lineups")
+    db_path = base_config.get("EPG_DB_PATH", DB_FILE)
+
+    if not mode or not raw_val:
+        return []
+
+    lookup_values = [v.strip() for v in raw_val.split(",") if v.strip()]
+    all_lineups = []
+
+    for val in lookup_values:
+        if mode == "country_name":
+            all_lineups.extend(get_lineups_from_column("country_name", val, max_lineups, db_path, ota_only))
+        elif mode == "country":
+            all_lineups.extend(get_lineups_from_column("country", val, max_lineups, db_path, ota_only))
+        elif mode == "station_name":
+            all_lineups.extend(get_lineups_from_column("station_name", val, max_lineups, db_path, ota_only))
+        elif mode == "keyword":
+            all_lineups.extend(get_lineups_from_keyword(val, max_lineups, db_path, ota_only))
+        elif mode == "ota":
+            all_lineups.extend(get_ota_lineups_by_country(val, db_path, max_lineups))
+
+    filtered = filter_broken_lineups(all_lineups)
+    unique = list(dict.fromkeys(filtered))
+
+    if max_lineups and len(unique) > max_lineups:
+        unique = unique[:max_lineups]
+
+    return unique
+
+
+def load_profiles(config_path: str = CONFIG_FILE) -> List[Dict]:
+    """Load profiles from config file."""
+    if not Path(config_path).exists():
+        return []
+
+    try:
+        with open(config_path, "r") as f:
+            cfg = json.load(f)
+        return cfg.get("EPG_PROFILES", [])
+    except Exception:
+        return []
+
 
 # ---------------- Config Loader ----------------
 def load_config(args=None) -> Dict:
@@ -952,9 +1066,39 @@ def load_config(args=None) -> Dict:
     return config
 
 # ---------------- Parallel Fetcher ----------------
+def _derive_country_from_lineup(lineup_id: str, default_country: str = "USA") -> str:
+    """Derive country code from lineup ID prefix (e.g., CAN-OTA... -> CAN, DEU-... -> DEU)."""
+    if not lineup_id:
+        return default_country
+    upper_id = lineup_id.upper()
+    # Check for known country prefixes (3-letter ISO codes)
+    # North America
+    KNOWN_PREFIXES = [
+        "USA", "CAN", "MEX",
+        # Europe
+        "DEU", "FRA", "ESP", "ITA", "GBR", "NLD", "BEL", "AUT", "CHE",
+        "POL", "SWE", "NOR", "DNK", "FIN", "IRL", "PRT",
+        # Latin America
+        "ARG", "BRA", "CHL", "COL", "PER", "ECU", "VEN", "CRI", "PAN",
+        "GTM", "HND", "SLV", "NIC", "BOL", "PRY", "URY", "DOM",
+        # Caribbean
+        "JAM", "BHS", "TTO", "CYM", "CUW", "ABW", "BLZ", "PRI",
+        # Other
+        "AUS", "NZL"
+    ]
+    for prefix in KNOWN_PREFIXES:
+        if upper_id.startswith(prefix + "-"):
+            return prefix
+    return default_country
+
+
 def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
     """Wrapper for parallel execution."""
     lineup, country, postal, timespan, delay, retry_count, fallback_zip = args
+
+    # Derive country from lineup ID for proper API handling
+    derived_country = _derive_country_from_lineup(lineup, country)
+
     if not postal:
         zip_lookup = lookup_zip_for_lineup(lineup)
         if zip_lookup:
@@ -965,7 +1109,7 @@ def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
 
     try:
         channels, stats = fetch_grid(
-            country=country,
+            country=derived_country,
             lineup_id_input=lineup,
             postal=postal,
             timespan=timespan,
@@ -979,17 +1123,70 @@ def fetch_lineup_wrapper(args: Tuple) -> Tuple[str, List[Dict], Dict]:
 
 # ---------------- Runner ----------------
 def lookup_zip_for_lineup(lineup_id: str, db_path: str = DB_FILE) -> Optional[str]:
-    """Get representative ZIP for each lineup from database."""
+    """Get representative ZIP for each lineup from database or extract from lineup ID."""
+    if lineup_id:
+        upper_id = lineup_id.upper()
+
+        # USA patterns: USA-OTA12345, USA-CA90210-X, USA-LOCALBROADCAST-63601
+        if upper_id.startswith("USA"):
+            # Try USA-OTA<ZIP> pattern first (e.g., USA-OTA12345)
+            match = re.search(r'-OTA(\d{5})', upper_id)
+            if match:
+                return match.group(1)
+            # Try USA-LOCALBROADCAST-<ZIP> pattern
+            match = re.search(r'-LOCALBROADCAST-(\d{5})', upper_id)
+            if match:
+                return match.group(1)
+            # Fallback: extract any 5-digit ZIP from the ID
+            match = re.search(r'(\d{5})', lineup_id)
+            if match:
+                return match.group(1)
+
+        # Canadian patterns: CAN-OTAJ9X0A1 -> J9X 0A1, CAN-OTAK1P5W1 -> K1P 5W1
+        elif upper_id.startswith("CAN"):
+            # Extract everything after -OTA (Canadian postal codes are 6 alphanumeric chars)
+            match = re.search(r'-OTA([A-Za-z0-9]+)', lineup_id, re.I)
+            if match:
+                postal = match.group(1)
+                # Canadian postal codes are 6 chars: A1A1A1 -> A1A 1A1
+                if len(postal) >= 6:
+                    return f"{postal[:3]} {postal[3:6]}"
+                elif len(postal) >= 3:
+                    return postal[:3]  # Return partial if available
+
+        # UK patterns: GBR-1000031-DEFAULT (numeric, no postal code embedded)
+        elif upper_id.startswith("GBR"):
+            # UK postal codes are not embedded in lineup IDs
+            # Return a central London default
+            return "SW1A 1AA"
+
+    # Try database lookup (may not have postal_code column)
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
-        cur.execute("SELECT postal_code FROM channels_by_country WHERE lineupid=? LIMIT 1", (lineup_id,))
-        row = cur.fetchone()
+        # Check if postal_code column exists
+        cur.execute("PRAGMA table_info(channels_by_country)")
+        columns = [row[1] for row in cur.fetchall()]
+
+        if 'postal_code' in columns:
+            cur.execute("SELECT postal_code FROM channels_by_country WHERE lineupid=? LIMIT 1", (lineup_id,))
+            row = cur.fetchone()
+            if row and row[0]:
+                conn.close()
+                return row[0]
         conn.close()
-        if row and row[0]:
-            return row[0]
     except Exception as e:
         logging.debug(f"ZIP lookup failed for {lineup_id}: {e}")
+
+    # Country-specific default ZIPs for OTA
+    if lineup_id:
+        if lineup_id.startswith("USA"):
+            return "10001"  # NYC
+        elif lineup_id.startswith("CAN"):
+            return "M5V 3K9"  # Toronto
+        elif lineup_id.startswith("GBR"):
+            return "SW1A 1AA"  # London
+
     return None
 
 def print_summary_table(all_stats: Dict, total_channels: int, total_events: int, output_file: Path):
@@ -1090,11 +1287,22 @@ def run_epg(config: Dict):
         for idx, lineup in enumerate(lineup_ids, 1):
             progress = f"[{idx}/{len(lineup_ids)}]"
             logging.info(f"{progress} Fetching: {lineup}")
+
+            # Derive country from lineup ID for proper API handling
+            derived_country = _derive_country_from_lineup(lineup, country)
+
+            # Get postal code if not provided
+            lineup_postal = postal
+            if not lineup_postal:
+                lineup_postal = lookup_zip_for_lineup(lineup)
+            if not lineup_postal and fallback_zip:
+                lineup_postal = fallback_zip
+
             try:
                 channels, stats = fetch_grid(
-                    country=country,
+                    country=derived_country,
                     lineup_id_input=lineup,
-                    postal=postal,
+                    postal=lineup_postal,
                     timespan=timespan,
                     delay_seconds=delay,
                     max_retries=retry_count
@@ -1145,6 +1353,88 @@ def run_epg(config: Dict):
 
     # Print summary table
     print_summary_table(all_stats, total_channels, total_events, output_file)
+
+    return {"channels": total_channels, "events": total_events, "output": str(output_file)}
+
+
+def run_all_profiles(base_config: Dict):
+    """Run EPG fetch for all configured profiles."""
+    profiles = load_profiles()
+
+    if not profiles:
+        logging.warning("No profiles found in config. Running single fetch mode.")
+        run_epg(base_config)
+        return
+
+    print("\n" + "="*70)
+    print(f"MULTI-PROFILE MODE - {len(profiles)} profile(s) configured")
+    print("="*70)
+
+    results = []
+    total_start = time.time()
+
+    for idx, profile in enumerate(profiles, 1):
+        name = profile.get("name", f"Profile {idx}")
+        output = profile.get("output", f"EPG-{idx}.xml")
+
+        print(f"\n{'─'*70}")
+        print(f"PROFILE {idx}/{len(profiles)}: {name}")
+        print(f"{'─'*70}")
+
+        # Resolve lineups for this profile
+        lineups = resolve_lineups_for_profile(profile, base_config)
+
+        if not lineups:
+            logging.warning(f"[{name}] No lineups found, skipping.")
+            results.append({"name": name, "status": "SKIPPED", "reason": "No lineups found"})
+            continue
+
+        logging.info(f"[{name}] Found {len(lineups)} lineup(s)")
+
+        # Build profile-specific config
+        profile_config = base_config.copy()
+        profile_config["EPG_LINEUP_ID"] = ",".join(lineups)
+        profile_config["EPG_OUTPUT"] = output
+        profile_config["EPG_OTA_ONLY"] = profile.get("ota_only", False)
+
+        try:
+            result = run_epg(profile_config)
+            results.append({
+                "name": name,
+                "status": "OK",
+                "channels": result["channels"],
+                "events": result["events"],
+                "output": result["output"]
+            })
+        except SystemExit:
+            results.append({"name": name, "status": "FAILED", "reason": "Fetch error"})
+        except Exception as e:
+            logging.error(f"[{name}] Error: {e}")
+            results.append({"name": name, "status": "FAILED", "reason": str(e)})
+
+    # Print final multi-profile summary
+    elapsed = time.time() - total_start
+    print("\n" + "="*70)
+    print("MULTI-PROFILE SUMMARY")
+    print("="*70)
+    print(f"{'Profile':<25} {'Status':<10} {'Channels':>10} {'Events':>12} {'Output':<20}")
+    print("-"*70)
+
+    for r in results:
+        name = r["name"][:23] + ".." if len(r["name"]) > 25 else r["name"]
+        status = r["status"]
+        channels = str(r.get("channels", "-"))
+        events = str(r.get("events", "-"))
+        output = r.get("output", r.get("reason", "-"))
+        if len(output) > 18:
+            output = ".." + output[-16:]
+        print(f"{name:<25} {status:<10} {channels:>10} {events:>12} {output:<20}")
+
+    print("-"*70)
+    succeeded = sum(1 for r in results if r["status"] == "OK")
+    print(f"Completed: {succeeded}/{len(results)} profiles in {elapsed:.1f}s")
+    print("="*70 + "\n")
+
 
 # ---------------- Command-Line Interface ----------------
 def parse_arguments():
@@ -1211,6 +1501,8 @@ Examples:
                                help='Maximum parallel workers (default: %(default)s)')
 
     misc_group = parser.add_argument_group('Miscellaneous')
+    misc_group.add_argument('--profiles', action='store_true',
+                           help='Run all profiles defined in config (multi-output mode)')
     misc_group.add_argument('--dry-run', action='store_true',
                            help='Show what would be fetched without making API calls')
     misc_group.add_argument('--init-config', action='store_true',
@@ -1275,34 +1567,70 @@ def generate_sample_config():
     return True
 
 # ---------------- Dry Run ----------------
-def dry_run(config: Dict):
+def dry_run(config: Dict, use_profiles: bool = False):
     """Show what would be fetched without making API calls."""
-    lineup_ids = [lid.strip() for lid in str(config.get("EPG_LINEUP_ID", "")).split(",") if lid.strip()]
-
     print("\n" + "="*60)
     print("DRY RUN - No API calls will be made")
     print("="*60)
 
-    print(f"\nConfiguration:")
-    print(f"  Country:      {config.get('EPG_COUNTRY', 'USA')}")
-    print(f"  ZIP/Postal:   {config.get('EPG_ZIP') or '(auto-lookup)'}")
+    print(f"\nGlobal Settings:")
     print(f"  Timespan:     {config.get('EPG_TIMESPAN', 24)} hours ({config.get('EPG_TIMESPAN_DAYS', 1)} days)")
-    print(f"  Output file:  {config.get('EPG_OUTPUT', 'EPG.xml')}")
     print(f"  Thumbnails:   {'Yes' if config.get('EPG_THUMBNAILS', True) else 'No'}")
     print(f"  Parallel:     {'Yes' if config.get('EPG_PARALLEL', False) else 'No'}")
     if config.get('EPG_PARALLEL'):
         print(f"  Max workers:  {config.get('EPG_MAX_WORKERS', 3)}")
 
-    print(f"\nLineups to fetch ({len(lineup_ids)}):")
-    if not lineup_ids:
-        print("  (none found - check your lookup settings)")
+    profiles = load_profiles() if use_profiles else []
+
+    if use_profiles and profiles:
+        print(f"\n{'─'*60}")
+        print(f"MULTI-PROFILE MODE - {len(profiles)} profile(s)")
+        print(f"{'─'*60}")
+
+        for idx, profile in enumerate(profiles, 1):
+            name = profile.get("name", f"Profile {idx}")
+            output = profile.get("output", f"EPG-{idx}.xml")
+            mode = profile.get("lookup_mode", "?")
+            value = profile.get("lookup_value", "?")
+            ota = profile.get("ota_only", False)
+            max_l = profile.get("max_lineups", "unlimited")
+
+            lineups = resolve_lineups_for_profile(profile, config)
+
+            print(f"\n  [{idx}] {name}")
+            print(f"      Mode: {mode}, Value: {value}")
+            print(f"      OTA only: {ota}, Max lineups: {max_l}")
+            print(f"      Output: {output}")
+            print(f"      Lineups found: {len(lineups)}")
+            if lineups and len(lineups) <= 5:
+                for lid in lineups:
+                    print(f"        - {lid}")
+            elif lineups:
+                for lid in lineups[:3]:
+                    print(f"        - {lid}")
+                print(f"        ... and {len(lineups) - 3} more")
     else:
-        for i, lid in enumerate(lineup_ids, 1):
-            ota_marker = " [OTA]" if _is_ota(lid) else ""
-            print(f"  {i:3}. {lid}{ota_marker}")
+        # Single run mode
+        lineup_ids = [lid.strip() for lid in str(config.get("EPG_LINEUP_ID", "")).split(",") if lid.strip()]
+
+        print(f"\nSingle Run Configuration:")
+        print(f"  Country:      {config.get('EPG_COUNTRY', 'USA')}")
+        print(f"  ZIP/Postal:   {config.get('EPG_ZIP') or '(auto-lookup)'}")
+        print(f"  Output file:  {config.get('EPG_OUTPUT', 'EPG.xml')}")
+
+        print(f"\nLineups to fetch ({len(lineup_ids)}):")
+        if not lineup_ids:
+            print("  (none found - check your lookup settings)")
+        else:
+            for i, lid in enumerate(lineup_ids, 1):
+                ota_marker = " [OTA]" if _is_ota(lid) else ""
+                print(f"  {i:3}. {lid}{ota_marker}")
 
     print("\n" + "="*60)
-    print("Run without --dry-run to execute the fetch.")
+    cmd = "Run without --dry-run"
+    if use_profiles:
+        cmd += " (keep --profiles)"
+    print(f"{cmd} to execute the fetch.")
     print("="*60 + "\n")
 
 # ---------------- Main ----------------
@@ -1321,12 +1649,15 @@ if __name__ == "__main__":
 
     # Handle --dry-run
     if getattr(args, 'dry_run', False):
-        dry_run(config)
+        dry_run(config, use_profiles=getattr(args, 'profiles', False))
         sys.exit(0)
 
     try:
         with _single_instance_guard():
-            run_epg(config)
+            if getattr(args, 'profiles', False):
+                run_all_profiles(config)
+            else:
+                run_epg(config)
     except SystemExit:
         raise
     except Exception as e:
