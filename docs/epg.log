@@ -1,0 +1,172 @@
+[2026-01-22 12:46:41] [ERROR] No lineup IDs found.
+[2026-01-22 12:46:41] [ERROR]   Lookup mode: 
+[2026-01-22 12:46:41] [ERROR]   Lookup value: 
+[2026-01-22 12:46:41] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2026-01-22 12:47:20] [INFO] Found 50 OTA lineups for country 'United States'
+[2026-01-22 12:47:20] [INFO] [US OTA] Found 50 lineup(s)
+[2026-01-22 12:47:20] [INFO] Starting EPG fetch for 50 lineup(s)
+[2026-01-22 12:47:20] [INFO]   Timespan: 24 hours (1 days)
+[2026-01-22 12:47:20] [INFO]   Parallel: True (workers: 3)
+[2026-01-22 12:47:24] [INFO] [1/50] USA-OTA13623: 53 channels, 2102 events
+[2026-01-22 12:47:25] [INFO] [2/50] USA-GU70062-DEFAULT: 58 channels, 1656 events
+[2026-01-22 12:47:25] [INFO] [3/50] USA-LA67343-DEFAULT: 83 channels, 2459 events
+[2026-01-22 12:47:29] [INFO] [4/50] USA-OTA12953: 37 channels, 1297 events
+[2026-01-22 12:47:29] [INFO] [5/50] USA-OTA14043: 75 channels, 2365 events
+[2026-01-22 12:47:30] [INFO] [6/50] USA-OTA49286: 94 channels, 3052 events
+[2026-01-22 12:47:33] [INFO] [7/50] USA-OTA05460: 34 channels, 1226 events
+[2026-01-22 12:47:33] [INFO] [8/50] USA-OTA98231: 26 channels, 871 events
+[2026-01-22 12:47:34] [INFO] [9/50] USA-OTA12958: 41 channels, 1495 events
+[2026-01-22 12:47:37] [INFO] [10/50] USA-OTA59427: 6 channels, 184 events
+[2026-01-22 12:47:37] [INFO] [11/50] USA-OTA05846: 35 channels, 1215 events
+[2026-01-22 12:47:38] [INFO] [12/50] USA-OTA16504: 33 channels, 1083 events
+[2026-01-22 12:47:41] [INFO] [13/50] USA-OTA13678: 8 channels, 318 events
+[2026-01-22 12:47:42] [INFO] [14/50] USA-OTA48039: 49 channels, 1653 events
+[2026-01-22 12:47:43] [INFO] [15/50] USA-OTA48371: 206 channels, 6569 events
+[2026-01-22 12:47:45] [INFO] [16/50] USA-OTA14226: 75 channels, 2340 events
+[2026-01-22 12:47:46] [INFO] [17/50] USA-OTA48060: 68 channels, 2075 events
+[2026-01-22 12:47:48] [INFO] [18/50] USA-OTA14305: 81 channels, 2670 events
+[2026-01-22 12:47:50] [INFO] [19/50] USA-OTA04491: 6 channels, 238 events
+[2026-01-22 12:47:50] [INFO] [20/50] USA-OTA14623: 75 channels, 2512 events
+[2026-01-22 12:47:51] [INFO] [21/50] USA-OTA98226: 22 channels, 704 events
+[2026-01-22 12:47:54] [INFO] [22/50] USA-OTA98221: 48 channels, 1627 events
+[2026-01-22 12:47:54] [INFO] [23/50] USA-OTA98362: 81 channels, 2685 events
+[2026-01-22 12:47:56] [INFO] [24/50] USA-OTA48235: 130 channels, 4148 events
+[2026-01-22 12:47:59] [INFO] [25/50] USA-OTA14612: 77 channels, 2632 events
+[2026-01-22 12:47:59] [INFO] [26/50] USA-OTA48207: 135 channels, 4382 events
+[2026-01-22 12:48:00] [INFO] [27/50] USA-OTA55606: 4 channels, 209 events
+[2026-01-22 12:48:04] [INFO] [28/50] USA-OTA48088: 87 channels, 2735 events
+[2026-01-22 12:48:04] [INFO] [29/50] USA-OTA16509: 48 channels, 1752 events
+[2026-01-22 12:48:06] [INFO] [30/50] USA-OTA14173: 67 channels, 2245 events
+[2026-01-22 12:48:08] [INFO] [31/50] USA-OTA04756: 6 channels, 191 events
+[2026-01-22 12:48:08] [INFO] [32/50] USA-OTA04747: 12 channels, 477 events
+[2026-01-22 12:48:10] [INFO] [33/50] USA-OTA12979: 40 channels, 1497 events
+[2026-01-22 12:48:12] [INFO] [34/50] USA-OTA14202: 85 channels, 2785 events
+[2026-01-22 12:48:12] [INFO] [35/50] USA-OTA13664: 13 channels, 508 events
+[2026-01-22 12:48:14] [INFO] [36/50] USA-OTA14622: 60 channels, 1942 events
+[2026-01-22 12:48:16] [INFO] [37/50] USA-OTA58222: 13 channels, 475 events
+[2026-01-22 12:48:17] [INFO] [38/50] USA-OTA94062: 225 channels, 6713 events
+[2026-01-22 12:48:19] [INFO] [39/50] USA-OTA92549: 194 channels, 5694 events
+[2026-01-22 12:48:20] [INFO] [40/50] USA-OTA93252: 140 channels, 3934 events
+[2026-01-22 12:48:21] [INFO] [41/50] USA-OTA78040: 45 channels, 1199 events
+[2026-01-22 12:48:23] [INFO] [42/50] USA-OTA93777: 134 channels, 3657 events
+[2026-01-22 12:48:24] [INFO] [43/50] USA-OTA96079: 44 channels, 1361 events
+[2026-01-22 12:48:25] [INFO] [44/50] USA-OTA74650: 52 channels, 1725 events
+[2026-01-22 12:48:27] [INFO] [45/50] USA-OTA92281: 54 channels, 1527 events
+[2026-01-22 12:48:28] [INFO] [46/50] USA-OTA73702: 44 channels, 1419 events
+[2026-01-22 12:48:30] [INFO] [47/50] USA-OTA31014: 59 channels, 1876 events
+[2026-01-22 12:48:32] [INFO] [48/50] USA-OTA34120: 52 channels, 1572 events
+[2026-01-22 12:48:32] [INFO] [49/50] USA-OTA38363: 24 channels, 766 events
+[2026-01-22 12:48:34] [INFO] [50/50] USA-OTA46508: 57 channels, 1797 events
+[2026-01-22 12:48:34] [INFO] Fetch complete: 50 succeeded, 0 failed
+[2026-01-22 12:48:34] [INFO]   Raw channels collected: 3195
+[2026-01-22 12:48:34] [INFO] Merging duplicate channels across lineups...
+[2026-01-22 12:48:34] [INFO]   Final unique channels: 1781
+[2026-01-22 12:48:34] [INFO]   Total events after deduplication: 55735
+[2026-01-22 12:48:36] [INFO] Writing 55735 valid events to XML
+[2026-01-22 12:48:36] [INFO]   New episodes: 8086
+[2026-01-22 12:48:36] [INFO]   Reruns: 47649
+[2026-01-22 12:48:37] [INFO] EPG successfully written to docs/EPG-us-ota.xml.gz
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-XUMOTV-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-DTVNOW-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-AMZPV-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-DTVNOW-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-GNSTR-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-XUMOTV-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-AMZPV-X
+[2026-01-22 12:48:37] [WARNING] Filtered out broken lineup: USA-GNSTR-X
+[2026-01-22 12:48:37] [INFO] [California Cable] Found 10 lineup(s)
+[2026-01-22 12:48:37] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-22 12:48:37] [INFO]   Timespan: 24 hours (1 days)
+[2026-01-22 12:48:37] [INFO]   Parallel: True (workers: 3)
+[2026-01-22 12:48:42] [INFO] [1/10] USA-CA04423-X: 315 channels, 8243 events
+[2026-01-22 12:48:43] [INFO] [2/10] USA-CA63552-X: 113 channels, 3355 events
+[2026-01-22 12:48:45] [INFO] [3/10] USA-CA04577-X: 522 channels, 12774 events
+[2026-01-22 12:48:47] [INFO] [4/10] USA-SC39467-X: 154 channels, 4061 events
+[2026-01-22 12:48:47] [INFO] [5/10] USA-CA04536-X: 245 channels, 6678 events
+[2026-01-22 12:48:52] [INFO] [6/10] USA-CA70211-X: 99 channels, 2747 events
+[2026-01-22 12:48:52] [INFO] [7/10] USA-CA63870-X: 121 channels, 3587 events
+[2026-01-22 12:48:52] [INFO] [8/10] USA-CA04523-X: 629 channels, 15473 events
+[2026-01-22 12:48:57] [INFO] [9/10] USA-CA64361-X: 148 channels, 4332 events
+[2026-01-22 12:48:59] [INFO] [10/10] USA-CA04818-X: 583 channels, 13958 events
+[2026-01-22 12:48:59] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-22 12:48:59] [INFO]   Raw channels collected: 2929
+[2026-01-22 12:48:59] [INFO] Merging duplicate channels across lineups...
+[2026-01-22 12:48:59] [INFO]   Final unique channels: 1252
+[2026-01-22 12:48:59] [INFO]   Total events after deduplication: 31102
+[2026-01-22 12:49:00] [INFO] Writing 31102 valid events to XML
+[2026-01-22 12:49:00] [INFO]   New episodes: 3652
+[2026-01-22 12:49:00] [INFO]   Reruns: 27450
+[2026-01-22 12:49:00] [INFO] EPG successfully written to docs/EPG-california.xml.gz
+[2026-01-22 12:49:00] [INFO] [Canada Cable] Found 10 lineup(s)
+[2026-01-22 12:49:00] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-22 12:49:00] [INFO]   Timespan: 24 hours (1 days)
+[2026-01-22 12:49:00] [INFO]   Parallel: True (workers: 3)
+[2026-01-22 12:49:07] [INFO] [1/10] CAN-0005325-X: 601 channels, 17232 events
+[2026-01-22 12:49:08] [INFO] [2/10] CAN-0005981-X: 779 channels, 23139 events
+[2026-01-22 12:49:09] [INFO] [3/10] CAN-0003831-X: 604 channels, 18237 events
+[2026-01-22 12:49:14] [INFO] [4/10] CAN-0006994-X: 451 channels, 13538 events
+[2026-01-22 12:49:15] [INFO] [5/10] CAN-0005410-X: 608 channels, 17412 events
+[2026-01-22 12:49:15] [INFO] [6/10] CAN-0001811-X: 243 channels, 8040 events
+[2026-01-22 12:49:20] [INFO] [7/10] CAN-0005714-X: 289 channels, 9077 events
+[2026-01-22 12:49:20] [INFO] [8/10] CAN-0008713-X: 154 channels, 5339 events
+[2026-01-22 12:49:24] [INFO] [9/10] CAN-0005030-X: 600 channels, 17226 events
+[2026-01-22 12:49:26] [INFO] [10/10] CAN-0005285-X: 467 channels, 13564 events
+[2026-01-22 12:49:26] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-22 12:49:26] [INFO]   Raw channels collected: 4796
+[2026-01-22 12:49:26] [INFO] Merging duplicate channels across lineups...
+[2026-01-22 12:49:27] [INFO]   Final unique channels: 1325
+[2026-01-22 12:49:27] [INFO]   Total events after deduplication: 36606
+[2026-01-22 12:49:28] [INFO] Writing 36606 valid events to XML
+[2026-01-22 12:49:28] [INFO]   New episodes: 5906
+[2026-01-22 12:49:28] [INFO]   Reruns: 30700
+[2026-01-22 12:49:28] [INFO] EPG successfully written to docs/EPG-canada.xml.gz
+[2026-01-22 12:49:28] [WARNING] Filtered out broken lineup: USA-SLINGTV-X
+[2026-01-22 12:49:28] [INFO] [Latin America] Found 20 lineup(s)
+[2026-01-22 12:49:28] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-01-22 12:49:28] [INFO]   Timespan: 24 hours (1 days)
+[2026-01-22 12:49:28] [INFO]   Parallel: True (workers: 3)
+[2026-01-22 12:49:32] [INFO] [1/20] ARG-0004599-X: 172 channels, 4304 events
+[2026-01-22 12:49:33] [INFO] [2/20] ARG-0003089-X: 120 channels, 3110 events
+[2026-01-22 12:49:36] [INFO] [3/20] CAN-0005632-X: 547 channels, 15697 events
+[2026-01-22 12:49:38] [INFO] [4/20] CHL-0005200-X: 137 channels, 3193 events
+[2026-01-22 12:49:38] [INFO] [5/20] CHL-0003043-X: 214 channels, 4792 events
+[2026-01-22 12:49:42] [INFO] [6/20] CHL-0003540-X: 128 channels, 3222 events
+[2026-01-22 12:49:42] [INFO] [7/20] CHL-0004470-X: 91 channels, 2083 events
+[2026-01-22 12:49:43] [INFO] [8/20] CHL-0003539-X: 224 channels, 5009 events
+[2026-01-22 12:49:46] [INFO] [9/20] CHL-0000627-DEFAULT: 53 channels, 1139 events
+[2026-01-22 12:49:46] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:46] [INFO] [10/20] CHL-0003453-X: 67 channels, 1656 events
+[2026-01-22 12:49:47] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:47] [INFO] [11/20] CHL-0003541-X: 155 channels, 3577 events
+[2026-01-22 12:49:48] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:48] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:49] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:49] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:49] [INFO] [12/20] CHL-OTA1300000: 0 channels, 0 events
+[2026-01-22 12:49:50] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:50] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:51] [INFO] [13/20] CHL-0003537-DEFAULT: 47 channels, 936 events
+[2026-01-22 12:49:51] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:51] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:51] [INFO] [14/20] CHL-OTA1870000: 0 channels, 0 events
+[2026-01-22 12:49:52] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:53] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:53] [INFO] [15/20] CHL-OTA1580000: 0 channels, 0 events
+[2026-01-22 12:49:56] [INFO] [16/20] CHL-0003464-X: 140 channels, 3228 events
+[2026-01-22 12:49:56] [INFO] [17/20] CHL-0000650-X: 135 channels, 2837 events
+[2026-01-22 12:49:56] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:57] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:58] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:58] [INFO] [18/20] CHL-0003493-X: 183 channels, 4341 events
+[2026-01-22 12:49:59] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-22 12:49:59] [INFO] [19/20] CHL-OTA9250000: 0 channels, 0 events
+[2026-01-22 12:50:00] [INFO] [20/20] CHL-0004477-X: 75 channels, 1966 events
+[2026-01-22 12:50:00] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-01-22 12:50:00] [INFO]   Raw channels collected: 2488
+[2026-01-22 12:50:00] [INFO] Merging duplicate channels across lineups...
+[2026-01-22 12:50:00] [INFO]   Final unique channels: 1155
+[2026-01-22 12:50:00] [INFO]   Total events after deduplication: 28357
+[2026-01-22 12:50:00] [INFO] Writing 28357 valid events to XML
+[2026-01-22 12:50:00] [INFO]   New episodes: 2234
+[2026-01-22 12:50:00] [INFO]   Reruns: 26123
+[2026-01-22 12:50:01] [INFO] EPG successfully written to docs/EPG-latam.xml.gz
