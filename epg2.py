@@ -1215,10 +1215,13 @@ def load_config(args=None) -> Dict:
         try:
             with open(CONFIG_FILE, "r") as f:
                 file_cfg = json.load(f)
-            config.update({k.upper(): v for k, v in file_cfg.items()})
-            logging.debug(f"Loaded configuration from {CONFIG_FILE}")
+            # Only update config keys that don't start with underscore (skip _comment, _notes, etc.)
+            for k, v in file_cfg.items():
+                if not k.startswith("_"):
+                    config[k.upper()] = v
         except Exception as e:
-            logging.warning(f"Failed to read {CONFIG_FILE}: {e}")
+            # Print to stderr since logging may not be set up yet
+            print(f"Warning: Failed to read {CONFIG_FILE}: {e}", file=sys.stderr)
     
     for key in ["EPG_TIMESPAN_DAYS", "EPG_VERBOSE", "EPG_DELAY", "EPG_MAX_LINEUPS", 
                 "EPG_RETRY_COUNT", "EPG_MAX_WORKERS"]:
@@ -1252,7 +1255,7 @@ def load_config(args=None) -> Dict:
             config["EPG_ZIP"] = args.zip
         if args.output:
             config["EPG_OUTPUT"] = args.output
-        if args.days:
+        if args.days is not None:
             config["EPG_TIMESPAN_DAYS"] = args.days
         if args.delay:
             config["EPG_DELAY"] = args.delay
@@ -1777,8 +1780,8 @@ Examples:
                              help='Exclude thumbnail/icon URLs from output')
 
     fetch_group = parser.add_argument_group('Fetching Options')
-    fetch_group.add_argument('--days', type=int, default=1,
-                            help='Number of days to fetch, 1-7 (default: %(default)s)')
+    fetch_group.add_argument('--days', type=int, default=None,
+                            help='Number of days to fetch, 1-7 (default: from config or 1)')
     fetch_group.add_argument('--delay', type=int, default=0,
                             help='Delay in seconds between API requests (default: %(default)s)')
     fetch_group.add_argument('--retry-count', type=int, default=3,
@@ -1865,8 +1868,12 @@ def dry_run(config: Dict, use_profiles: bool = False):
     print("DRY RUN - No API calls will be made")
     print("="*60)
 
+    # Debug: show actual loaded values
+    timespan_hours = config.get('EPG_TIMESPAN', 24)
+    timespan_days = config.get('EPG_TIMESPAN_DAYS', 1)
+
     print(f"\nGlobal Settings:")
-    print(f"  Timespan:     {config.get('EPG_TIMESPAN', 24)} hours ({config.get('EPG_TIMESPAN_DAYS', 1)} days)")
+    print(f"  Timespan:     {timespan_hours} hours ({timespan_days} days)")
     print(f"  Thumbnails:   {'Yes' if config.get('EPG_THUMBNAILS', True) else 'No'}")
     print(f"  Parallel:     {'Yes' if config.get('EPG_PARALLEL', False) else 'No'}")
     if config.get('EPG_PARALLEL'):
