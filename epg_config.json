@@ -1,7 +1,7 @@
 {
   "_comment": "EPG Fetcher Configuration - See README.md for details",
 
-  "EPG_TIMESPAN_DAYS": 3,
+  "EPG_TIMESPAN_DAYS": 5,
   "EPG_DELAY": 1,
   "EPG_RETRY_COUNT": 3,
   "EPG_THUMBNAILS": true,
@@ -58,7 +58,7 @@
       "name": "Streaming Services",
       "output": "output/EPG-streaming.xml.gz",
       "source": "mjh",
-      "mjh_services": "pluto_us, pluto_uk, samsung_us, samsung_uk, plex_all, stirr, roku_us, tubi"
+      "mjh_services": "pluto_us, pluto_uk, samsung_us, samsung_uk, plex_all, stirr, roku"
     }
   ],
 
@@ -75,6 +75,6 @@
     "external_sources": "Europe uses globetvapp/epg (GitHub), Streaming uses i.mjh.nz. Both updated daily.",
     "supported_ota": "Only US OTA (local broadcast) lineups work with the GraceNote API.",
     "globetvapp_countries": "austria, belgium, bulgaria, croatia, czech, denmark, finland, france, germany, greece, hungary, ireland, italy, netherlands, norway, poland, portugal, romania, russia, serbia, slovakia, slovenia, spain, sweden, switzerland, turkey, ukraine, uk",
-    "mjh_services": "pluto_us, pluto_uk, pluto_de, pluto_fr, pluto_es, pluto_it, samsung_us, samsung_uk, samsung_de, samsung_fr, plex_us, plex_uk, plex_de, plex_all, stirr, roku_us, tubi"
+    "mjh_services": "pluto_us, pluto_uk, pluto_ca, pluto_de, pluto_fr, pluto_es, pluto_it, pluto_mx, pluto_br, pluto_all, samsung_us, samsung_uk, samsung_ca, samsung_de, samsung_fr, samsung_es, samsung_it, samsung_all, plex_us, plex_uk, plex_ca, plex_mx, plex_all, stirr, roku"
   }
 }

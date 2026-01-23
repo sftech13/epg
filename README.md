@@ -5,7 +5,7 @@ Fetches TV Electronic Program Guide data from multiple sources and outputs XMLTV
 **Supported Sources:**
 - **GraceNote API** - USA, Canada, Latin America
 - **globetvapp/epg** - European countries (UK, Germany, France, etc.)
-- **i.mjh.nz** - Free streaming services (Pluto TV, Samsung TV+, Plex, Tubi, etc.)
+- **i.mjh.nz** - Free streaming services (Pluto TV, Samsung TV+, Plex, Stirr, Roku)
 
 ## Quick Start
 
@@ -188,7 +188,7 @@ The script generates XMLTV files compatible with:
 | Source | Region | Notes |
 |--------|--------|-------|
 | [globetvapp/epg](https://github.com/globetvapp/epg) | **Europe** | UK, Germany, France, Spain, Italy, + 20 more countries |
-| [i.mjh.nz](https://i.mjh.nz/) | **Streaming** | Pluto TV, Samsung TV+, Plex, Tubi, Stirr, Roku |
+| [i.mjh.nz](https://github.com/matthuisman/i.mjh.nz) | **Streaming** | Pluto TV, Samsung TV+, Plex, Stirr, Roku |
 
 ### Pre-configured Profiles
 
@@ -199,7 +199,7 @@ The script generates XMLTV files compatible with:
 | Canada Cable | GraceNote | Canada |
 | Latin America | GraceNote | CHL, ARG, COL, PER, ECU, VEN, MEX, CRI |
 | **Europe** | globetvapp | UK, DE, FR, ES, IT, NL, BE, AT, CH, PL, SE, NO, DK, FI, IE, PT |
-| **Streaming Services** | i.mjh.nz | Pluto US/UK, Samsung US/UK, Plex, Stirr, Roku, Tubi |
+| **Streaming Services** | i.mjh.nz | Pluto US/UK, Samsung US/UK, Plex, Stirr, Roku |
 
 ### Countries in Database (API Support Varies)
 
@@ -293,15 +293,15 @@ For regions not supported by GraceNote (Europe, UK) and free streaming services,
   "name": "Streaming",
   "output": "output/EPG-streaming.xml.gz",
   "source": "mjh",
-  "mjh_services": "pluto_us, pluto_uk, samsung_us, plex_all, tubi"
+  "mjh_services": "pluto_us, pluto_uk, samsung_us, plex_all, stirr, roku"
 }
 ```
 
 **Available services:**
-- **Pluto TV:** pluto_us, pluto_uk, pluto_de, pluto_fr, pluto_es, pluto_it
-- **Samsung TV+:** samsung_us, samsung_uk, samsung_de, samsung_fr
-- **Plex:** plex_us, plex_uk, plex_de, plex_all
-- **Others:** stirr, roku_us, tubi
+- **Pluto TV:** pluto_us, pluto_uk, pluto_ca, pluto_de, pluto_fr, pluto_es, pluto_it, pluto_mx, pluto_br, pluto_all
+- **Samsung TV+:** samsung_us, samsung_uk, samsung_ca, samsung_de, samsung_fr, samsung_es, samsung_it, samsung_all
+- **Plex:** plex_us, plex_uk, plex_ca, plex_mx, plex_all
+- **Others:** stirr, roku
 
 ### Direct URL Profile
 

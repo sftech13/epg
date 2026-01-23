@@ -796,26 +796,41 @@ EXTERNAL_EPG_SOURCES = {
             "united kingdom": "Unitedkingdom/unitedkingdom1.xml",
         }
     },
-    # i.mjh.nz - Streaming services EPG
+    # i.mjh.nz - Streaming services EPG (via raw GitHub)
+    # Source: https://github.com/matthuisman/i.mjh.nz
     "mjh": {
+        "base_url": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master",
         "services": {
-            "pluto_us": "https://i.mjh.nz/PlutoTV/us.xml.gz",
-            "pluto_uk": "https://i.mjh.nz/PlutoTV/uk.xml.gz",
-            "pluto_de": "https://i.mjh.nz/PlutoTV/de.xml.gz",
-            "pluto_fr": "https://i.mjh.nz/PlutoTV/fr.xml.gz",
-            "pluto_es": "https://i.mjh.nz/PlutoTV/es.xml.gz",
-            "pluto_it": "https://i.mjh.nz/PlutoTV/it.xml.gz",
-            "samsung_us": "https://i.mjh.nz/SamsungTVPlus/us.xml.gz",
-            "samsung_uk": "https://i.mjh.nz/SamsungTVPlus/uk.xml.gz",
-            "samsung_de": "https://i.mjh.nz/SamsungTVPlus/de.xml.gz",
-            "samsung_fr": "https://i.mjh.nz/SamsungTVPlus/fr.xml.gz",
-            "plex_us": "https://i.mjh.nz/Plex/us.xml.gz",
-            "plex_uk": "https://i.mjh.nz/Plex/uk.xml.gz",
-            "plex_de": "https://i.mjh.nz/Plex/de.xml.gz",
-            "plex_all": "https://i.mjh.nz/Plex/all.xml.gz",
-            "stirr": "https://i.mjh.nz/Stirr/all.xml.gz",
-            "roku_us": "https://i.mjh.nz/Roku/us.xml.gz",
-            "tubi": "https://i.mjh.nz/Tubi/all.xml.gz",
+            # Pluto TV - available in many regions
+            "pluto_us": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz",
+            "pluto_uk": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz",
+            "pluto_ca": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/ca.xml.gz",
+            "pluto_de": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/de.xml.gz",
+            "pluto_fr": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/fr.xml.gz",
+            "pluto_es": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/es.xml.gz",
+            "pluto_it": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/it.xml.gz",
+            "pluto_mx": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/mx.xml.gz",
+            "pluto_br": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/br.xml.gz",
+            "pluto_all": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/all.xml.gz",
+            # Samsung TV+ - available in several regions
+            "samsung_us": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz",
+            "samsung_uk": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz",
+            "samsung_ca": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/ca.xml.gz",
+            "samsung_de": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/de.xml.gz",
+            "samsung_fr": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/fr.xml.gz",
+            "samsung_es": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/es.xml.gz",
+            "samsung_it": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/it.xml.gz",
+            "samsung_all": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/all.xml.gz",
+            # Plex - available in several regions
+            "plex_us": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/us.xml.gz",
+            "plex_uk": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/gb.xml.gz",
+            "plex_ca": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/ca.xml.gz",
+            "plex_mx": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz",
+            "plex_all": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz",
+            # Stirr - US only (all.xml is the only file)
+            "stirr": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz",
+            # Roku - all regions combined (all.xml is the only file)
+            "roku": "https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz",
         }
     }
 }
