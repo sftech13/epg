@@ -1102,3 +1102,266 @@
 [2026-01-23 12:41:23] [ERROR] Failed to fetch https://i.mjh.nz/Tubi/all.xml.gz after 3 attempts: 404 Client Error: Not Found for url: https://github.com/matthuisman/i.mjh.nz/raw/refs/heads/master/Tubi/all.xml.gz
 [2026-01-23 12:41:23] [INFO] Merging 4 EPG source(s)
 [2026-01-23 12:41:27] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 3672 channels, 108556 programmes
+[2026-01-23 20:26:50] [INFO] Found 50 OTA lineups for country 'United States'
+[2026-01-23 20:26:50] [INFO] [US OTA] Found 50 lineup(s)
+[2026-01-23 20:26:50] [INFO] Starting EPG fetch for 50 lineup(s)
+[2026-01-23 20:26:50] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-23 20:26:50] [INFO]   Parallel: True (workers: 3)
+[2026-01-23 20:27:14] [INFO] [1/50] USA-GU70062-DEFAULT: 58 channels, 7982 events
+[2026-01-23 20:27:19] [INFO] [2/50] USA-OTA13623: 53 channels, 9956 events
+[2026-01-23 20:27:19] [INFO] [3/50] USA-LA67343-DEFAULT: 83 channels, 11898 events
+[2026-01-23 20:27:42] [INFO] [4/50] USA-OTA14043: 75 channels, 11365 events
+[2026-01-23 20:27:44] [INFO] [5/50] USA-OTA12953: 37 channels, 6214 events
+[2026-01-23 20:27:47] [INFO] [6/50] USA-OTA49286: 94 channels, 14594 events
+[2026-01-23 20:28:05] [INFO] [7/50] USA-OTA05460: 34 channels, 5880 events
+[2026-01-23 20:28:08] [INFO] [8/50] USA-OTA98231: 26 channels, 4297 events
+[2026-01-23 20:28:10] [INFO] [9/50] USA-OTA12958: 41 channels, 7184 events
+[2026-01-23 20:28:30] [INFO] [10/50] USA-OTA59427: 6 channels, 890 events
+[2026-01-23 20:28:31] [INFO] [11/50] USA-OTA05846: 35 channels, 5676 events
+[2026-01-23 20:28:39] [INFO] [12/50] USA-OTA16504: 33 channels, 5077 events
+[2026-01-23 20:28:58] [INFO] [13/50] USA-OTA13678: 8 channels, 1458 events
+[2026-01-23 20:28:58] [INFO] [14/50] USA-OTA48039: 49 channels, 7940 events
+[2026-01-23 20:29:11] [INFO] [15/50] USA-OTA48371: 206 channels, 31545 events
+[2026-01-23 20:29:23] [INFO] [16/50] USA-OTA14226: 75 channels, 11239 events
+[2026-01-23 20:29:23] [INFO] [17/50] USA-OTA48060: 68 channels, 10070 events
+[2026-01-23 20:29:38] [INFO] [18/50] USA-OTA14305: 81 channels, 12827 events
+[2026-01-23 20:29:52] [INFO] [19/50] USA-OTA04491: 6 channels, 1106 events
+[2026-01-23 20:29:55] [INFO] [20/50] USA-OTA14623: 75 channels, 12036 events
+[2026-01-23 20:30:03] [INFO] [21/50] USA-OTA98226: 22 channels, 3482 events
+[2026-01-23 20:30:25] [INFO] [22/50] USA-OTA98221: 48 channels, 7918 events
+[2026-01-23 20:30:28] [INFO] [23/50] USA-OTA98362: 81 channels, 12974 events
+[2026-01-23 20:30:35] [INFO] [24/50] USA-OTA48235: 130 channels, 19911 events
+[2026-01-23 20:30:52] [INFO] [25/50] USA-OTA14612: 77 channels, 12624 events
+[2026-01-23 20:30:58] [INFO] [26/50] USA-OTA48207: 135 channels, 21008 events
+[2026-01-23 20:31:02] [INFO] [27/50] USA-OTA55606: 4 channels, 993 events
+[2026-01-23 20:31:23] [INFO] [28/50] USA-OTA16509: 48 channels, 8302 events
+[2026-01-23 20:31:23] [INFO] [29/50] USA-OTA48088: 87 channels, 13225 events
+[2026-01-23 20:31:32] [INFO] [30/50] USA-OTA14173: 67 channels, 10860 events
+[2026-01-23 20:31:49] [INFO] [31/50] USA-OTA04756: 6 channels, 902 events
+[2026-01-23 20:31:49] [INFO] [32/50] USA-OTA04747: 12 channels, 2232 events
+[2026-01-23 20:31:57] [INFO] [33/50] USA-OTA12979: 40 channels, 7169 events
+[2026-01-23 20:32:16] [INFO] [34/50] USA-OTA13664: 13 channels, 2374 events
+[2026-01-23 20:32:16] [INFO] [35/50] USA-OTA14202: 85 channels, 13392 events
+[2026-01-23 20:32:26] [INFO] [36/50] USA-OTA14622: 60 channels, 9272 events
+[2026-01-23 20:32:41] [INFO] [37/50] USA-OTA58222: 13 channels, 2174 events
+[2026-01-23 20:32:49] [INFO] [38/50] USA-OTA94062: 225 channels, 32600 events
+[2026-01-23 20:33:00] [INFO] [39/50] USA-OTA92549: 193 channels, 27581 events
+[2026-01-23 20:33:14] [INFO] [40/50] USA-OTA93252: 139 channels, 18831 events
+[2026-01-23 20:33:17] [INFO] [41/50] USA-OTA78040: 44 channels, 5723 events
+[2026-01-23 20:33:36] [INFO] [42/50] USA-OTA93777: 134 channels, 17565 events
+[2026-01-23 20:33:45] [INFO] [43/50] USA-OTA96079: 44 channels, 6701 events
+[2026-01-23 20:33:50] [INFO] [44/50] USA-OTA74650: 51 channels, 8100 events
+[2026-01-23 20:34:05] [INFO] [45/50] USA-OTA92281: 53 channels, 7418 events
+[2026-01-23 20:34:13] [INFO] [46/50] USA-OTA73702: 43 channels, 6762 events
+[2026-01-23 20:34:20] [INFO] [47/50] USA-OTA31014: 58 channels, 8941 events
+[2026-01-23 20:34:32] [INFO] [48/50] USA-OTA34120: 52 channels, 7414 events
+[2026-01-23 20:34:42] [INFO] [49/50] USA-OTA38363: 23 channels, 3589 events
+[2026-01-23 20:34:50] [INFO] [50/50] USA-OTA46508: 56 channels, 8429 events
+[2026-01-23 20:34:50] [INFO] Fetch complete: 50 succeeded, 0 failed
+[2026-01-23 20:34:50] [INFO]   Raw channels collected: 3186
+[2026-01-23 20:34:50] [INFO] Merging duplicate channels across lineups...
+[2026-01-23 20:34:51] [INFO]   Final unique channels: 1772
+[2026-01-23 20:34:51] [INFO]   Total events after deduplication: 267216
+[2026-01-23 20:35:02] [INFO] Writing 267216 valid events to XML
+[2026-01-23 20:35:02] [INFO]   New episodes: 34560
+[2026-01-23 20:35:02] [INFO]   Reruns: 232656
+[2026-01-23 20:35:13] [INFO] EPG successfully written to output/EPG-us-ota.xml.gz
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-XUMOTV-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-DTVNOW-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-AMZPV-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-DTVNOW-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-GNSTR-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-XUMOTV-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-AMZPV-X
+[2026-01-23 20:35:14] [WARNING] Filtered out broken lineup: USA-GNSTR-X
+[2026-01-23 20:35:14] [INFO] [California Cable] Found 10 lineup(s)
+[2026-01-23 20:35:14] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-23 20:35:14] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-23 20:35:14] [INFO]   Parallel: True (workers: 3)
+[2026-01-23 20:35:44] [INFO] [1/10] USA-CA63552-X: 113 channels, 16313 events
+[2026-01-23 20:35:50] [INFO] [2/10] USA-CA04423-X: 315 channels, 39834 events
+[2026-01-23 20:35:56] [INFO] [3/10] USA-CA04577-X: 522 channels, 61718 events
+[2026-01-23 20:36:23] [INFO] [4/10] USA-SC39467-X: 154 channels, 19732 events
+[2026-01-23 20:36:23] [INFO] [5/10] USA-CA04536-X: 245 channels, 32191 events
+[2026-01-23 20:36:38] [INFO] [6/10] USA-CA04523-X: 629 channels, 74359 events
+[2026-01-23 20:36:52] [INFO] [7/10] USA-CA70211-X: 99 channels, 13339 events
+[2026-01-23 20:36:53] [INFO] [8/10] USA-CA63870-X: 121 channels, 17485 events
+[2026-01-23 20:37:11] [INFO] [9/10] USA-CA64361-X: 148 channels, 20848 events
+[2026-01-23 20:37:45] [INFO] [10/10] USA-CA04818-X: 583 channels, 67132 events
+[2026-01-23 20:37:45] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-23 20:37:45] [INFO]   Raw channels collected: 2929
+[2026-01-23 20:37:45] [INFO] Merging duplicate channels across lineups...
+[2026-01-23 20:37:46] [INFO]   Final unique channels: 1252
+[2026-01-23 20:37:46] [INFO]   Total events after deduplication: 149368
+[2026-01-23 20:37:53] [INFO] Writing 149368 valid events to XML
+[2026-01-23 20:37:53] [INFO]   New episodes: 16069
+[2026-01-23 20:37:53] [INFO]   Reruns: 133299
+[2026-01-23 20:37:59] [INFO] EPG successfully written to output/EPG-california.xml.gz
+[2026-01-23 20:37:59] [INFO] [Canada Cable] Found 10 lineup(s)
+[2026-01-23 20:37:59] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-23 20:37:59] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-23 20:37:59] [INFO]   Parallel: True (workers: 3)
+[2026-01-23 20:38:46] [INFO] [1/10] CAN-0005325-X: 601 channels, 81810 events
+[2026-01-23 20:38:49] [INFO] [2/10] CAN-0003831-X: 604 channels, 86817 events
+[2026-01-23 20:39:03] [INFO] [3/10] CAN-0005981-X: 779 channels, 109696 events
+[2026-01-23 20:39:33] [INFO] [4/10] CAN-0006994-X: 451 channels, 64291 events
+[2026-01-23 20:39:42] [INFO] [5/10] CAN-0001811-X: 243 channels, 38150 events
+[2026-01-23 20:39:43] [INFO] [6/10] CAN-0005410-X: 608 channels, 82633 events
+[2026-01-23 20:40:19] [INFO] [7/10] CAN-0008713-X: 154 channels, 25330 events
+[2026-01-23 20:40:20] [INFO] [8/10] CAN-0005714-X: 289 channels, 42997 events
+[2026-01-23 20:40:39] [INFO] [9/10] CAN-0005030-X: 600 channels, 81754 events
+[2026-01-23 20:41:03] [INFO] [10/10] CAN-0005285-X: 467 channels, 64145 events
+[2026-01-23 20:41:03] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-23 20:41:03] [INFO]   Raw channels collected: 4796
+[2026-01-23 20:41:03] [INFO] Merging duplicate channels across lineups...
+[2026-01-23 20:41:04] [INFO]   Final unique channels: 1325
+[2026-01-23 20:41:04] [INFO]   Total events after deduplication: 173657
+[2026-01-23 20:41:12] [INFO] Writing 173657 valid events to XML
+[2026-01-23 20:41:12] [INFO]   New episodes: 25834
+[2026-01-23 20:41:12] [INFO]   Reruns: 147823
+[2026-01-23 20:41:19] [INFO] EPG successfully written to output/EPG-canada.xml.gz
+[2026-01-23 20:41:20] [WARNING] Filtered out broken lineup: USA-SLINGTV-X
+[2026-01-23 20:41:20] [INFO] [Latin America] Found 20 lineup(s)
+[2026-01-23 20:41:20] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-01-23 20:41:20] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-23 20:41:20] [INFO]   Parallel: True (workers: 3)
+[2026-01-23 20:41:52] [INFO] [1/20] ARG-0003089-X: 120 channels, 15219 events
+[2026-01-23 20:41:54] [INFO] [2/20] ARG-0004599-X: 172 channels, 21204 events
+[2026-01-23 20:42:04] [INFO] [3/20] CAN-0005632-X: 547 channels, 74738 events
+[2026-01-23 20:42:28] [INFO] [4/20] CHL-0005200-X: 137 channels, 15400 events
+[2026-01-23 20:42:29] [INFO] [5/20] CHL-0003043-X: 214 channels, 23590 events
+[2026-01-23 20:42:39] [INFO] [6/20] CHL-0003540-X: 128 channels, 15567 events
+[2026-01-23 20:43:00] [INFO] [7/20] CHL-0004470-X: 91 channels, 10181 events
+[2026-01-23 20:43:06] [INFO] [8/20] CHL-0003539-X: 224 channels, 24806 events
+[2026-01-23 20:43:07] [INFO] [9/20] CHL-0000627-DEFAULT: 53 channels, 5549 events
+[2026-01-23 20:43:07] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:08] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:09] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:10] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:11] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:12] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:13] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:14] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:16] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:17] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:18] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:19] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:20] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:21] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:22] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:23] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:24] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:25] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:26] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:27] [ERROR] [CHL-OTA1300000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:27] [INFO] [10/20] CHL-OTA1300000: 0 channels, 0 events
+[2026-01-23 20:43:28] [INFO] [11/20] CHL-0003453-X: 67 channels, 8088 events
+[2026-01-23 20:43:28] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:29] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:30] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:31] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:32] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:33] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:34] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:36] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:37] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:39] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:40] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:41] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:42] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:43] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:44] [INFO] [12/20] CHL-0003541-X: 155 channels, 17507 events
+[2026-01-23 20:43:44] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:44] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:45] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:45] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:46] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:46] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:47] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:47] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:48] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:48] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:50] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:50] [ERROR] [CHL-OTA1870000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:50] [INFO] [13/20] CHL-OTA1870000: 0 channels, 0 events
+[2026-01-23 20:43:51] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:52] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:53] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:54] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:55] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:56] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:57] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:58] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:43:59] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:00] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:02] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:03] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:04] [INFO] [14/20] CHL-0003537-DEFAULT: 47 channels, 4549 events
+[2026-01-23 20:44:04] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:05] [ERROR] [CHL-OTA1580000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:05] [INFO] [15/20] CHL-OTA1580000: 0 channels, 0 events
+[2026-01-23 20:44:23] [INFO] [16/20] CHL-0000650-X: 135 channels, 13602 events
+[2026-01-23 20:44:37] [INFO] [17/20] CHL-0003464-X: 140 channels, 15722 events
+[2026-01-23 20:44:37] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:38] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:39] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:40] [INFO] [18/20] CHL-0003493-X: 183 channels, 21132 events
+[2026-01-23 20:44:40] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:42] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:43] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:44] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:45] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:46] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:47] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:48] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:49] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:50] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:51] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:52] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:54] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:54] [INFO] [19/20] CHL-0004477-X: 75 channels, 9637 events
+[2026-01-23 20:44:55] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:56] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:57] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:58] [ERROR] [CHL-OTA9250000] Bad request (likely invalid headend or postalCode)
+[2026-01-23 20:44:58] [INFO] [20/20] CHL-OTA9250000: 0 channels, 0 events
+[2026-01-23 20:44:58] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-01-23 20:44:58] [INFO]   Raw channels collected: 2488
+[2026-01-23 20:44:58] [INFO] Merging duplicate channels across lineups...
+[2026-01-23 20:44:58] [INFO]   Final unique channels: 1155
+[2026-01-23 20:44:58] [INFO]   Total events after deduplication: 136362
+[2026-01-23 20:45:04] [INFO] Writing 136362 valid events to XML
+[2026-01-23 20:45:04] [INFO]   New episodes: 10093
+[2026-01-23 20:45:04] [INFO]   Reruns: 126269
+[2026-01-23 20:45:09] [INFO] EPG successfully written to output/EPG-latam.xml.gz
+[2026-01-23 20:45:09] [INFO] [Europe] External source mode: globetvapp
+[2026-01-23 20:45:09] [INFO] Fetching 16 external EPG source(s)
+[2026-01-23 20:45:09] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 272 channels, 10998 programmes
+[2026-01-23 20:45:10] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 334 channels, 20540 programmes
+[2026-01-23 20:45:10] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 324 channels, 22468 programmes
+[2026-01-23 20:45:11] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 292 channels, 13355 programmes
+[2026-01-23 20:45:11] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 145 channels, 5207 programmes
+[2026-01-23 20:45:12] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 243 channels, 17413 programmes
+[2026-01-23 20:45:12] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 261 channels, 23098 programmes
+[2026-01-23 20:45:13] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 63 channels, 4460 programmes
+[2026-01-23 20:45:13] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 1085 channels, 45910 programmes
+[2026-01-23 20:45:14] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 583 channels, 40753 programmes
+[2026-01-23 20:45:15] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 195 channels, 10311 programmes
+[2026-01-23 20:45:15] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 82 channels, 3892 programmes
+[2026-01-23 20:45:15] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 72 channels, 3562 programmes
+[2026-01-23 20:45:16] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 102 channels, 7430 programmes
+[2026-01-23 20:45:16] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 107 channels, 5358 programmes
+[2026-01-23 20:45:16] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 158 channels, 9376 programmes
+[2026-01-23 20:45:16] [INFO] Merging 16 EPG source(s)
+[2026-01-23 20:45:21] [INFO] Written merged EPG to output/EPG-europe.xml.gz: 4318 channels, 236575 programmes
+[2026-01-23 20:45:21] [INFO] [Streaming Services] External source mode: mjh
+[2026-01-23 20:45:21] [INFO] Fetching 7 external EPG source(s)
+[2026-01-23 20:45:21] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz: 401 channels, 8350 programmes
+[2026-01-23 20:45:21] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz: 216 channels, 5114 programmes
+[2026-01-23 20:45:22] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz: 539 channels, 4525 programmes
+[2026-01-23 20:45:22] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz: 235 channels, 2107 programmes
+[2026-01-23 20:45:23] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz: 2579 channels, 82243 programmes
+[2026-01-23 20:45:24] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 153 channels, 10485 programmes
+[2026-01-23 20:45:25] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 684 channels, 61916 programmes
+[2026-01-23 20:45:25] [INFO] Merging 7 EPG source(s)
+[2026-01-23 20:45:31] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4807 channels, 174739 programmes
