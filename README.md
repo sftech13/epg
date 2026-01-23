@@ -21,9 +21,43 @@ python3 epg2.py
 
 # Run all profiles (multiple outputs)
 python3 epg2.py --profiles
+
+# Update the lineup database
+python3 epg2.py --update-db
 ```
 
-## Multi-Profile Mode (NEW!)
+## Database Update
+
+The script uses a SQLite database (`zap2it.db`) containing lineup and channel information. Use `--update-db` to discover new lineups and update existing ones.
+
+```bash
+# Full update - discover new lineups, fetch channels, validate existing
+python3 epg2.py --update-db
+
+# Fast update - skip validation of existing lineups
+python3 epg2.py --update-db --skip-validation
+
+# Update specific countries only
+python3 epg2.py --update-db --update-countries USA,CAN,MEX
+
+# Use custom postal codes file
+python3 epg2.py --update-db --postal-codes-file my_postcodes.csv
+```
+
+### What --update-db does:
+- Discovers OTA lineups by testing postal codes against GraceNote API
+- Fetches channel lists and adds them to the database
+- Updates existing lineups with fresh channel data
+- Removes broken lineups that no longer work (unless `--skip-validation`)
+
+### Supported Regions (GraceNote OTA):
+- **North America:** USA, Canada
+- **Latin America:** Mexico, Chile, Colombia, Peru, Costa Rica, Ecuador, Venezuela, Uruguay
+- **Caribbean:** Puerto Rico, Jamaica, Bahamas, Bermuda, Dominican Republic, Trinidad & Tobago
+
+Note: European and Asia-Pacific OTA is not supported by GraceNote. Use external sources (globetvapp) for Europe.
+
+## Multi-Profile Mode
 
 Define multiple EPG outputs in one run. Each profile gets its own output file with different filters.
 
@@ -342,14 +376,24 @@ You can also specify direct XMLTV URLs:
 
 ## Version
 
-Current: **2.2.0**
+Current: **2.3.0**
 
 ## Changelog
+
+### v2.3.0
+- **NEW: Database update feature** - `--update-db` to discover and update lineups
+- Discovers OTA lineups by validating postal codes against GraceNote API
+- Automatically fetches and stores channel lists in `channels_by_country` table
+- Validates existing lineups and removes broken ones
+- Added `--skip-validation` for faster updates
+- Added `--update-countries` to limit update scope
+- Added `--postal-codes-file` for custom postal code lists
+- Fixed streaming service URLs (i.mjh.nz) - UK uses `gb.xml.gz`, removed non-existent Tubi
 
 ### v2.2.0
 - **NEW: External EPG sources** - Europe and streaming services support
 - Added `globetvapp` source for European countries (UK, Germany, France, etc.)
-- Added `mjh` source for streaming services (Pluto TV, Samsung TV+, Plex, Tubi, etc.)
+- Added `mjh` source for streaming services (Pluto TV, Samsung TV+, Plex, Stirr, Roku)
 - Profiles can now use `source: "globetvapp"`, `source: "mjh"`, or `source: "external"`
 - Added XMLTV merge functionality for combining multiple external sources
 - Gzip download support for compressed EPG files

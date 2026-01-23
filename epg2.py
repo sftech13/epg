@@ -23,7 +23,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Optional, Tuple
 
 # ---------------- Global Defaults ----------------
-VERSION = "2.2.0"
+VERSION = "2.3.0"
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
 DB_FILE = str(Path(__file__).parent / "zap2it.db")
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
@@ -36,8 +36,62 @@ USER_AGENTS = [
 ]
 
 BASE_URL = "https://tvlistings.gracenote.com/api/grid"
+PROVIDER_URL = "https://tvlistings.gracenote.com/gapzap_webapi/api/Providers/getPostalCodeProviders"
 COUNTRY_3 = {"US": "USA", "CA": "CAN", "UK": "GBR", "GB": "GBR"}
 COUNTRY_2 = {"USA": "us", "CAN": "ca", "GBR": "uk", "United States": "us", "Canada": "ca", "United Kingdom": "uk"}
+
+# Gracenote supported countries with sample postal codes for database updates
+GRACENOTE_COUNTRIES = {
+    # North America - CONFIRMED WORKING
+    'USA': {'name': 'United States', 'sample_postals': ['10001', '90210', '60601', '77001', '94102', '30301', '33101', '98101', '85001', '02101']},
+    'CAN': {'name': 'Canada', 'sample_postals': ['M5H2N2', 'V6B1A1', 'H2X1Y7', 'T2P3N4', 'R3C0C1']},
+
+    # Latin America - CONFIRMED WORKING
+    'ARG': {'name': 'Argentina', 'sample_postals': ['C1000', 'B1900', 'X5000']},
+    'BRA': {'name': 'Brazil', 'sample_postals': ['01000-000', '22041-080', '30130-000']},
+    'CHL': {'name': 'Chile', 'sample_postals': ['8320000', '2520000', '4030000']},
+    'COL': {'name': 'Colombia', 'sample_postals': ['110111', '050001', '760001']},
+    'CRI': {'name': 'Costa Rica', 'sample_postals': ['10101', '20101', '30101']},
+    'ECU': {'name': 'Ecuador', 'sample_postals': ['170150', '090112', '010101']},
+    'GTM': {'name': 'Guatemala', 'sample_postals': ['01001', '01010', '09001']},
+    'HND': {'name': 'Honduras', 'sample_postals': ['11101', '21101', '31301']},
+    'MEX': {'name': 'Mexico', 'sample_postals': ['06600', '44100', '64000']},
+    'PAN': {'name': 'Panama', 'sample_postals': ['0801', '0401', '0601']},
+    'PER': {'name': 'Peru', 'sample_postals': ['15001', '04001', '13001']},
+    'URY': {'name': 'Uruguay', 'sample_postals': ['11000', '20000', '60000']},
+    'VEN': {'name': 'Venezuela', 'sample_postals': ['1010', '2001', '3001']},
+
+    # Caribbean
+    'BHS': {'name': 'Bahamas', 'sample_postals': ['BS']},
+    'BRB': {'name': 'Barbados', 'sample_postals': ['BB14001']},
+    'BMU': {'name': 'Bermuda', 'sample_postals': ['CR01', 'FL01']},
+    'CYM': {'name': 'Cayman Islands', 'sample_postals': ['KY1-1001']},
+    'DOM': {'name': 'Dominican Republic', 'sample_postals': ['10101', '10201']},
+    'JAM': {'name': 'Jamaica', 'sample_postals': ['JMAAW01', 'JMAKN01']},
+    'PRI': {'name': 'Puerto Rico', 'sample_postals': ['00901', '00601', '00921']},
+    'TTO': {'name': 'Trinidad and Tobago', 'sample_postals': ['TT']},
+
+    # Europe - MAY HAVE LIMITED SUPPORT
+    'AUT': {'name': 'Austria', 'sample_postals': ['1010', '5020', '8010']},
+    'BEL': {'name': 'Belgium', 'sample_postals': ['1000', '2000', '9000']},
+    'CHE': {'name': 'Switzerland', 'sample_postals': ['8001', '3011', '1201']},
+    'DEU': {'name': 'Germany', 'sample_postals': ['10115', '80331', '20095']},
+    'DNK': {'name': 'Denmark', 'sample_postals': ['1050', '8000', '5000']},
+    'ESP': {'name': 'Spain', 'sample_postals': ['28001', '08001', '46001']},
+    'FIN': {'name': 'Finland', 'sample_postals': ['00100', '33100', '20100']},
+    'FRA': {'name': 'France', 'sample_postals': ['75001', '69001', '13001']},
+    'GBR': {'name': 'United Kingdom', 'sample_postals': ['SW1A', 'M1', 'B1', 'G1', 'EH1']},
+    'IRL': {'name': 'Ireland', 'sample_postals': ['D01', 'D02', 'T12']},
+    'ITA': {'name': 'Italy', 'sample_postals': ['00118', '20121', '80121']},
+    'NLD': {'name': 'Netherlands', 'sample_postals': ['1012', '3011', '6211']},
+    'NOR': {'name': 'Norway', 'sample_postals': ['0150', '5003', '7010']},
+    'POL': {'name': 'Poland', 'sample_postals': ['00-001', '30-001', '80-001']},
+    'SWE': {'name': 'Sweden', 'sample_postals': ['11120', '41101', '21135']},
+
+    # Asia-Pacific
+    'AUS': {'name': 'Australia', 'sample_postals': ['2000', '3000', '4000', '5000', '6000']},
+    'NZL': {'name': 'New Zealand', 'sample_postals': ['1010', '6011', '8011']},
+}
 
 # ---------------- Logging ----------------
 def setup_logging(verbosity, log_file: str = None):
@@ -1140,7 +1194,7 @@ def get_ota_lineups_by_country(country: str, db_path: str = DB_FILE, max_lineups
 
 def filter_broken_lineups(lineup_ids: List[str]) -> List[str]:
     """Remove known broken/test lineups."""
-    bad_patterns = ["xumotv", "sandbox", "test", "dummy", "dtvnow", "amzpv", 
+    bad_patterns = ["xumotv", "sandbox", "test", "dummy", "dtvnow", "amzpv",
                     "youtube", "gnstr", "imdbtv","samsung", "pluto", "tubitv", "rakuten", "slingtv"]
     result = []
     for lid in lineup_ids:
@@ -1150,6 +1204,697 @@ def filter_broken_lineups(lineup_ids: List[str]) -> List[str]:
             continue
         result.append(lid)
     return result
+
+
+# ---------------- Database Update Functions ----------------
+def init_db_schema(db_path: str):
+    """Initialize or update database schema for lineup discovery."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # Ensure channels_by_country table exists (main table used by epg2.py)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS channels_by_country (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lineupid TEXT NOT NULL,
+            lineup_name TEXT,
+            stationid TEXT,
+            callsign TEXT,
+            station_name TEXT,
+            affiliatecallsign TEXT,
+            affiliateid TEXT,
+            country TEXT NOT NULL,
+            country_name TEXT,
+            channel_number TEXT,
+            channel_position INTEGER,
+            last_updated TIMESTAMP
+        )
+    ''')
+
+    # Create lineups table for tracking discovered lineups
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS lineups (
+            lineup_id TEXT PRIMARY KEY,
+            lineup_name TEXT,
+            lineup_type TEXT,
+            lineup_location TEXT,
+            country_code TEXT NOT NULL,
+            postal_code TEXT,
+            device TEXT,
+            channel_count INTEGER DEFAULT 0,
+            last_updated TIMESTAMP,
+            last_fetched TIMESTAMP
+        )
+    ''')
+
+    # Create postal_codes table for tracking what we've queried
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS postal_codes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            country_code TEXT NOT NULL,
+            postal_code TEXT NOT NULL,
+            lineup_count INTEGER DEFAULT 0,
+            last_queried TIMESTAMP,
+            UNIQUE(country_code, postal_code)
+        )
+    ''')
+
+    # Create indexes
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_channels_lineup ON channels_by_country(lineupid)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_channels_country ON channels_by_country(country)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_channels_station ON channels_by_country(stationid)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_lineups_country ON lineups(country_code)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_postal_country ON postal_codes(country_code)')
+
+    conn.commit()
+    conn.close()
+    logging.info(f"Database schema initialized: {db_path}")
+
+
+def discover_lineups_for_postal(country: str, postal_code: str) -> List[Dict]:
+    """
+    Discover available lineups for a postal code.
+
+    Uses two methods:
+    1. Try the Gracenote provider API (may be blocked by WAF)
+    2. Generate OTA lineup patterns and validate via grid API
+
+    Returns list of lineup dictionaries with lineup_id, name, type, location.
+    """
+    lineups = []
+    seen_ids = set()
+
+    # Method 1: Try provider API (often blocked by AWS WAF now)
+    url = f"{PROVIDER_URL}/{postal_code}/{country}"
+    headers = {
+        'User-Agent': secrets.choice(USER_AGENTS),
+        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://tvlistings.gracenote.com/',
+    }
+
+    try:
+        response = requests.get(url, headers=headers, timeout=30)
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                if isinstance(data, list):
+                    for provider in data:
+                        lineup_id = provider.get('lineupId', '')
+                        if lineup_id and lineup_id not in seen_ids:
+                            lineups.append({
+                                'lineup_id': lineup_id,
+                                'name': provider.get('name', 'Unknown'),
+                                'type': provider.get('type', 'Unknown'),
+                                'location': provider.get('location', postal_code),
+                            })
+                            seen_ids.add(lineup_id)
+                            logging.debug(f"  API found: {lineup_id}")
+            except json.JSONDecodeError:
+                pass
+    except Exception:
+        pass  # Provider API often fails, continue to method 2
+
+    # Method 2: Validate OTA lineup pattern via grid API
+    # OTA lineups use format: {COUNTRY}-OTA-{POSTAL}
+    ota_lineup_id = f"{country}-OTA-{postal_code}"
+    if ota_lineup_id not in seen_ids:
+        if _validate_lineup_via_grid(country, ota_lineup_id, postal_code):
+            lineups.append({
+                'lineup_id': ota_lineup_id,
+                'name': 'Antenna (OTA)',
+                'type': 'Antenna',
+                'location': postal_code,
+            })
+            seen_ids.add(ota_lineup_id)
+            logging.debug(f"  Validated OTA lineup: {ota_lineup_id}")
+
+    return lineups
+
+
+def _validate_lineup_via_grid(country: str, lineup_id: str, postal_code: str) -> bool:
+    """
+    Validate a lineup ID by attempting to fetch grid data.
+    Returns True if the lineup returns valid channel data.
+    """
+    try:
+        _channels, stats = fetch_grid(country, lineup_id, postal_code, timespan=1)
+        return stats.get('channels_found', 0) > 0
+    except Exception as e:
+        logging.debug(f"Validation failed for {lineup_id}: {e}")
+        return False
+
+
+def fetch_channels_for_lineup(lineup_id: str, country: str, postal_code: str = "00000") -> List[Dict]:
+    """
+    Fetch channel list for a specific lineup using the grid API.
+    Returns list of channel dictionaries.
+    """
+    channels = []
+
+    try:
+        # fetch_grid returns (channels_list, stats_dict)
+        channel_list, stats = fetch_grid(country, lineup_id, postal_code, timespan=1)
+
+        if channel_list and stats.get('channels_found', 0) > 0:
+            for ch in channel_list:
+                channel = {
+                    'stationid': ch.get('stationId', ''),
+                    'callsign': ch.get('callSign', ''),
+                    'station_name': ch.get('affiliateName', '') or ch.get('callSign', ''),
+                    'affiliatecallsign': ch.get('affiliateName', ''),
+                    'affiliateid': '',
+                    'channel_number': ch.get('channelNo', ''),
+                }
+                channels.append(channel)
+
+    except Exception as e:
+        logging.debug(f"Could not fetch channels for {lineup_id}: {e}")
+
+    return channels
+
+
+def save_lineup_to_db(db_path: str, lineup: Dict, country: str, postal_code: str):
+    """Save a discovered lineup to the database."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT OR REPLACE INTO lineups
+        (lineup_id, lineup_name, lineup_type, lineup_location, country_code, postal_code, device, last_updated)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (
+        lineup['lineup_id'],
+        lineup.get('name', ''),
+        lineup.get('type', ''),
+        lineup.get('location', ''),
+        country,
+        postal_code,
+        lineup.get('device', ''),
+        _dt.datetime.now().isoformat()
+    ))
+
+    conn.commit()
+    conn.close()
+
+
+def save_channels_to_db(db_path: str, lineup_id: str, lineup_name: str,
+                        channels: List[Dict], country: str, country_name: str):
+    """Save channel list for a lineup to the database (matches existing schema)."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # First, remove existing channels for this lineup to avoid duplicates
+    cursor.execute('DELETE FROM channels_by_country WHERE lineupid = ?', (lineup_id,))
+
+    # Insert new channels (using existing table schema without extra columns)
+    for ch in channels:
+        cursor.execute('''
+            INSERT INTO channels_by_country
+            (lineupid, lineup_name, stationid, callsign, station_name,
+             affiliatecallsign, affiliateid, country, country_name)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            lineup_id,
+            lineup_name,
+            ch.get('stationid', ''),
+            ch.get('callsign', ''),
+            ch.get('station_name', ''),
+            ch.get('affiliatecallsign', ''),
+            ch.get('affiliateid', ''),
+            country,
+            country_name,
+        ))
+
+    # Update lineup metadata table if it exists
+    try:
+        cursor.execute('''
+            UPDATE lineups SET channel_count = ?, last_fetched = ? WHERE lineup_id = ?
+        ''', (len(channels), _dt.datetime.now().isoformat(), lineup_id))
+    except sqlite3.OperationalError:
+        pass  # lineups table may not exist in older databases
+
+    conn.commit()
+    conn.close()
+
+
+def save_postal_query(db_path: str, country: str, postal_code: str, lineup_count: int):
+    """Record that we queried a postal code."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT OR REPLACE INTO postal_codes (country_code, postal_code, lineup_count, last_queried)
+        VALUES (?, ?, ?, ?)
+    ''', (country, postal_code, lineup_count, _dt.datetime.now().isoformat()))
+
+    conn.commit()
+    conn.close()
+
+
+def load_postal_codes_from_file(filepath: str) -> Dict[str, List[str]]:
+    """Load postal codes from a CSV file. Expected columns: country_code, postal_code"""
+    import csv
+    postal_codes = {}
+
+    try:
+        with open(filepath, 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                country = row.get('country_code', row.get('country', '')).upper().strip()
+                postal = row.get('postal_code', row.get('zip', '')).strip()
+
+                if country and postal:
+                    if country not in postal_codes:
+                        postal_codes[country] = []
+                    if postal not in postal_codes[country]:
+                        postal_codes[country].append(postal)
+
+        logging.info(f"Loaded postal codes for {len(postal_codes)} countries from {filepath}")
+
+    except FileNotFoundError:
+        logging.error(f"Postal codes file not found: {filepath}")
+    except Exception as e:
+        logging.error(f"Error loading postal codes file: {e}")
+
+    return postal_codes
+
+
+def remove_lineup_from_db(db_path: str, lineup_id: str):
+    """Remove a broken lineup and its channels from the database."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # Remove from channels_by_country
+    cursor.execute('DELETE FROM channels_by_country WHERE lineupid = ?', (lineup_id,))
+    channels_removed = cursor.rowcount
+
+    # Remove from lineups table if it exists
+    cursor.execute('DELETE FROM lineups WHERE lineup_id = ?', (lineup_id,))
+
+    conn.commit()
+    conn.close()
+
+    if channels_removed > 0:
+        logging.info(f"Removed broken lineup {lineup_id} ({channels_removed} channel entries)")
+
+    return channels_removed
+
+
+def run_database_update(db_path: str, countries: List[str] = None,
+                        postal_codes_file: str = None, rate_limit: float = 1.0,
+                        validate_existing: bool = True, max_workers: int = 1):
+    """
+    Main function to update the lineup database by scraping Gracenote.
+
+    - Discovers new lineups and fetches their channels
+    - Adds channels directly to channels_by_country (used by main script)
+    - Removes broken lineups that no longer work
+
+    Args:
+        db_path: Path to SQLite database
+        countries: List of country codes to process (default: all GRACENOTE_COUNTRIES)
+        postal_codes_file: Optional CSV file with postal codes
+        rate_limit: Seconds between API requests
+        validate_existing: Also validate existing lineups and remove broken ones
+        max_workers: Number of parallel workers (from EPG_MAX_WORKERS)
+    """
+    import threading
+
+    print("\n" + "="*70)
+    print("GRACENOTE LINEUP DATABASE UPDATE")
+    print("="*70)
+
+    # Initialize database schema
+    init_db_schema(db_path)
+
+    # Determine which countries to process
+    if countries:
+        country_list = [c.upper() for c in countries if c.upper() in GRACENOTE_COUNTRIES]
+        if not country_list:
+            logging.error(f"No valid countries specified. Available: {', '.join(GRACENOTE_COUNTRIES.keys())}")
+            return False
+    else:
+        country_list = list(GRACENOTE_COUNTRIES.keys())
+
+    print(f"Processing {len(country_list)} countries")
+    if max_workers > 1:
+        print(f"Using {max_workers} parallel workers")
+
+    # Load postal codes
+    if postal_codes_file:
+        postal_codes_by_country = load_postal_codes_from_file(postal_codes_file)
+    else:
+        # Use built-in sample postal codes
+        postal_codes_by_country = {
+            country: info['sample_postals']
+            for country, info in GRACENOTE_COUNTRIES.items()
+        }
+        print("Using built-in sample postal codes")
+        print("(Provide --postal-codes-file for more comprehensive coverage)")
+
+    # Calculate total postal codes for progress tracking
+    total_postals = sum(
+        len(postal_codes_by_country.get(c, GRACENOTE_COUNTRIES[c].get('sample_postals', [])))
+        for c in country_list
+    )
+    completed_postals = 0
+
+    print(f"Total postal codes to process: {total_postals}")
+
+    # Thread-safe statistics
+    stats = {
+        'countries': 0,
+        'postal_codes': 0,
+        'lineups_added': 0,
+        'lineups_updated': 0,
+        'lineups_removed': 0,
+        'channels_added': 0,
+        'errors': 0,
+    }
+    stats_lock = threading.Lock()
+    print_lock = threading.Lock()
+
+    start_time = time.time()
+
+    def format_eta(elapsed: float, completed: int, total: int) -> str:
+        """Calculate and format ETA."""
+        if completed == 0:
+            return "calculating..."
+        rate = elapsed / completed
+        remaining = (total - completed) * rate
+        if remaining < 60:
+            return f"{int(remaining)}s"
+        elif remaining < 3600:
+            return f"{int(remaining // 60)}m {int(remaining % 60)}s"
+        else:
+            return f"{int(remaining // 3600)}h {int((remaining % 3600) // 60)}m"
+
+    # Get existing lineups from channels_by_country (the table the script actually uses)
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT lineupid FROM channels_by_country')
+    existing_lineups = set(row[0] for row in cursor.fetchall())
+    conn.close()
+    existing_lineups_lock = threading.Lock()
+
+    print(f"Existing lineups in database: {len(existing_lineups)}")
+
+    # Track lineups we've validated as working
+    validated_lineups = set()
+    validated_lock = threading.Lock()
+
+    def process_postal(country: str, country_name: str, postal: str) -> dict:
+        """Process a single postal code (thread-safe)."""
+        result = {'added': 0, 'updated': 0, 'channels': 0, 'error': False}
+
+        try:
+            lineups = discover_lineups_for_postal(country, postal)
+
+            if lineups:
+                for lineup in lineups:
+                    lineup_id = lineup['lineup_id']
+
+                    # Skip known broken patterns
+                    if any(bad in lineup_id.lower() for bad in
+                           ["xumotv", "sandbox", "test", "dummy", "dtvnow", "amzpv"]):
+                        continue
+
+                    with validated_lock:
+                        validated_lineups.add(lineup_id)
+
+                    # Fetch channels for this lineup
+                    time.sleep(rate_limit * 0.5)
+                    channels = fetch_channels_for_lineup(lineup_id, country, postal)
+
+                    if channels:
+                        with existing_lineups_lock:
+                            is_new = lineup_id not in existing_lineups
+                            existing_lineups.add(lineup_id)
+
+                        # Save to database
+                        save_channels_to_db(db_path, lineup_id, lineup['name'],
+                                           channels, country, country_name)
+                        save_lineup_to_db(db_path, lineup, country, postal)
+
+                        result['channels'] += len(channels)
+                        if is_new:
+                            result['added'] += 1
+                            with print_lock:
+                                print(f"    + {lineup_id}: {len(channels)} channels (NEW)")
+                        else:
+                            result['updated'] += 1
+                            with print_lock:
+                                print(f"    ~ {lineup_id}: {len(channels)} channels (updated)")
+
+            save_postal_query(db_path, country, postal, len(lineups))
+
+        except Exception as e:
+            result['error'] = True
+            with print_lock:
+                print(f"    error: {e}")
+
+        return result
+
+    # Process each country
+    for country in country_list:
+        country_info = GRACENOTE_COUNTRIES[country]
+        country_name = country_info['name']
+
+        print(f"\n{'─'*50}")
+        print(f"[{country}] {country_name}")
+        print(f"{'─'*50}")
+
+        postal_codes = postal_codes_by_country.get(country, [])
+
+        if not postal_codes:
+            postal_codes = country_info.get('sample_postals', [])
+
+        if not postal_codes:
+            print(f"  No postal codes available, skipping")
+            continue
+
+        stats['countries'] += 1
+        country_added = 0
+        country_updated = 0
+
+        if max_workers > 1:
+            # Parallel processing
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                # Print all postal codes being queried
+                for postal in postal_codes:
+                    print(f"  Querying {postal}...")
+
+                futures = {
+                    executor.submit(process_postal, country, country_name, postal): postal
+                    for postal in postal_codes
+                }
+
+                for future in as_completed(futures):
+                    postal = futures[future]
+                    try:
+                        result = future.result()
+                        stats['postal_codes'] += 1
+                        stats['channels_added'] += result['channels']
+                        stats['lineups_added'] += result['added']
+                        stats['lineups_updated'] += result['updated']
+                        country_added += result['added']
+                        country_updated += result['updated']
+                        if result['error']:
+                            stats['errors'] += 1
+                    except Exception as e:
+                        with print_lock:
+                            print(f"  {postal} error: {e}")
+                        stats['errors'] += 1
+        else:
+            # Sequential processing
+            for postal in postal_codes:
+                print(f"  Querying {postal}...", end=" ", flush=True)
+
+                try:
+                    lineups = discover_lineups_for_postal(country, postal)
+                    stats['postal_codes'] += 1
+
+                    if lineups:
+                        print(f"found {len(lineups)} lineup(s)")
+
+                        for lineup in lineups:
+                            lineup_id = lineup['lineup_id']
+
+                            if any(bad in lineup_id.lower() for bad in
+                                   ["xumotv", "sandbox", "test", "dummy", "dtvnow", "amzpv"]):
+                                continue
+
+                            validated_lineups.add(lineup_id)
+
+                            time.sleep(rate_limit * 0.5)
+                            channels = fetch_channels_for_lineup(lineup_id, country, postal)
+
+                            if channels:
+                                is_new = lineup_id not in existing_lineups
+                                save_channels_to_db(db_path, lineup_id, lineup['name'],
+                                                   channels, country, country_name)
+                                stats['channels_added'] += len(channels)
+
+                                if is_new:
+                                    stats['lineups_added'] += 1
+                                    country_added += 1
+                                    existing_lineups.add(lineup_id)
+                                    print(f"    + {lineup_id}: {len(channels)} channels (NEW)")
+                                else:
+                                    stats['lineups_updated'] += 1
+                                    country_updated += 1
+                                    print(f"    ~ {lineup_id}: {len(channels)} channels (updated)")
+
+                                save_lineup_to_db(db_path, lineup, country, postal)
+                    else:
+                        print("no lineups")
+
+                    save_postal_query(db_path, country, postal, len(lineups))
+
+                except KeyboardInterrupt:
+                    print("\nInterrupted by user")
+                    break
+                except Exception as e:
+                    print(f"error: {e}")
+                    stats['errors'] += 1
+
+                time.sleep(rate_limit)
+
+        completed_postals += len(postal_codes)
+        elapsed = time.time() - start_time
+        eta = format_eta(elapsed, completed_postals, total_postals)
+        pct = int(100 * completed_postals / total_postals) if total_postals > 0 else 100
+        print(f"  Country: +{country_added} new, ~{country_updated} updated")
+        print(f"  Progress: [{completed_postals}/{total_postals}] {pct}% - ETA: {eta}")
+
+    # Validate and remove broken lineups from existing database
+    if validate_existing and existing_lineups:
+        print(f"\n{'─'*50}")
+        print("Validating existing lineups...")
+        print(f"{'─'*50}")
+
+        # Check lineups that we didn't already validate during discovery
+        lineups_to_check = existing_lineups - validated_lineups
+
+        # Build list of lineups to validate with their country info
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        validation_queue = []
+
+        for lineup_id in list(lineups_to_check):
+            cursor.execute('SELECT country FROM channels_by_country WHERE lineupid = ? LIMIT 1', (lineup_id,))
+            row = cursor.fetchone()
+            if row:
+                lineup_country = row[0]
+                if lineup_country in country_list:
+                    parts = lineup_id.split('-')
+                    postal = parts[-1] if len(parts) >= 3 else '00000'
+                    validation_queue.append((lineup_id, lineup_country, postal))
+
+        conn.close()
+
+        total_to_validate = len(validation_queue)
+        validated_count = 0
+        validation_start = time.time()
+
+        # Limit validation workers to avoid 429 rate limits
+        validation_workers = min(max_workers, 3)
+        print(f"  {total_to_validate} lineups to validate ({validation_workers} workers)")
+
+        def validate_one(item):
+            """Validate a single lineup with built-in delay."""
+            lineup_id, lineup_country, postal = item
+            time.sleep(rate_limit * 0.5)  # Delay to avoid 429
+            is_valid = _validate_lineup_via_grid(lineup_country, lineup_id, postal)
+            return lineup_id, is_valid
+
+        if validation_workers > 1 and total_to_validate > 0:
+            # Parallel validation with rate limiting
+            removed_count = 0
+            with ThreadPoolExecutor(max_workers=validation_workers) as executor:
+                futures = {executor.submit(validate_one, item): item for item in validation_queue}
+
+                for future in as_completed(futures):
+                    lineup_id, is_valid = future.result()
+                    validated_count += 1
+
+                    if is_valid:
+                        with validated_lock:
+                            validated_lineups.add(lineup_id)
+                    else:
+                        removed = remove_lineup_from_db(db_path, lineup_id)
+                        if removed > 0:
+                            with stats_lock:
+                                stats['lineups_removed'] += 1
+                            removed_count += 1
+                            with print_lock:
+                                print(f"    Removed: {lineup_id}")
+
+                    # Progress update every 50 or at end
+                    if validated_count % 50 == 0 or validated_count == total_to_validate:
+                        elapsed_v = time.time() - validation_start
+                        eta_v = format_eta(elapsed_v, validated_count, total_to_validate)
+                        pct_v = int(100 * validated_count / total_to_validate)
+                        with print_lock:
+                            print(f"  Validation: [{validated_count}/{total_to_validate}] {pct_v}% - ETA: {eta_v} - Removed: {removed_count}")
+        else:
+            # Sequential validation
+            for lineup_id, lineup_country, postal in validation_queue:
+                print(f"  Checking {lineup_id}...", end=" ", flush=True)
+
+                if _validate_lineup_via_grid(lineup_country, lineup_id, postal):
+                    print("OK")
+                    validated_lineups.add(lineup_id)
+                else:
+                    print("BROKEN - removing")
+                    removed = remove_lineup_from_db(db_path, lineup_id)
+                    if removed > 0:
+                        stats['lineups_removed'] += 1
+
+                validated_count += 1
+                if validated_count % 20 == 0:
+                    elapsed_v = time.time() - validation_start
+                    eta_v = format_eta(elapsed_v, validated_count, total_to_validate)
+                    pct_v = int(100 * validated_count / total_to_validate)
+                    print(f"  Progress: [{validated_count}/{total_to_validate}] {pct_v}% - ETA: {eta_v}")
+
+                time.sleep(rate_limit)
+
+    # Print final statistics
+    elapsed = time.time() - start_time
+
+    print("\n" + "="*70)
+    print("UPDATE COMPLETE")
+    print("="*70)
+    print(f"Time elapsed:       {elapsed:.1f} seconds")
+    print(f"Countries:          {stats['countries']}")
+    print(f"Postal codes:       {stats['postal_codes']}")
+    print(f"Lineups added:      {stats['lineups_added']}")
+    print(f"Lineups updated:    {stats['lineups_updated']}")
+    print(f"Lineups removed:    {stats['lineups_removed']}")
+    print(f"Channels added:     {stats['channels_added']}")
+    print(f"Errors:             {stats['errors']}")
+
+    # Show database totals
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT COUNT(DISTINCT lineupid) FROM channels_by_country')
+    total_lineups = cursor.fetchone()[0]
+    cursor.execute('SELECT COUNT(*) FROM channels_by_country')
+    total_channels = cursor.fetchone()[0]
+    cursor.execute('SELECT COUNT(DISTINCT country) FROM channels_by_country')
+    total_countries = cursor.fetchone()[0]
+    conn.close()
+
+    print(f"\nDatabase totals:")
+    print(f"  Lineups:          {total_lineups}")
+    print(f"  Channel entries:  {total_channels}")
+    print(f"  Countries:        {total_countries}")
+    print("="*70 + "\n")
+
+    return True
+
 
 # ---------------- Profile & Config Helpers ----------------
 def resolve_lineups_for_profile(profile: Dict, base_config: Dict) -> List[str]:
@@ -1828,6 +2573,16 @@ Examples:
     db_group = parser.add_argument_group('Database')
     db_group.add_argument('--db-path', type=str,
                          help=f'Path to SQLite database (default: {DB_FILE})')
+    db_group.add_argument('--update-db', action='store_true',
+                         help='Discover new lineups, fetch channels, and remove broken ones')
+    db_group.add_argument('--postal-codes-file', type=str,
+                         help='CSV file with postal codes (columns: country_code, postal_code)')
+    db_group.add_argument('--update-countries', type=str,
+                         help='Comma-separated country codes to update (default: all supported)')
+    db_group.add_argument('--update-rate-limit', type=float, default=1.0,
+                         help='Seconds between API requests during update (default: 1.0)')
+    db_group.add_argument('--skip-validation', action='store_true',
+                         help='Skip validation of existing lineups (faster, but won\'t remove broken ones)')
     
     cdn_group = parser.add_argument_group('CDN Options')
     cdn_group.add_argument('--cdn-subdomain', type=str,
@@ -1954,6 +2709,37 @@ if __name__ == "__main__":
     # Handle --init-config before loading config
     if getattr(args, 'init_config', False):
         success = generate_sample_config()
+        sys.exit(0 if success else 1)
+
+    # Handle --update-db (load config first for parallel settings)
+    if getattr(args, 'update_db', False):
+        config = load_config(args)
+
+        log_level = config.get("EPG_LOG_LEVEL") or getattr(args, 'log_level', 'INFO') or 'INFO'
+        setup_logging(log_level)
+
+        db_path = getattr(args, 'db_path', None) or config.get("EPG_DB_PATH") or DB_FILE
+        postal_file = getattr(args, 'postal_codes_file', None)
+        rate_limit = getattr(args, 'update_rate_limit', 1.0) or 1.0
+        skip_validation = getattr(args, 'skip_validation', False)
+
+        # Get parallel settings from config
+        use_parallel = config.get("EPG_PARALLEL", False)
+        max_workers = config.get("EPG_MAX_WORKERS", 3) if use_parallel else 1
+
+        # Parse countries if specified
+        countries = None
+        if getattr(args, 'update_countries', None):
+            countries = [c.strip().upper() for c in args.update_countries.split(',')]
+
+        success = run_database_update(
+            db_path=db_path,
+            countries=countries,
+            postal_codes_file=postal_file,
+            rate_limit=rate_limit,
+            validate_existing=not skip_validation,
+            max_workers=max_workers
+        )
         sys.exit(0 if success else 1)
 
     config = load_config(args)
