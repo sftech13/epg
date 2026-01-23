@@ -1365,3 +1365,64 @@
 [2026-01-23 20:45:25] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 684 channels, 61916 programmes
 [2026-01-23 20:45:25] [INFO] Merging 7 EPG source(s)
 [2026-01-23 20:45:31] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4807 channels, 174739 programmes
+[2026-01-23 15:52:56] [ERROR] No lineup IDs found.
+[2026-01-23 15:52:56] [ERROR]   Lookup mode: 
+[2026-01-23 15:52:56] [ERROR]   Lookup value: 
+[2026-01-23 15:52:56] [ERROR]   Check your EPG_LOOKUP_MODE/EPG_LOOKUP_VALUE or set EPG_LINEUP_ID directly.
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [WARNING] [US OTA] No lineups found, skipping.
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [WARNING] [California Cable] No lineups found, skipping.
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [WARNING] [Canada Cable] No lineups found, skipping.
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [ERROR] Database file zap2it.db not found
+[2026-01-23 15:53:12] [WARNING] [Latin America] No lineups found, skipping.
+[2026-01-23 15:53:12] [INFO] [Europe] External source mode: globetvapp
+[2026-01-23 15:53:12] [INFO] Fetching 16 external EPG source(s)
+[2026-01-23 15:53:12] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 272 channels, 10998 programmes
+[2026-01-23 15:53:13] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 334 channels, 20540 programmes
+[2026-01-23 15:53:14] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 324 channels, 22468 programmes
+[2026-01-23 15:53:14] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 292 channels, 13355 programmes
+[2026-01-23 15:53:15] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 145 channels, 5207 programmes
+[2026-01-23 15:53:15] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 243 channels, 17413 programmes
+[2026-01-23 15:53:16] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 261 channels, 23098 programmes
+[2026-01-23 15:53:16] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 63 channels, 4460 programmes
+[2026-01-23 15:53:17] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 1085 channels, 45910 programmes
+[2026-01-23 15:53:18] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 583 channels, 40753 programmes
+[2026-01-23 15:53:19] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 195 channels, 10311 programmes
+[2026-01-23 15:53:19] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 82 channels, 3892 programmes
+[2026-01-23 15:53:20] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 72 channels, 3562 programmes
+[2026-01-23 15:53:20] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 102 channels, 7430 programmes
+[2026-01-23 15:53:21] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 107 channels, 5358 programmes
+[2026-01-23 15:53:22] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 158 channels, 9376 programmes
+[2026-01-23 15:53:22] [INFO] Merging 16 EPG source(s)
+[2026-01-23 15:53:24] [INFO] Written merged EPG to output/EPG-europe.xml.gz: 4318 channels, 236575 programmes
+[2026-01-23 15:53:24] [INFO] [Streaming Services] External source mode: mjh
+[2026-01-23 15:53:24] [INFO] Fetching 7 external EPG source(s)
+[2026-01-23 15:53:25] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz: 401 channels, 8351 programmes
+[2026-01-23 15:53:25] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz: 216 channels, 5121 programmes
+[2026-01-23 15:53:25] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz: 539 channels, 4484 programmes
+[2026-01-23 15:53:26] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz: 235 channels, 2141 programmes
+[2026-01-23 15:53:27] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz: 2579 channels, 82209 programmes
+[2026-01-23 15:53:27] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 153 channels, 10392 programmes
+[2026-01-23 15:53:28] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 685 channels, 61978 programmes
+[2026-01-23 15:53:28] [INFO] Merging 7 EPG source(s)
+[2026-01-23 15:53:31] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4808 channels, 174675 programmes
+[2026-01-23 15:54:32] [INFO] Found 16 OTA lineups for country 'United States'
+[2026-01-23 15:54:32] [INFO] [US OTA] Found 16 lineup(s)
+[2026-01-23 15:54:32] [INFO] Starting EPG fetch for 16 lineup(s)
+[2026-01-23 15:54:32] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-23 15:54:32] [INFO]   Parallel: True (workers: 3)
+[2026-01-23 15:55:00] [INFO] [1/16] USA-GU70062-DEFAULT: 58 channels, 8002 events
+[2026-01-23 15:55:01] [INFO] [2/16] USA-KY53429-DEFAULT: 85 channels, 11701 events
+[2026-01-23 15:55:01] [INFO] [3/16] USA-KY16422-DEFAULT: 91 channels, 12371 events

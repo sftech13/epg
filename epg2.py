@@ -25,7 +25,7 @@ from typing import List, Dict, Optional, Tuple
 # ---------------- Global Defaults ----------------
 VERSION = "2.3.0"
 CONFIG_FILE = str(Path(__file__).parent / "epg_config.json")
-DB_FILE = str(Path(__file__).parent / "zap2it.db")
+DB_FILE = str(Path(__file__).parent / "zap.db")
 _LOCK_FILE = "/tmp/epg_standalone.run.lock"
 
 USER_AGENTS = [

@@ -9,7 +9,7 @@
   "EPG_MAX_WORKERS": 5,
   "EPG_LOG_LEVEL": "INFO",
   "EPG_LOG_FILE": "output/epg.log",
-  "EPG_DB_PATH": "zap2it.db",
+  "EPG_DB_PATH": "zap.db",
 
   "EPG_PROFILES": [
     {
