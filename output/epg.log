@@ -1566,3 +1566,143 @@
 [2026-01-24 00:14:46] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 685 channels, 61978 programmes
 [2026-01-24 00:14:46] [INFO] Merging 7 EPG source(s)
 [2026-01-24 00:14:51] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4808 channels, 174675 programmes
+[2026-01-24 01:04:30] [INFO] Found 16 OTA lineups for country 'United States'
+[2026-01-24 01:04:30] [INFO] [US OTA] Found 16 lineup(s)
+[2026-01-24 01:04:30] [INFO] Starting EPG fetch for 16 lineup(s)
+[2026-01-24 01:04:30] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-24 01:04:30] [INFO]   Parallel: True (workers: 3)
+[2026-01-24 01:04:57] [INFO] [1/16] USA-GU70062-DEFAULT: 58 channels, 8005 events
+[2026-01-24 01:04:58] [INFO] [2/16] USA-KY53429-DEFAULT: 85 channels, 11701 events
+[2026-01-24 01:05:01] [INFO] [3/16] USA-KY16422-DEFAULT: 91 channels, 12373 events
+[2026-01-24 01:05:25] [INFO] [4/16] USA-LA57904-DEFAULT: 74 channels, 11032 events
+[2026-01-24 01:05:27] [INFO] [5/16] USA-LA67343-DEFAULT: 83 channels, 11982 events
+[2026-01-24 01:05:29] [INFO] [6/16] USA-NM30405-DEFAULT: 63 channels, 8949 events
+[2026-01-24 01:05:58] [INFO] [7/16] USA-OTA-10001: 163 channels, 25736 events
+[2026-01-24 01:06:01] [INFO] [8/16] USA-OTA-30301: 151 channels, 20880 events
+[2026-01-24 01:06:01] [INFO] [9/16] USA-OTA-33101: 135 channels, 19896 events
+[2026-01-24 01:06:27] [INFO] [10/16] USA-OTA-60601: 120 channels, 18000 events
+[2026-01-24 01:06:35] [INFO] [11/16] USA-OTA-85001: 124 channels, 17317 events
+[2026-01-24 01:06:37] [INFO] [12/16] USA-OTA-77001: 168 channels, 22565 events
+[2026-01-24 01:07:00] [INFO] [13/16] USA-OTA-90210: 199 channels, 25366 events
+[2026-01-24 01:07:09] [INFO] [14/16] USA-OTA-98101: 90 channels, 14291 events
+[2026-01-24 01:07:11] [INFO] [15/16] USA-OTA-94102: 192 channels, 28249 events
+[2026-01-24 01:07:31] [INFO] [16/16] USA-UT61812-DEFAULT: 103 channels, 14198 events
+[2026-01-24 01:07:31] [INFO] Fetch complete: 16 succeeded, 0 failed
+[2026-01-24 01:07:31] [INFO]   Raw channels collected: 1899
+[2026-01-24 01:07:31] [INFO] Merging duplicate channels across lineups...
+[2026-01-24 01:07:31] [INFO]   Final unique channels: 1672
+[2026-01-24 01:07:31] [INFO]   Total events after deduplication: 240167
+[2026-01-24 01:07:40] [INFO] Writing 240167 valid events to XML
+[2026-01-24 01:07:40] [INFO]   New episodes: 26072
+[2026-01-24 01:07:40] [INFO]   Reruns: 214095
+[2026-01-24 01:07:50] [INFO] EPG successfully written to output/EPG-us-ota.xml.gz
+[2026-01-24 01:07:50] [INFO] [California Cable] Found 10 lineup(s)
+[2026-01-24 01:07:50] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-24 01:07:50] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-24 01:07:50] [INFO]   Parallel: True (workers: 3)
+[2026-01-24 01:08:29] [INFO] [1/10] USA-CA04423-X: 315 channels, 40011 events
+[2026-01-24 01:08:33] [INFO] [2/10] USA-CA02268-X: 322 channels, 42102 events
+[2026-01-24 01:08:50] [INFO] [3/10] USA-CA04523-X: 629 channels, 74574 events
+[2026-01-24 01:09:24] [INFO] [4/10] USA-CA04563-X: 499 channels, 62836 events
+[2026-01-24 01:09:31] [INFO] [5/10] USA-CA04577-X: 522 channels, 61942 events
+[2026-01-24 01:09:42] [INFO] [6/10] USA-CA04818-X: 583 channels, 67357 events
+[2026-01-24 01:10:05] [INFO] [7/10] USA-CA04863-X: 313 channels, 39911 events
+[2026-01-24 01:10:22] [INFO] [8/10] USA-CA04931-X: 535 channels, 68998 events
+[2026-01-24 01:10:50] [INFO] [9/10] USA-CA55363-X: 598 channels, 70995 events
+[2026-01-24 01:10:59] [INFO] [10/10] USA-CA57315-L: 500 channels, 62435 events
+[2026-01-24 01:10:59] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-24 01:10:59] [INFO]   Raw channels collected: 4816
+[2026-01-24 01:10:59] [INFO] Merging duplicate channels across lineups...
+[2026-01-24 01:11:00] [INFO]   Final unique channels: 1438
+[2026-01-24 01:11:00] [INFO]   Total events after deduplication: 170441
+[2026-01-24 01:11:08] [INFO] Writing 170441 valid events to XML
+[2026-01-24 01:11:08] [INFO]   New episodes: 17954
+[2026-01-24 01:11:08] [INFO]   Reruns: 152487
+[2026-01-24 01:11:14] [INFO] EPG successfully written to output/EPG-california.xml.gz
+[2026-01-24 01:11:15] [INFO] [Canada Cable] Found 10 lineup(s)
+[2026-01-24 01:11:15] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-24 01:11:15] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-24 01:11:15] [INFO]   Parallel: True (workers: 3)
+[2026-01-24 01:11:57] [INFO] [1/10] CAN-0001010-X: 249 channels, 31691 events
+[2026-01-24 01:12:02] [INFO] [2/10] CAN-0000080-X: 397 channels, 50625 events
+[2026-01-24 01:12:17] [INFO] [3/10] CAN-0000810-X: 600 channels, 85979 events
+[2026-01-24 01:12:40] [INFO] [4/10] CAN-0001811-X: 243 channels, 38198 events
+[2026-01-24 01:12:40] [INFO] [5/10] CAN-0001900-X: 250 channels, 36288 events
+[2026-01-24 01:13:18] [INFO] [6/10] CAN-0001994-X: 496 channels, 65615 events
+[2026-01-24 01:13:18] [INFO] [7/10] CAN-0002090-X: 247 channels, 31344 events
+[2026-01-24 01:13:22] [INFO] [8/10] CAN-0002150-X: 251 channels, 31960 events
+[2026-01-24 01:14:05] [INFO] [9/10] CAN-0003130-X: 409 channels, 53123 events
+[2026-01-24 01:14:13] [INFO] [10/10] CAN-0002988-X: 498 channels, 65848 events
+[2026-01-24 01:14:13] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-24 01:14:13] [INFO]   Raw channels collected: 3640
+[2026-01-24 01:14:13] [INFO] Merging duplicate channels across lineups...
+[2026-01-24 01:14:14] [INFO]   Final unique channels: 1150
+[2026-01-24 01:14:14] [INFO]   Total events after deduplication: 150715
+[2026-01-24 01:14:22] [INFO] Writing 150715 valid events to XML
+[2026-01-24 01:14:22] [INFO]   New episodes: 21103
+[2026-01-24 01:14:22] [INFO]   Reruns: 129612
+[2026-01-24 01:14:28] [INFO] EPG successfully written to output/EPG-canada.xml.gz
+[2026-01-24 01:14:29] [INFO] [Latin America] Found 20 lineup(s)
+[2026-01-24 01:14:29] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-01-24 01:14:29] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-24 01:14:29] [INFO]   Parallel: True (workers: 3)
+[2026-01-24 01:15:02] [INFO] [1/20] ARG-0003089-X: 120 channels, 15224 events
+[2026-01-24 01:15:06] [INFO] [2/20] ARG-0004599-X: 172 channels, 21261 events
+[2026-01-24 01:15:26] [INFO] [3/20] CAN-0005632-X: 547 channels, 74826 events
+[2026-01-24 01:15:31] [INFO] [4/20] CHL-0000627-DEFAULT: 53 channels, 5541 events
+[2026-01-24 01:15:42] [INFO] [5/20] CHL-0000635-X: 140 channels, 15723 events
+[2026-01-24 01:16:00] [INFO] [6/20] CHL-0000650-X: 135 channels, 13607 events
+[2026-01-24 01:16:11] [INFO] [7/20] CHL-0003453-X: 67 channels, 8100 events
+[2026-01-24 01:16:11] [INFO] [8/20] CHL-0003043-X: 214 channels, 23596 events
+[2026-01-24 01:16:36] [INFO] [9/20] CHL-0003464-X: 140 channels, 15723 events
+[2026-01-24 01:16:51] [INFO] [10/20] CHL-0003522-X: 148 channels, 18077 events
+[2026-01-24 01:16:52] [INFO] [11/20] CHL-0003493-X: 183 channels, 21135 events
+[2026-01-24 01:17:12] [INFO] [12/20] CHL-0003530-X: 148 channels, 18080 events
+[2026-01-24 01:17:18] [INFO] [13/20] CHL-0003536-DEFAULT: 58 channels, 5758 events
+[2026-01-24 01:17:19] [INFO] [14/20] CHL-0003537-DEFAULT: 47 channels, 4550 events
+[2026-01-24 01:17:40] [INFO] [15/20] CHL-0003538-DEFAULT: 50 channels, 5092 events
+[2026-01-24 01:17:53] [INFO] [16/20] CHL-0003540-X: 128 channels, 15575 events
+[2026-01-24 01:17:59] [INFO] [17/20] CHL-0003539-X: 224 channels, 24812 events
+[2026-01-24 01:18:16] [INFO] [18/20] CHL-0003541-X: 155 channels, 17533 events
+[2026-01-24 01:18:26] [INFO] [19/20] CHL-0004470-X: 91 channels, 10193 events
+[2026-01-24 01:18:30] [INFO] [20/20] CHL-0004477-X: 75 channels, 9647 events
+[2026-01-24 01:18:30] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-01-24 01:18:30] [INFO]   Raw channels collected: 2895
+[2026-01-24 01:18:30] [INFO] Merging duplicate channels across lineups...
+[2026-01-24 01:18:31] [INFO]   Final unique channels: 1164
+[2026-01-24 01:18:31] [INFO]   Total events after deduplication: 137497
+[2026-01-24 01:18:36] [INFO] Writing 137497 valid events to XML
+[2026-01-24 01:18:36] [INFO]   New episodes: 10258
+[2026-01-24 01:18:36] [INFO]   Reruns: 127239
+[2026-01-24 01:18:41] [INFO] EPG successfully written to output/EPG-latam.xml.gz
+[2026-01-24 01:18:41] [INFO] [Europe] External source mode: globetvapp
+[2026-01-24 01:18:41] [INFO] Fetching 16 external EPG source(s)
+[2026-01-24 01:18:42] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 272 channels, 10998 programmes
+[2026-01-24 01:18:42] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 334 channels, 20540 programmes
+[2026-01-24 01:18:43] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 324 channels, 22468 programmes
+[2026-01-24 01:18:43] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 292 channels, 13355 programmes
+[2026-01-24 01:18:44] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 145 channels, 5207 programmes
+[2026-01-24 01:18:44] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 243 channels, 17413 programmes
+[2026-01-24 01:18:45] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 261 channels, 23098 programmes
+[2026-01-24 01:18:46] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 63 channels, 4460 programmes
+[2026-01-24 01:18:46] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 1085 channels, 45910 programmes
+[2026-01-24 01:18:47] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 583 channels, 40753 programmes
+[2026-01-24 01:18:48] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 195 channels, 10311 programmes
+[2026-01-24 01:18:48] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 82 channels, 3892 programmes
+[2026-01-24 01:18:49] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 72 channels, 3562 programmes
+[2026-01-24 01:18:49] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 102 channels, 7430 programmes
+[2026-01-24 01:18:50] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 107 channels, 5358 programmes
+[2026-01-24 01:18:50] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 158 channels, 9376 programmes
+[2026-01-24 01:18:50] [INFO] Merging 16 EPG source(s)
+[2026-01-24 01:18:55] [INFO] Written merged EPG to output/EPG-europe.xml.gz: 4318 channels, 236575 programmes
+[2026-01-24 01:18:55] [INFO] [Streaming Services] External source mode: mjh
+[2026-01-24 01:18:55] [INFO] Fetching 7 external EPG source(s)
+[2026-01-24 01:18:55] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz: 401 channels, 8364 programmes
+[2026-01-24 01:18:56] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz: 216 channels, 5163 programmes
+[2026-01-24 01:18:56] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz: 539 channels, 4465 programmes
+[2026-01-24 01:18:56] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz: 235 channels, 2147 programmes
+[2026-01-24 01:18:58] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz: 2579 channels, 82193 programmes
+[2026-01-24 01:18:59] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 153 channels, 8810 programmes
+[2026-01-24 01:19:00] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 685 channels, 61978 programmes
+[2026-01-24 01:19:00] [INFO] Merging 7 EPG source(s)
+[2026-01-24 01:19:06] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4808 channels, 173119 programmes
