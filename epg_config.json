@@ -27,7 +27,7 @@
       "lookup_mode": "keyword",
       "lookup_value": "new york, los angeles, chicago, houston, phoenix, philadelphia, san antonio, san diego, dallas, san jose, austin, jacksonville, fort worth, columbus, indianapolis, charlotte, san francisco, seattle, denver, washington, birmingham alabama, anchorage, tucson, little rock, fresno, colorado springs, hartford, wilmington delaware, miami, orlando, atlanta, honolulu, boise, peoria illinois, fort wayne, des moines, wichita, louisville, new orleans, portland maine, baltimore, boston, detroit, minneapolis, jackson mississippi, st louis, kansas city, helena montana, omaha, las vegas, manchester new hampshire, newark, albuquerque, buffalo, raleigh, bismarck, cleveland, cincinnati, oklahoma city, tulsa, portland oregon, pittsburgh, providence, charleston south carolina, sioux falls, nashville, memphis, el paso, salt lake city, burlington vermont, richmond virginia, spokane, charleston west virginia, milwaukee, cheyenne",
       "ota_only": true,
-      "max_lineups": 200
+      "max_lineups": 20
     },
     {
       "name": "California Cable",
