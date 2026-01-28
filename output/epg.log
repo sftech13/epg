@@ -3311,3 +3311,296 @@
 [2026-01-27 12:48:01] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 684 channels, 62729 programmes
 [2026-01-27 12:48:01] [INFO] Merging 7 EPG source(s)
 [2026-01-27 12:48:07] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4795 channels, 176670 programmes
+[2026-01-28 01:07:16] [INFO] Found 16 OTA lineups for country 'United States'
+[2026-01-28 01:07:16] [INFO] [US OTA] Found 16 lineup(s)
+[2026-01-28 01:07:16] [INFO] Starting EPG fetch for 16 lineup(s)
+[2026-01-28 01:07:16] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-28 01:07:16] [INFO]   Parallel: True (workers: 3)
+[2026-01-28 01:07:41] [INFO] [1/16] USA-GU70062-DEFAULT: 58 channels, 8048 events
+[2026-01-28 01:07:41] [INFO] [2/16] USA-KY16422-DEFAULT: 91 channels, 12301 events
+[2026-01-28 01:07:43] [INFO] [3/16] USA-KY53429-DEFAULT: 85 channels, 11675 events
+[2026-01-28 01:08:06] [INFO] [4/16] USA-LA67343-DEFAULT: 83 channels, 12045 events
+[2026-01-28 01:08:07] [INFO] [5/16] USA-LA57904-DEFAULT: 74 channels, 11041 events
+[2026-01-28 01:08:08] [INFO] [6/16] USA-NM30405-DEFAULT: 63 channels, 8973 events
+[2026-01-28 01:08:32] [INFO] [7/16] USA-OTA-30301: 151 channels, 20713 events
+[2026-01-28 01:08:35] [INFO] [8/16] USA-OTA-10001: 163 channels, 25637 events
+[2026-01-28 01:08:36] [INFO] [9/16] USA-OTA-33101: 135 channels, 19901 events
+[2026-01-28 01:08:58] [INFO] [10/16] USA-OTA-60601: 120 channels, 17849 events
+[2026-01-28 01:09:00] [INFO] [11/16] USA-OTA-85001: 124 channels, 17320 events
+[2026-01-28 01:09:03] [INFO] [12/16] USA-OTA-77001: 168 channels, 22395 events
+[2026-01-28 01:09:27] [INFO] [13/16] USA-OTA-90210: 199 channels, 25225 events
+[2026-01-28 01:09:28] [INFO] [14/16] USA-OTA-98101: 90 channels, 14246 events
+[2026-01-28 01:09:29] [INFO] [15/16] USA-OTA-94102: 192 channels, 28229 events
+[2026-01-28 01:09:52] [INFO] [16/16] USA-UT61812-DEFAULT: 103 channels, 14086 events
+[2026-01-28 01:09:52] [INFO] Fetch complete: 16 succeeded, 0 failed
+[2026-01-28 01:09:52] [INFO]   Raw channels collected: 1899
+[2026-01-28 01:09:52] [INFO] Merging duplicate channels across lineups...
+[2026-01-28 01:09:52] [INFO]   Final unique channels: 1672
+[2026-01-28 01:09:52] [INFO]   Total events after deduplication: 239326
+[2026-01-28 01:10:02] [INFO] Writing 239326 valid events to XML
+[2026-01-28 01:10:02] [INFO]   New episodes: 26551
+[2026-01-28 01:10:02] [INFO]   Reruns: 212775
+[2026-01-28 01:10:12] [INFO] EPG successfully written to output/EPG-us-ota.xml.gz
+[2026-01-28 01:10:14] [INFO] [US All Markets] Found 20 lineup(s)
+[2026-01-28 01:10:14] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-01-28 01:10:14] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-28 01:10:14] [INFO]   Parallel: True (workers: 3)
+[2026-01-28 01:10:15] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:16] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:17] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:18] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:19] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:20] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:21] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:22] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:23] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:24] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:26] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:27] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:28] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:29] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:30] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:31] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:32] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:33] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:34] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:35] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:35] [INFO] [1/20] BMU-0000013-X: 0 channels, 0 events
+[2026-01-28 01:10:36] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:37] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:38] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:39] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:40] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:41] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:42] [INFO] [2/20] BHS-0000029-X: 242 channels, 22103 events
+[2026-01-28 01:10:42] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:42] [INFO] [3/20] ABW-0000103-X: 145 channels, 14387 events
+[2026-01-28 01:10:43] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:44] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:45] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:46] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:47] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:48] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:50] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:51] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:52] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:53] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:54] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:55] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:56] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:10:56] [INFO] [4/20] BRB-0004494-X: 0 channels, 0 events
+[2026-01-28 01:11:09] [INFO] [5/20] CYM-0004493-X: 110 channels, 12654 events
+[2026-01-28 01:11:10] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:11] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:12] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:13] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:14] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:15] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:16] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:18] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:19] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:20] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:21] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:21] [INFO] [6/20] DOM-0000124-DEFAULT: 48 channels, 5822 events
+[2026-01-28 01:11:22] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:23] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:23] [INFO] [7/20] CAN-0009968-X: 615 channels, 87182 events
+[2026-01-28 01:11:24] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:24] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:25] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:25] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:26] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:26] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:27] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:27] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:28] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:28] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:29] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:29] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:30] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:30] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:30] [INFO] [8/20] GRD-0000033-X: 0 channels, 0 events
+[2026-01-28 01:11:31] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:31] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:32] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:33] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:33] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:34] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:34] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:35] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:35] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:36] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:36] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:37] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:37] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:38] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:38] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:40] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:40] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:41] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:41] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:42] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:42] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:43] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:43] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:44] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:44] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:45] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:45] [INFO] [9/20] KNA-0000050-DEFAULT: 0 channels, 0 events
+[2026-01-28 01:11:45] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:45] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:47] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:47] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:48] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:48] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:49] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:49] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:50] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:50] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:51] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:51] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:51] [INFO] [10/20] JAM-0002285-X: 246 channels, 28281 events
+[2026-01-28 01:11:52] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:52] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:52] [INFO] [11/20] LCA-0000271-X: 0 channels, 0 events
+[2026-01-28 01:11:53] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:54] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:55] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:56] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:57] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:58] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:11:59] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:00] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:01] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:03] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:04] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:05] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:06] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-01-28 01:12:06] [INFO] [12/20] TCA-0003402-X: 0 channels, 0 events
+[2026-01-28 01:12:18] [INFO] [13/20] TTO-0004215-X: 172 channels, 19680 events
+[2026-01-28 01:12:31] [INFO] [14/20] USA-CT58914-L: 481 channels, 61328 events
+[2026-01-28 01:12:51] [INFO] [15/20] USA-CT62508-X: 519 channels, 65697 events
+[2026-01-28 01:13:01] [INFO] [16/20] USA-DISH501-X: 555 channels, 71689 events
+[2026-01-28 01:13:17] [INFO] [17/20] USA-DITV501-X: 616 channels, 81267 events
+[2026-01-28 01:13:35] [INFO] [18/20] USA-DITV567-X: 589 channels, 77597 events
+[2026-01-28 01:13:46] [INFO] [19/20] USA-IL56991-X: 600 channels, 71108 events
+[2026-01-28 01:13:58] [INFO] [20/20] USA-NJ29458-L: 487 channels, 62935 events
+[2026-01-28 01:13:58] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-01-28 01:13:58] [INFO]   Raw channels collected: 5425
+[2026-01-28 01:13:58] [INFO] Merging duplicate channels across lineups...
+[2026-01-28 01:13:59] [INFO]   Final unique channels: 2334
+[2026-01-28 01:13:59] [INFO]   Total events after deduplication: 284123
+[2026-01-28 01:14:12] [INFO] Writing 284123 valid events to XML
+[2026-01-28 01:14:12] [INFO]   New episodes: 33394
+[2026-01-28 01:14:12] [INFO]   Reruns: 250729
+[2026-01-28 01:14:23] [INFO] EPG successfully written to output/EPG-us-all-markets.xml.gz
+[2026-01-28 01:14:24] [INFO] [California Cable] Found 10 lineup(s)
+[2026-01-28 01:14:24] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-28 01:14:24] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-28 01:14:24] [INFO]   Parallel: True (workers: 3)
+[2026-01-28 01:14:56] [INFO] [1/10] USA-CA02268-X: 322 channels, 42304 events
+[2026-01-28 01:15:00] [INFO] [2/10] USA-CA04423-X: 315 channels, 40195 events
+[2026-01-28 01:15:06] [INFO] [3/10] USA-CA04523-X: 629 channels, 74271 events
+[2026-01-28 01:15:35] [INFO] [4/10] USA-CA04563-X: 499 channels, 62999 events
+[2026-01-28 01:15:38] [INFO] [5/10] USA-CA04577-X: 522 channels, 61891 events
+[2026-01-28 01:15:48] [INFO] [6/10] USA-CA04818-X: 583 channels, 67511 events
+[2026-01-28 01:16:13] [INFO] [7/10] USA-CA04863-X: 313 channels, 40068 events
+[2026-01-28 01:16:27] [INFO] [8/10] USA-CA04931-X: 535 channels, 69250 events
+[2026-01-28 01:16:38] [INFO] [9/10] USA-CA55363-X: 598 channels, 71182 events
+[2026-01-28 01:16:50] [INFO] [10/10] USA-CA57315-L: 500 channels, 62285 events
+[2026-01-28 01:16:50] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-28 01:16:50] [INFO]   Raw channels collected: 4816
+[2026-01-28 01:16:50] [INFO] Merging duplicate channels across lineups...
+[2026-01-28 01:16:51] [INFO]   Final unique channels: 1438
+[2026-01-28 01:16:51] [INFO]   Total events after deduplication: 170548
+[2026-01-28 01:16:59] [INFO] Writing 170548 valid events to XML
+[2026-01-28 01:16:59] [INFO]   New episodes: 18317
+[2026-01-28 01:16:59] [INFO]   Reruns: 152231
+[2026-01-28 01:17:06] [INFO] EPG successfully written to output/EPG-california.xml.gz
+[2026-01-28 01:17:06] [INFO] [Canada Cable] Found 10 lineup(s)
+[2026-01-28 01:17:06] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-01-28 01:17:06] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-28 01:17:06] [INFO]   Parallel: True (workers: 3)
+[2026-01-28 01:17:36] [INFO] [1/10] CAN-0001010-X: 249 channels, 31946 events
+[2026-01-28 01:17:46] [INFO] [2/10] CAN-0000080-X: 397 channels, 50988 events
+[2026-01-28 01:17:53] [INFO] [3/10] CAN-0000810-X: 600 channels, 86152 events
+[2026-01-28 01:18:10] [INFO] [4/10] CAN-0001811-X: 243 channels, 38266 events
+[2026-01-28 01:18:19] [INFO] [5/10] CAN-0001900-X: 250 channels, 36379 events
+[2026-01-28 01:18:35] [INFO] [6/10] CAN-0001994-X: 496 channels, 66137 events
+[2026-01-28 01:18:45] [INFO] [7/10] CAN-0002090-X: 247 channels, 31618 events
+[2026-01-28 01:18:54] [INFO] [8/10] CAN-0002150-X: 251 channels, 32226 events
+[2026-01-28 01:19:12] [INFO] [9/10] CAN-0002988-X: 498 channels, 66369 events
+[2026-01-28 01:19:20] [INFO] [10/10] CAN-0003130-X: 409 channels, 53484 events
+[2026-01-28 01:19:20] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-01-28 01:19:20] [INFO]   Raw channels collected: 3640
+[2026-01-28 01:19:20] [INFO] Merging duplicate channels across lineups...
+[2026-01-28 01:19:21] [INFO]   Final unique channels: 1150
+[2026-01-28 01:19:21] [INFO]   Total events after deduplication: 151230
+[2026-01-28 01:19:28] [INFO] Writing 151230 valid events to XML
+[2026-01-28 01:19:28] [INFO]   New episodes: 21581
+[2026-01-28 01:19:28] [INFO]   Reruns: 129649
+[2026-01-28 01:19:34] [INFO] EPG successfully written to output/EPG-canada.xml.gz
+[2026-01-28 01:19:34] [INFO] [Latin America] Found 20 lineup(s)
+[2026-01-28 01:19:34] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-01-28 01:19:34] [INFO]   Timespan: 120 hours (5 days)
+[2026-01-28 01:19:34] [INFO]   Parallel: True (workers: 3)
+[2026-01-28 01:20:01] [INFO] [1/20] ARG-0003089-X: 120 channels, 15171 events
+[2026-01-28 01:20:02] [INFO] [2/20] ARG-0004599-X: 172 channels, 20977 events
+[2026-01-28 01:20:12] [INFO] [3/20] CAN-0005632-X: 547 channels, 74926 events
+[2026-01-28 01:20:26] [INFO] [4/20] CHL-0000627-DEFAULT: 53 channels, 5470 events
+[2026-01-28 01:20:31] [INFO] [5/20] CHL-0000635-X: 140 channels, 15551 events
+[2026-01-28 01:20:37] [INFO] [6/20] CHL-0000650-X: 135 channels, 13481 events
+[2026-01-28 01:20:54] [INFO] [7/20] CHL-0003043-X: 214 channels, 23509 events
+[2026-01-28 01:20:56] [INFO] [8/20] CHL-0003453-X: 67 channels, 8023 events
+[2026-01-28 01:21:04] [INFO] [9/20] CHL-0003464-X: 140 channels, 15552 events
+[2026-01-28 01:21:24] [INFO] [10/20] CHL-0003493-X: 183 channels, 20865 events
+[2026-01-28 01:21:24] [INFO] [11/20] CHL-0003522-X: 148 channels, 18128 events
+[2026-01-28 01:21:34] [INFO] [12/20] CHL-0003530-X: 148 channels, 18129 events
+[2026-01-28 01:21:48] [INFO] [13/20] CHL-0003537-DEFAULT: 47 channels, 4440 events
+[2026-01-28 01:21:48] [INFO] [14/20] CHL-0003536-DEFAULT: 58 channels, 5627 events
+[2026-01-28 01:21:58] [INFO] [15/20] CHL-0003538-DEFAULT: 50 channels, 4993 events
+[2026-01-28 01:22:17] [INFO] [16/20] CHL-0003540-X: 128 channels, 15356 events
+[2026-01-28 01:22:22] [INFO] [17/20] CHL-0003539-X: 224 channels, 24659 events
+[2026-01-28 01:22:27] [INFO] [18/20] CHL-0003541-X: 155 channels, 17195 events
+[2026-01-28 01:22:42] [INFO] [19/20] CHL-0004470-X: 91 channels, 10087 events
+[2026-01-28 01:22:47] [INFO] [20/20] CHL-0004477-X: 75 channels, 9610 events
+[2026-01-28 01:22:47] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-01-28 01:22:47] [INFO]   Raw channels collected: 2895
+[2026-01-28 01:22:47] [INFO] Merging duplicate channels across lineups...
+[2026-01-28 01:22:47] [INFO]   Final unique channels: 1164
+[2026-01-28 01:22:47] [INFO]   Total events after deduplication: 137061
+[2026-01-28 01:22:52] [INFO] Writing 137061 valid events to XML
+[2026-01-28 01:22:52] [INFO]   New episodes: 10206
+[2026-01-28 01:22:52] [INFO]   Reruns: 126855
+[2026-01-28 01:22:57] [INFO] EPG successfully written to output/EPG-latam.xml.gz
+[2026-01-28 01:22:57] [INFO] [Europe] External source mode: globetvapp
+[2026-01-28 01:22:57] [INFO] Fetching 16 external EPG source(s)
+[2026-01-28 01:22:58] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 272 channels, 10998 programmes
+[2026-01-28 01:22:59] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 334 channels, 20540 programmes
+[2026-01-28 01:22:59] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 324 channels, 22468 programmes
+[2026-01-28 01:23:00] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 292 channels, 13355 programmes
+[2026-01-28 01:23:00] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 145 channels, 5207 programmes
+[2026-01-28 01:23:01] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 243 channels, 17413 programmes
+[2026-01-28 01:23:02] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 261 channels, 23098 programmes
+[2026-01-28 01:23:02] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 63 channels, 4460 programmes
+[2026-01-28 01:23:03] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 1085 channels, 45910 programmes
+[2026-01-28 01:23:04] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 583 channels, 40753 programmes
+[2026-01-28 01:23:04] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 195 channels, 10311 programmes
+[2026-01-28 01:23:05] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 82 channels, 3892 programmes
+[2026-01-28 01:23:05] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 72 channels, 3562 programmes
+[2026-01-28 01:23:06] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 102 channels, 7430 programmes
+[2026-01-28 01:23:06] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 107 channels, 5358 programmes
+[2026-01-28 01:23:07] [INFO] Downloaded https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 158 channels, 9376 programmes
+[2026-01-28 01:23:07] [INFO] Merging 16 EPG source(s)
+[2026-01-28 01:23:11] [INFO] Written merged EPG to output/EPG-europe.xml.gz: 4318 channels, 236575 programmes
+[2026-01-28 01:23:11] [INFO] [Streaming Services] External source mode: mjh
+[2026-01-28 01:23:11] [INFO] Fetching 7 external EPG source(s)
+[2026-01-28 01:23:12] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz: 401 channels, 8236 programmes
+[2026-01-28 01:23:12] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz: 200 channels, 4719 programmes
+[2026-01-28 01:23:12] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz: 539 channels, 4536 programmes
+[2026-01-28 01:23:13] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz: 235 channels, 2125 programmes
+[2026-01-28 01:23:15] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz: 2580 channels, 82742 programmes
+[2026-01-28 01:23:15] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 153 channels, 11122 programmes
+[2026-01-28 01:23:16] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 683 channels, 62691 programmes
+[2026-01-28 01:23:16] [INFO] Merging 7 EPG source(s)
+[2026-01-28 01:23:22] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 4791 channels, 176170 programmes
