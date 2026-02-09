@@ -225,10 +225,12 @@ def _fix_thumbnail_url(thumbnail: str) -> str:
     has_extension = any(thumbnail.lower().endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.gif', '.webp'])
     
     if thumbnail.startswith("http://") or thumbnail.startswith("https://"):
+        # Rewrite any tmsimg.com URL to use the configured CDN subdomain
+        thumbnail = re.sub(r'https?://[a-zA-Z0-9-]+\.tmsimg\.com/', f'https://{_CDN_SUBDOMAIN}.tmsimg.com/', thumbnail)
         return thumbnail if has_extension else f"{thumbnail}.jpg"
-    
+
     if thumbnail.startswith("//"):
-        url = f"https:{thumbnail}"
+        url = re.sub(r'//[a-zA-Z0-9-]+\.tmsimg\.com/', f'//{_CDN_SUBDOMAIN}.tmsimg.com/', f"https:{thumbnail}")
         return url if has_extension else f"{url}.jpg"
     
     if thumbnail.startswith("assets/"):
@@ -2046,7 +2048,7 @@ def load_config(args=None) -> Dict:
         if args.fallback_zip:
             config["EPG_FALLBACK_ZIP"] = args.fallback_zip
 
-    _set_cdn_subdomain(config.get("EPG_CDN_SUBDOMAIN", "zap2it"))
+    _set_cdn_subdomain(config.get("EPG_CDN_SUBDOMAIN", "dshm"))
 
     days = int(config.get("EPG_TIMESPAN_DAYS", 1))
     config["EPG_TIMESPAN"] = min(max(days, 1), 7) * 24
@@ -2586,7 +2588,7 @@ Examples:
     
     cdn_group = parser.add_argument_group('CDN Options')
     cdn_group.add_argument('--cdn-subdomain', type=str,
-                          help='TMS Image CDN subdomain (default: zap2it)')
+                          help='TMS Image CDN subdomain (default: dshm)')
 
     advanced_group = parser.add_argument_group('Advanced')
     advanced_group.add_argument('--fallback-zip', type=str,
