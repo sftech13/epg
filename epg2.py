@@ -175,7 +175,7 @@ def _single_instance_guard():
         _release_lock()
 
 # ---------------- API helpers ----------------
-_CDN_SUBDOMAIN = "zap2it"
+_CDN_SUBDOMAIN = "dshm"
 
 def _set_cdn_subdomain(subdomain: str):
     """Set the CDN subdomain for image URLs."""
@@ -1967,7 +1967,7 @@ def load_config(args=None) -> Dict:
         "EPG_PARALLEL": False,
         "EPG_MAX_WORKERS": 3,
         "EPG_OTA_ONLY": False,
-        "EPG_CDN_SUBDOMAIN": "zap2it",
+        "EPG_CDN_SUBDOMAIN": "dshm",
         "EPG_FALLBACK_ZIP": "",
     }
     
@@ -2615,7 +2615,7 @@ def generate_sample_config():
         "EPG_PARALLEL": False,
         "EPG_MAX_WORKERS": 3,
         "EPG_OTA_ONLY": True,
-        "EPG_CDN_SUBDOMAIN": "zap2it"
+        "EPG_CDN_SUBDOMAIN": "dshm"
     }
 
     config_path = Path(CONFIG_FILE)
