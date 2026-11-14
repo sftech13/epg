@@ -527850,3 +527850,925 @@
 [2026-11-14 04:42:48] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 733 channels, 67240 programmes
 [2026-11-14 04:42:48] [INFO] Merging 6 EPG source(s)
 [2026-11-14 04:42:53] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 5134 channels, 232477 programmes
+[2026-11-14 17:29:30] [INFO] Found 16 OTA lineups for country 'United States'
+[2026-11-14 17:29:30] [INFO] [US OTA] Found 16 lineup(s)
+[2026-11-14 17:29:30] [INFO] Starting EPG fetch for 16 lineup(s)
+[2026-11-14 17:29:30] [INFO]   Timespan: 120 hours (5 days)
+[2026-11-14 17:29:30] [INFO]   Parallel: True (workers: 3)
+[2026-11-14 17:29:57] [INFO] [1/16] USA-GU70062-DEFAULT: 58 channels, 7998 events
+[2026-11-14 17:29:57] [INFO] [2/16] USA-KY16422-DEFAULT: 91 channels, 12080 events
+[2026-11-14 17:29:58] [INFO] [3/16] USA-KY53429-DEFAULT: 85 channels, 11573 events
+[2026-11-14 17:30:22] [INFO] [4/16] USA-LA57904-DEFAULT: 74 channels, 10951 events
+[2026-11-14 17:30:24] [INFO] [5/16] USA-LA67343-DEFAULT: 83 channels, 11830 events
+[2026-11-14 17:30:29] [INFO] [6/16] USA-NM30405-DEFAULT: 63 channels, 8889 events
+[2026-11-14 17:30:52] [INFO] [7/16] USA-OTA-10001: 164 channels, 25133 events
+[2026-11-14 17:30:57] [INFO] [8/16] USA-OTA-33101: 136 channels, 19419 events
+[2026-11-14 17:31:02] [INFO] [9/16] USA-OTA-30301: 153 channels, 20923 events
+[2026-11-14 17:31:19] [INFO] [10/16] USA-OTA-60601: 120 channels, 17610 events
+[2026-11-14 17:31:26] [INFO] [11/16] USA-OTA-77001: 168 channels, 22696 events
+[2026-11-14 17:31:32] [INFO] [12/16] USA-OTA-85001: 124 channels, 16943 events
+[2026-11-14 17:31:56] [INFO] [13/16] USA-OTA-90210: 201 channels, 25495 events
+[2026-11-14 17:31:59] [INFO] [14/16] USA-OTA-94102: 194 channels, 28353 events
+[2026-11-14 17:32:04] [INFO] [15/16] USA-OTA-98101: 90 channels, 13856 events
+[2026-11-14 17:32:25] [INFO] [16/16] USA-UT61812-DEFAULT: 103 channels, 13936 events
+[2026-11-14 17:32:25] [INFO] Fetch complete: 16 succeeded, 0 failed
+[2026-11-14 17:32:25] [INFO]   Raw channels collected: 1907
+[2026-11-14 17:32:25] [INFO] Merging duplicate channels across lineups...
+[2026-11-14 17:32:25] [INFO]   Final unique channels: 1680
+[2026-11-14 17:32:25] [INFO]   Total events after deduplication: 237597
+[2026-11-14 17:32:34] [INFO] Writing 237597 valid events to XML
+[2026-11-14 17:32:34] [INFO]   New episodes: 26900
+[2026-11-14 17:32:34] [INFO]   Reruns: 210697
+[2026-11-14 17:32:41] [INFO] EPG successfully written to output/EPG-us-ota.xml.gz
+[2026-11-14 17:32:43] [INFO] [US All Markets] Found 20 lineup(s)
+[2026-11-14 17:32:43] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-11-14 17:32:43] [INFO]   Timespan: 120 hours (5 days)
+[2026-11-14 17:32:43] [INFO]   Parallel: True (workers: 3)
+[2026-11-14 17:32:43] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:45] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:46] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:47] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:48] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:49] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:50] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:51] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:52] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:53] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:54] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:56] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:57] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:58] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:32:59] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:00] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:02] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:03] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:04] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:05] [ERROR] [BMU-0000013-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:05] [INFO] [1/20] BMU-0000013-X: 0 channels, 0 events
+[2026-11-14 17:33:06] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:07] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:08] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:09] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:10] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:11] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:12] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:12] [INFO] [2/20] ABW-0000103-X: 143 channels, 14238 events
+[2026-11-14 17:33:13] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:14] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:15] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:17] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:18] [ERROR] [BRB-0004494-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:33:19] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:33:19] [WARNING] [BHS-0000029-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:33:20] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:33:21] [WARNING] [BHS-0000029-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:33:21] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:33:23] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:33:23] [WARNING] [BHS-0000029-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:33:23] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:33:26] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:33:27] [INFO] [3/20] BHS-0000029-X: 241 channels, 21096 events
+[2026-11-14 17:33:28] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:33:29] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:33:29] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:33:30] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:33:32] [WARNING] [CAN-0009968-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:33:32] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:33:33] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:33:34] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:33:37] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:33:37] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:33:38] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:33:39] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:33:40] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:33:41] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:33:43] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:33:43] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:33:45] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:33:47] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:33:47] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:33:48] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:33:48] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:33:50] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:33:50] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:33:53] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:33:53] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:33:54] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:33:55] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:33:57] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:33:57] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:33:58] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:33:59] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:33:59] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:34:02] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:34:02] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:34:04] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:34:04] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:34:06] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:06] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:34:07] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:34:09] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:34:09] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:34:12] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:34:12] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:34:14] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:14] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:34:16] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:17] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:34:17] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:34:19] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:34:19] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:34:21] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:34:23] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:34:24] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:34:25] [WARNING] [CYM-0004493-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:34:26] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:34:27] [WARNING] [BRB-0004494-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:34:27] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:34:28] [WARNING] [BRB-0004494-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:34:30] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:34:31] [WARNING] [BRB-0004494-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:34:32] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:34:34] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:35] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:34:36] [INFO] [4/20] BRB-0004494-X: 0 channels, 0 events
+[2026-11-14 17:34:36] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:34:36] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:34:37] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:34:38] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:34:40] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:34:40] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:34:42] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:34:43] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:34:45] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:34:46] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:34:46] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:34:46] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:34:48] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:48] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:34:51] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:34:51] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:34:53] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:34:54] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:34:56] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:34:56] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:34:56] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:34:57] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:34:58] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:35:00] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:35:01] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:35:02] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:35:03] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:35:05] [WARNING] [CAN-0009968-X] Retry 3/3 in 5.0s (status 429)
+[2026-11-14 17:35:05] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:35:05] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:35:07] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:35:08] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:35:09] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:35:11] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:35:13] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:35:13] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:35:15] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:35:15] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:35:16] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:35:16] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:35:18] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:35:19] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:35:21] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:35:23] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:35:23] [WARNING] [CAN-0009968-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:35:24] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:35:25] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:35:26] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:35:26] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:35:26] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:35:29] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:35:31] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:35:32] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:35:33] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:35:34] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:35:34] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:35:36] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:35:36] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:35:36] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:35:39] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:35:41] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:35:42] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:35:43] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:35:43] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:35:44] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:35:46] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:35:46] [WARNING] [CYM-0004493-X] Retry 3/3 in 5.0s (status 429)
+[2026-11-14 17:35:46] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:35:49] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:35:51] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:35:52] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:35:53] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:35:53] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:35:54] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:35:55] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:35:56] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:35:56] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:35:58] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:36:01] [WARNING] [CAN-0009968-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:36:01] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:36:02] [WARNING] [CAN-0009968-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:36:03] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:36:04] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:36:05] [WARNING] [CAN-0009968-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:36:05] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:36:06] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:36:08] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:36:09] [INFO] [5/20] CAN-0009968-X: 601 channels, 11827 events
+[2026-11-14 17:36:09] [WARNING] [GRD-0000033-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:36:10] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:36:11] [WARNING] [GRD-0000033-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:36:12] [WARNING] [CYM-0004493-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:36:13] [WARNING] [GRD-0000033-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:36:14] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:36:15] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:36:16] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:36:18] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:36:18] [WARNING] [GRD-0000033-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:36:19] [WARNING] [GRD-0000033-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:36:20] [WARNING] [CYM-0004493-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:36:22] [WARNING] [CYM-0004493-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:36:22] [WARNING] [GRD-0000033-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:36:23] [WARNING] [DOM-0000124-DEFAULT] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:36:25] [WARNING] [DOM-0000124-DEFAULT] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:36:25] [WARNING] [CYM-0004493-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:36:28] [WARNING] [DOM-0000124-DEFAULT] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:36:28] [WARNING] [GRD-0000033-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:36:30] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:31] [INFO] [6/20] CYM-0004493-X: 109 channels, 803 events
+[2026-11-14 17:36:31] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:32] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:33] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:35] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:36] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:37] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:38] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:39] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:40] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:42] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:43] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:44] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:45] [INFO] [7/20] DOM-0000124-DEFAULT: 48 channels, 2398 events
+[2026-11-14 17:36:45] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:45] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:46] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:46] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:47] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:47] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:48] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:48] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:49] [ERROR] [GRD-0000033-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:49] [INFO] [8/20] GRD-0000033-X: 0 channels, 0 events
+[2026-11-14 17:36:49] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:50] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:50] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:51] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:51] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:52] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:53] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:53] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:54] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:54] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:55] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:55] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:56] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:56] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:57] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:57] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:58] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:58] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:36:59] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:00] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:00] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:01] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:02] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:02] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:03] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:03] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:04] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:04] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:05] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:05] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:06] [ERROR] [KNA-0000050-DEFAULT] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:06] [INFO] [9/20] KNA-0000050-DEFAULT: 0 channels, 0 events
+[2026-11-14 17:37:06] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:06] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:07] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:08] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:09] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:09] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:09] [INFO] [10/20] JAM-0002285-X: 244 channels, 27646 events
+[2026-11-14 17:37:10] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:10] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:11] [ERROR] [LCA-0000271-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:11] [INFO] [11/20] LCA-0000271-X: 0 channels, 0 events
+[2026-11-14 17:37:11] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:12] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:13] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:14] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:15] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:16] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:17] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:19] [ERROR] [TCA-0003402-X] Bad request (likely invalid headend or postalCode)
+[2026-11-14 17:37:19] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:37:20] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:37:20] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:37:21] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:37:21] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:37:21] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:37:23] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:37:24] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:37:24] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:37:29] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:37:29] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:37:30] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:37:30] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:37:31] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:37:32] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:37:33] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:37:33] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:37:34] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:37:38] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:37:38] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:37:40] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:37:40] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:37:40] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:37:41] [WARNING] [TTO-0004215-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:37:43] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:37:43] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:37:44] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:37:49] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:37:49] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:37:50] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:37:50] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:37:51] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:37:52] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:37:53] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:37:54] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:37:54] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:37:58] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:37:59] [WARNING] [TCA-0003402-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:37:59] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:38:00] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:38:01] [WARNING] [TCA-0003402-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:38:01] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:38:02] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:38:03] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:38:04] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:38:08] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:38:09] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:38:09] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:38:10] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:38:10] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:38:11] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:38:12] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:38:12] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:38:13] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:38:18] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:38:18] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:38:18] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:38:19] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:38:19] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:38:20] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:38:22] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:38:22] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:38:23] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:38:28] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:38:28] [WARNING] [TCA-0003402-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:38:28] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:38:29] [WARNING] [TCA-0003402-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:38:29] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:38:29] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:38:31] [WARNING] [TCA-0003402-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:38:31] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:38:32] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:38:36] [INFO] [12/20] TCA-0003402-X: 0 channels, 0 events
+[2026-11-14 17:38:36] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:38:37] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:38:38] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:38:38] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:38:38] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:38:39] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:38:40] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:38:41] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:38:42] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:38:46] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:38:46] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:38:47] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:38:47] [WARNING] [TTO-0004215-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:38:48] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:38:49] [WARNING] [TTO-0004215-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:38:50] [WARNING] [USA-CT58914-L] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:38:51] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:38:52] [WARNING] [TTO-0004215-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:38:55] [WARNING] [USA-CT58914-L] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:38:57] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:38:57] [WARNING] [USA-CT58914-L] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:38:57] [WARNING] [TTO-0004215-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:38:58] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:39:03] [INFO] [13/20] TTO-0004215-X: 171 channels, 9591 events
+[2026-11-14 17:39:15] [INFO] [14/20] USA-CT58914-L: 475 channels, 30789 events
+[2026-11-14 17:39:29] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:39:31] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:39:32] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:39:32] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:39:33] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:39:34] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:39:34] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:39:36] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:39:36] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:39:39] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:39:41] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:39:42] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:39:42] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:39:43] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:39:43] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:39:43] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:39:46] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:39:46] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:39:49] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:39:51] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:39:51] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:39:51] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:39:53] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:39:53] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:39:53] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:39:55] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:39:56] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:39:59] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:40:01] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:40:01] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:40:01] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:40:02] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:40:03] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:40:03] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:40:05] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:40:05] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:40:08] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:40:10] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:40:10] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:40:11] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:40:12] [WARNING] [USA-DITV501-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:40:12] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:40:13] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:40:15] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:40:15] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:40:18] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:40:20] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:40:20] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:40:20] [WARNING] [USA-CT62508-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:40:22] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:40:22] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:40:22] [WARNING] [USA-CT62508-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:40:24] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:40:25] [WARNING] [USA-CT62508-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:40:27] [WARNING] [USA-DISH501-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:40:29] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:40:29] [INFO] [15/20] USA-CT62508-X: 526 channels, 39889 events
+[2026-11-14 17:40:30] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:40:30] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:40:31] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:40:31] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:40:32] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:40:33] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:40:34] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:40:38] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:40:38] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:40:40] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:40:40] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:40:40] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:40:41] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:40:42] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:40:43] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:40:43] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:40:48] [WARNING] [USA-DISH501-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:40:48] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:40:49] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:40:49] [WARNING] [USA-DISH501-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:40:50] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:40:50] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:40:52] [WARNING] [USA-DISH501-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:40:52] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:40:52] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:40:56] [INFO] [16/20] USA-DISH501-X: 555 channels, 39693 events
+[2026-11-14 17:40:56] [WARNING] [USA-IL56991-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:40:58] [WARNING] [USA-IL56991-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:40:58] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:40:58] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:40:59] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:40:59] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:41:00] [WARNING] [USA-IL56991-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:41:02] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:41:02] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:41:06] [WARNING] [USA-IL56991-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:41:07] [WARNING] [USA-IL56991-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:41:07] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:41:08] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:41:09] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:41:09] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:41:10] [WARNING] [USA-IL56991-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:41:11] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:41:12] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:41:16] [WARNING] [USA-IL56991-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:41:17] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:41:17] [WARNING] [USA-IL56991-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:41:17] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:41:18] [WARNING] [USA-DITV501-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:41:19] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:41:19] [WARNING] [USA-IL56991-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:41:21] [WARNING] [USA-DITV501-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:41:21] [WARNING] [USA-DITV567-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:41:25] [WARNING] [USA-IL56991-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:41:27] [WARNING] [USA-IL56991-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:41:27] [WARNING] [USA-DITV567-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:41:27] [WARNING] [USA-DITV501-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:41:28] [WARNING] [USA-DITV567-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:41:40] [INFO] [17/20] USA-DITV501-X: 626 channels, 33054 events
+[2026-11-14 17:42:16] [INFO] [18/20] USA-DITV567-X: 599 channels, 55803 events
+[2026-11-14 17:42:19] [INFO] [19/20] USA-IL56991-X: 610 channels, 61334 events
+[2026-11-14 17:42:40] [INFO] [20/20] USA-NJ29458-L: 486 channels, 62295 events
+[2026-11-14 17:42:40] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-11-14 17:42:40] [INFO]   Raw channels collected: 5434
+[2026-11-14 17:42:40] [INFO] Merging duplicate channels across lineups...
+[2026-11-14 17:42:41] [INFO]   Final unique channels: 2338
+[2026-11-14 17:42:41] [INFO]   Total events after deduplication: 192949
+[2026-11-14 17:42:50] [INFO] Writing 192949 valid events to XML
+[2026-11-14 17:42:50] [INFO]   New episodes: 22633
+[2026-11-14 17:42:50] [INFO]   Reruns: 170316
+[2026-11-14 17:42:56] [INFO] EPG successfully written to output/EPG-us-all-markets.xml.gz
+[2026-11-14 17:42:56] [INFO] [California Cable] Found 10 lineup(s)
+[2026-11-14 17:42:56] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-11-14 17:42:56] [INFO]   Timespan: 120 hours (5 days)
+[2026-11-14 17:42:56] [INFO]   Parallel: True (workers: 3)
+[2026-11-14 17:43:27] [INFO] [1/10] USA-CA02268-X: 322 channels, 41774 events
+[2026-11-14 17:43:34] [INFO] [2/10] USA-CA04423-X: 318 channels, 40354 events
+[2026-11-14 17:43:49] [INFO] [3/10] USA-CA04523-X: 624 channels, 74603 events
+[2026-11-14 17:44:23] [INFO] [4/10] USA-CA04563-X: 504 channels, 62845 events
+[2026-11-14 17:44:28] [INFO] [5/10] USA-CA04577-X: 515 channels, 62417 events
+[2026-11-14 17:44:38] [INFO] [6/10] USA-CA04818-X: 588 channels, 67349 events
+[2026-11-14 17:45:09] [INFO] [7/10] USA-CA04863-X: 384 channels, 48831 events
+[2026-11-14 17:45:24] [INFO] [8/10] USA-CA04931-X: 537 channels, 69383 events
+[2026-11-14 17:45:36] [INFO] [9/10] USA-CA55363-X: 603 channels, 71406 events
+[2026-11-14 17:45:54] [INFO] [10/10] USA-CA57315-L: 502 channels, 62439 events
+[2026-11-14 17:45:54] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-11-14 17:45:54] [INFO]   Raw channels collected: 4897
+[2026-11-14 17:45:54] [INFO] Merging duplicate channels across lineups...
+[2026-11-14 17:45:55] [INFO]   Final unique channels: 1450
+[2026-11-14 17:45:55] [INFO]   Total events after deduplication: 171259
+[2026-11-14 17:46:03] [INFO] Writing 171259 valid events to XML
+[2026-11-14 17:46:03] [INFO]   New episodes: 19274
+[2026-11-14 17:46:03] [INFO]   Reruns: 151985
+[2026-11-14 17:46:08] [INFO] EPG successfully written to output/EPG-california.xml.gz
+[2026-11-14 17:46:09] [INFO] [Canada Cable] Found 10 lineup(s)
+[2026-11-14 17:46:09] [INFO] Starting EPG fetch for 10 lineup(s)
+[2026-11-14 17:46:09] [INFO]   Timespan: 120 hours (5 days)
+[2026-11-14 17:46:09] [INFO]   Parallel: True (workers: 3)
+[2026-11-14 17:46:47] [INFO] [1/10] CAN-0001010-X: 247 channels, 29631 events
+[2026-11-14 17:46:49] [INFO] [2/10] CAN-0000080-X: 392 channels, 48160 events
+[2026-11-14 17:46:58] [INFO] [3/10] CAN-0000810-X: 602 channels, 83225 events
+[2026-11-14 17:47:31] [INFO] [4/10] CAN-0001900-X: 248 channels, 35971 events
+[2026-11-14 17:47:37] [INFO] [5/10] CAN-0001811-X: 241 channels, 37479 events
+[2026-11-14 17:47:53] [INFO] [6/10] CAN-0001994-X: 484 channels, 64385 events
+[2026-11-14 17:48:11] [INFO] [7/10] CAN-0002090-X: 245 channels, 29337 events
+[2026-11-14 17:48:19] [INFO] [8/10] CAN-0002150-X: 249 channels, 29917 events
+[2026-11-14 17:48:49] [INFO] [9/10] CAN-0003130-X: 404 channels, 50563 events
+[2026-11-14 17:48:59] [INFO] [10/10] CAN-0002988-X: 486 channels, 64616 events
+[2026-11-14 17:48:59] [INFO] Fetch complete: 10 succeeded, 0 failed
+[2026-11-14 17:48:59] [INFO]   Raw channels collected: 3598
+[2026-11-14 17:48:59] [INFO] Merging duplicate channels across lineups...
+[2026-11-14 17:48:59] [INFO]   Final unique channels: 1140
+[2026-11-14 17:48:59] [INFO]   Total events after deduplication: 146844
+[2026-11-14 17:49:08] [INFO] Writing 146844 valid events to XML
+[2026-11-14 17:49:08] [INFO]   New episodes: 21852
+[2026-11-14 17:49:08] [INFO]   Reruns: 124992
+[2026-11-14 17:49:12] [INFO] EPG successfully written to output/EPG-canada.xml.gz
+[2026-11-14 17:49:13] [INFO] [Latin America] Found 20 lineup(s)
+[2026-11-14 17:49:13] [INFO] Starting EPG fetch for 20 lineup(s)
+[2026-11-14 17:49:13] [INFO]   Timespan: 120 hours (5 days)
+[2026-11-14 17:49:13] [INFO]   Parallel: True (workers: 3)
+[2026-11-14 17:49:46] [INFO] [1/20] ARG-0003089-X: 120 channels, 16438 events
+[2026-11-14 17:49:53] [INFO] [2/20] ARG-0004599-X: 171 channels, 22830 events
+[2026-11-14 17:50:13] [INFO] [3/20] CHL-0000627-DEFAULT: 53 channels, 5517 events
+[2026-11-14 17:50:23] [INFO] [4/20] CAN-0005632-X: 548 channels, 74257 events
+[2026-11-14 17:50:29] [INFO] [5/20] CHL-0000635-X: 140 channels, 17030 events
+[2026-11-14 17:50:45] [INFO] [6/20] CHL-0000650-X: 135 channels, 15170 events
+[2026-11-14 17:51:02] [INFO] [7/20] CHL-0003453-X: 67 channels, 9608 events
+[2026-11-14 17:51:04] [INFO] [8/20] CHL-0003043-X: 214 channels, 24475 events
+[2026-11-14 17:51:15] [INFO] [9/20] CHL-0003464-X: 140 channels, 17030 events
+[2026-11-14 17:51:29] [WARNING] [CHL-0003522-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:51:29] [WARNING] [CHL-0003493-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:51:30] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:51:30] [WARNING] [CHL-0003522-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:51:30] [WARNING] [CHL-0003493-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:51:32] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:51:33] [WARNING] [CHL-0003493-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:51:33] [WARNING] [CHL-0003522-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:51:34] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:51:39] [WARNING] [CHL-0003493-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:51:39] [WARNING] [CHL-0003522-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:51:39] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:51:40] [WARNING] [CHL-0003493-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:51:41] [WARNING] [CHL-0003522-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:51:41] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:51:42] [WARNING] [CHL-0003493-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:51:43] [WARNING] [CHL-0003522-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:51:43] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:51:48] [WARNING] [CHL-0003493-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:51:49] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:51:49] [WARNING] [CHL-0003522-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:51:50] [WARNING] [CHL-0003493-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:51:50] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:51:50] [WARNING] [CHL-0003522-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:51:52] [WARNING] [CHL-0003493-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:51:52] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:51:53] [WARNING] [CHL-0003522-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:51:57] [WARNING] [CHL-0003493-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:51:58] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:51:58] [WARNING] [CHL-0003493-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:51:59] [WARNING] [CHL-0003522-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:52:00] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:52:01] [WARNING] [CHL-0003522-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:52:01] [WARNING] [CHL-0003493-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:52:02] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:52:03] [WARNING] [CHL-0003522-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:52:07] [WARNING] [CHL-0003493-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:52:08] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:52:09] [WARNING] [CHL-0003522-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:52:09] [WARNING] [CHL-0003493-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:52:10] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:52:10] [WARNING] [CHL-0003522-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:52:11] [WARNING] [CHL-0003493-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:52:12] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:52:13] [WARNING] [CHL-0003522-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:52:16] [INFO] [10/20] CHL-0003493-X: 183 channels, 16880 events
+[2026-11-14 17:52:16] [WARNING] [CHL-0003536-DEFAULT] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:52:17] [INFO] [11/20] CHL-0003522-X: 148 channels, 14317 events
+[2026-11-14 17:52:17] [WARNING] [CHL-0003537-DEFAULT] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:52:18] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:52:18] [WARNING] [CHL-0003536-DEFAULT] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:52:19] [WARNING] [CHL-0003537-DEFAULT] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:52:19] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:52:21] [WARNING] [CHL-0003536-DEFAULT] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:52:22] [WARNING] [CHL-0003537-DEFAULT] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:52:22] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:52:27] [WARNING] [CHL-0003536-DEFAULT] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:52:28] [WARNING] [CHL-0003537-DEFAULT] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:52:28] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:52:29] [WARNING] [CHL-0003536-DEFAULT] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:52:29] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.0s (status 429)
+[2026-11-14 17:52:29] [WARNING] [CHL-0003537-DEFAULT] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:52:31] [WARNING] [CHL-0003536-DEFAULT] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:52:31] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:52:31] [WARNING] [CHL-0003537-DEFAULT] Retry 3/3 in 5.0s (status 429)
+[2026-11-14 17:52:36] [WARNING] [CHL-0003536-DEFAULT] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:52:37] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:52:37] [WARNING] [CHL-0003537-DEFAULT] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:52:38] [WARNING] [CHL-0003536-DEFAULT] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:52:38] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:52:39] [WARNING] [CHL-0003537-DEFAULT] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:52:40] [WARNING] [CHL-0003536-DEFAULT] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:52:41] [WARNING] [CHL-0003530-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:52:41] [WARNING] [CHL-0003537-DEFAULT] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:52:46] [WARNING] [CHL-0003536-DEFAULT] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:52:46] [WARNING] [CHL-0003530-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:52:47] [WARNING] [CHL-0003537-DEFAULT] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:52:48] [WARNING] [CHL-0003536-DEFAULT] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:52:48] [WARNING] [CHL-0003530-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:52:48] [WARNING] [CHL-0003537-DEFAULT] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:52:53] [INFO] [12/20] CHL-0003530-X: 148 channels, 11546 events
+[2026-11-14 17:53:13] [INFO] [13/20] CHL-0003537-DEFAULT: 47 channels, 3873 events
+[2026-11-14 17:53:14] [INFO] [14/20] CHL-0003536-DEFAULT: 58 channels, 4779 events
+[2026-11-14 17:53:19] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:53:19] [WARNING] [CHL-0003538-DEFAULT] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:53:19] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:53:21] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:21] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:53:21] [WARNING] [CHL-0003538-DEFAULT] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:53:23] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:53:23] [WARNING] [CHL-0003538-DEFAULT] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:53:23] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:53:27] [INFO] [15/20] CHL-0003538-DEFAULT: 50 channels, 6342 events
+[2026-11-14 17:53:28] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:53:29] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:53:29] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:53:29] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:30] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:53:31] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:53:32] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:53:33] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:53:34] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:53:37] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:53:39] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:53:39] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:53:39] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:53:40] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:40] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:53:41] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:53:43] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:53:43] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:53:46] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:53:48] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:48] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:53:49] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:53:50] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:50] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:53:51] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:53:52] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:53:53] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:53:56] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:53:58] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:53:58] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:53:58] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:53:59] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:54:00] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:54:01] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:54:02] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:54:03] [WARNING] [CHL-0003539-X] Retry 3/3 in 5.0s (status 429)
+[2026-11-14 17:54:07] [WARNING] [CHL-0003541-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:54:08] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.3s (status 429)
+[2026-11-14 17:54:09] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:54:09] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:54:09] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:54:11] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:54:11] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:54:12] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:54:13] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:54:16] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:54:17] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:54:18] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:54:18] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:54:19] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:54:19] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:54:20] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.0s (status 429)
+[2026-11-14 17:54:21] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:54:22] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:54:25] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:54:27] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:54:27] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:54:27] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:54:29] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.6s (status 429)
+[2026-11-14 17:54:29] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:54:30] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:54:31] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:54:31] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:54:35] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:54:37] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:54:37] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:54:37] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:54:38] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:54:39] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:54:40] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:54:41] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:54:41] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:54:46] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:54:46] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:54:46] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:54:47] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:54:48] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:54:48] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:54:50] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:54:50] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:54:51] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:54:55] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:54:56] [WARNING] [CHL-0003540-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:54:56] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:54:57] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.7s (status 429)
+[2026-11-14 17:54:57] [WARNING] [CHL-0003539-X] Retry 2/3 in 3.0s (status 429)
+[2026-11-14 17:54:58] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:54:59] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.5s (status 429)
+[2026-11-14 17:55:00] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:55:00] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:55:05] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:55:06] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:55:06] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:55:06] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:55:07] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:55:08] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:55:09] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:55:09] [WARNING] [CHL-0003541-X] Retry 3/3 in 5.0s (status 429)
+[2026-11-14 17:55:11] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.3s (status 429)
+[2026-11-14 17:55:15] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.2s (status 429)
+[2026-11-14 17:55:15] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:55:16] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:55:16] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.8s (status 429)
+[2026-11-14 17:55:17] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:55:18] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:55:19] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:55:20] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:55:20] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:55:25] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.9s (status 429)
+[2026-11-14 17:55:26] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.7s (status 429)
+[2026-11-14 17:55:26] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:55:27] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:55:27] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:55:27] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:55:29] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:55:30] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:55:30] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.1s (status 429)
+[2026-11-14 17:55:35] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:55:35] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.6s (status 429)
+[2026-11-14 17:55:35] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.5s (status 429)
+[2026-11-14 17:55:36] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:55:37] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.1s (status 429)
+[2026-11-14 17:55:37] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:55:38] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.9s (status 429)
+[2026-11-14 17:55:39] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:55:39] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.4s (status 429)
+[2026-11-14 17:55:44] [WARNING] [CHL-0003541-X] Retry 1/3 in 2.0s (status 429)
+[2026-11-14 17:55:45] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.8s (status 429)
+[2026-11-14 17:55:45] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.0s (status 429)
+[2026-11-14 17:55:46] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.3s (status 429)
+[2026-11-14 17:55:46] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.4s (status 429)
+[2026-11-14 17:55:47] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:55:48] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.7s (status 429)
+[2026-11-14 17:55:49] [WARNING] [CHL-0003541-X] Retry 3/3 in 4.8s (status 429)
+[2026-11-14 17:55:49] [WARNING] [CHL-0003539-X] Retry 3/3 in 4.2s (status 429)
+[2026-11-14 17:55:54] [WARNING] [CHL-0003540-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:55:55] [WARNING] [CHL-0003539-X] Retry 1/3 in 1.4s (status 429)
+[2026-11-14 17:55:55] [WARNING] [CHL-0003541-X] Retry 1/3 in 1.1s (status 429)
+[2026-11-14 17:55:56] [WARNING] [CHL-0003540-X] Retry 2/3 in 2.2s (status 429)
+[2026-11-14 17:55:56] [WARNING] [CHL-0003541-X] Retry 2/3 in 2.5s (status 429)
+[2026-11-14 17:55:56] [WARNING] [CHL-0003539-X] Retry 2/3 in 2.9s (status 429)
+[2026-11-14 17:55:58] [WARNING] [CHL-0003540-X] Retry 3/3 in 4.6s (status 429)
+[2026-11-14 17:56:00] [INFO] [16/20] CHL-0003539-X: 223 channels, 5468 events
+[2026-11-14 17:56:02] [INFO] [17/20] CHL-0003540-X: 128 channels, 2351 events
+[2026-11-14 17:56:09] [INFO] [18/20] CHL-0003541-X: 156 channels, 4844 events
+[2026-11-14 17:56:28] [INFO] [19/20] CHL-0004470-X: 90 channels, 11511 events
+[2026-11-14 17:56:30] [INFO] [20/20] CHL-0004477-X: 75 channels, 10985 events
+[2026-11-14 17:56:30] [INFO] Fetch complete: 20 succeeded, 0 failed
+[2026-11-14 17:56:30] [INFO]   Raw channels collected: 2894
+[2026-11-14 17:56:30] [INFO] Merging duplicate channels across lineups...
+[2026-11-14 17:56:31] [INFO]   Final unique channels: 1165
+[2026-11-14 17:56:31] [INFO]   Total events after deduplication: 133068
+[2026-11-14 17:56:36] [INFO] Writing 133068 valid events to XML
+[2026-11-14 17:56:36] [INFO]   New episodes: 10239
+[2026-11-14 17:56:36] [INFO]   Reruns: 122829
+[2026-11-14 17:56:40] [INFO] EPG successfully written to output/EPG-latam.xml.gz
+[2026-11-14 17:56:40] [INFO] [Europe] External source mode: globetvapp
+[2026-11-14 17:56:40] [INFO] Fetching 16 external EPG source(s)
+[2026-11-14 17:56:40] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml, retrying in 1s
+[2026-11-14 17:56:41] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml, retrying in 2s
+[2026-11-14 17:56:43] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Unitedkingdom/unitedkingdom1.xml
+[2026-11-14 17:56:43] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml, retrying in 1s
+[2026-11-14 17:56:44] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml, retrying in 2s
+[2026-11-14 17:56:46] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Germany/germany1.xml
+[2026-11-14 17:56:46] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml, retrying in 1s
+[2026-11-14 17:56:47] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml, retrying in 2s
+[2026-11-14 17:56:49] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/France/france1.xml
+[2026-11-14 17:56:49] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml, retrying in 1s
+[2026-11-14 17:56:50] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml, retrying in 2s
+[2026-11-14 17:56:52] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Spain/spain1.xml
+[2026-11-14 17:56:52] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml, retrying in 1s
+[2026-11-14 17:56:54] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml, retrying in 2s
+[2026-11-14 17:56:56] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Italy/italy1.xml
+[2026-11-14 17:56:56] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml, retrying in 1s
+[2026-11-14 17:56:57] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml, retrying in 2s
+[2026-11-14 17:56:59] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Netherlands/netherlands1.xml
+[2026-11-14 17:56:59] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml, retrying in 1s
+[2026-11-14 17:57:00] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml, retrying in 2s
+[2026-11-14 17:57:02] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Belgium/belgium1.xml
+[2026-11-14 17:57:02] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml, retrying in 1s
+[2026-11-14 17:57:03] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml, retrying in 2s
+[2026-11-14 17:57:05] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Austria/austria1.xml
+[2026-11-14 17:57:05] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml, retrying in 1s
+[2026-11-14 17:57:06] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml, retrying in 2s
+[2026-11-14 17:57:08] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Switzerland/switzerland1.xml
+[2026-11-14 17:57:08] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml, retrying in 1s
+[2026-11-14 17:57:09] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml, retrying in 2s
+[2026-11-14 17:57:11] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Poland/poland1.xml
+[2026-11-14 17:57:11] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml, retrying in 1s
+[2026-11-14 17:57:12] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml, retrying in 2s
+[2026-11-14 17:57:14] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Sweden/sweden1.xml
+[2026-11-14 17:57:14] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml, retrying in 1s
+[2026-11-14 17:57:15] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml, retrying in 2s
+[2026-11-14 17:57:17] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Norway/norway1.xml
+[2026-11-14 17:57:17] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml, retrying in 1s
+[2026-11-14 17:57:18] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml, retrying in 2s
+[2026-11-14 17:57:20] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Denmark/denmark1.xml
+[2026-11-14 17:57:20] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml, retrying in 1s
+[2026-11-14 17:57:21] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml, retrying in 2s
+[2026-11-14 17:57:23] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Finland/finland1.xml
+[2026-11-14 17:57:23] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml, retrying in 1s
+[2026-11-14 17:57:25] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml, retrying in 2s
+[2026-11-14 17:57:27] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Ireland/ireland1.xml
+[2026-11-14 17:57:27] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml, retrying in 1s
+[2026-11-14 17:57:28] [WARNING] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml, retrying in 2s
+[2026-11-14 17:57:30] [ERROR] Failed to fetch https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/globetvapp/epg/main/Portugal/portugal1.xml
+[2026-11-14 17:57:30] [INFO] [Streaming Services] External source mode: mjh
+[2026-11-14 17:57:30] [INFO] Fetching 7 external EPG source(s)
+[2026-11-14 17:57:30] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/us.xml.gz: 458 channels, 9250 programmes
+[2026-11-14 17:57:30] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/PlutoTV/gb.xml.gz: 183 channels, 4246 programmes
+[2026-11-14 17:57:30] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/us.xml.gz: 592 channels, 4971 programmes
+[2026-11-14 17:57:30] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/gb.xml.gz: 278 channels, 2395 programmes
+[2026-11-14 17:57:32] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/all.xml.gz: 2890 channels, 162691 programmes
+[2026-11-14 17:57:32] [WARNING] Failed to fetch https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz, retrying in 1s
+[2026-11-14 17:57:33] [WARNING] Failed to fetch https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz, retrying in 2s
+[2026-11-14 17:57:36] [ERROR] Failed to fetch https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz after 3 attempts: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Stirr/all.xml.gz
+[2026-11-14 17:57:37] [INFO] Downloaded https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Roku/all.xml.gz: 733 channels, 67206 programmes
+[2026-11-14 17:57:37] [INFO] Merging 6 EPG source(s)
+[2026-11-14 17:57:42] [INFO] Written merged EPG to output/EPG-streaming.xml.gz: 5134 channels, 250759 programmes
